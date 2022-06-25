@@ -9,7 +9,7 @@ import MainView from './components/main-view/main-view';
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
-const store = createStore(moviesApp, devToolsEnhancer());
+const store = createStore(cafesApp, devToolsEnhancer());
 
 // Main component (will eventually use all the others)
 class CafeApplication extends React.Component {
