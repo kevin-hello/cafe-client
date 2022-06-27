@@ -11,23 +11,18 @@ import "./area-view.scss";
 export function AreaView ({cafes, cafe, onBackClick}) {
   
   return(
-    <Container>
-    <Row>
+    <>
     <Col className="area-view">
       <div className="area-name">
         <h1>{cafe.Area.Name}</h1>
       </div>
     </Col>
-    </Row>
-    <Row className='cafe-div'>
     { cafes && cafes.map((cafe) => (
     <Col className='area-cafe-cards' md={3} key={cafe._id}>
     <CafeCard cafe={cafe} />
     </Col> ))}
-    </Row>
-      <Button id="return" variant="primary" onClick={() => onBackClick()}>Back</Button>
-</Container>
-
+          <Button id="return" variant="primary" onClick={() => onBackClick()}>Back</Button>
+    </>
   );
 }
 
