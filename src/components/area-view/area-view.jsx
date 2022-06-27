@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 //UI elements
 import { Row, Col, Button, Container} from 'react-bootstrap';
 
-import { AreaCard } from '../areas-card/area-card';
+import { AreaCard } from '../area-card/area-card';
 //styling
 import "./area-view.scss";
 
