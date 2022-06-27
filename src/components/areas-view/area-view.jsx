@@ -34,7 +34,7 @@ export function AreaView ({cafes, cafe, onBackClick}) {
   );
 }
 
-Area.propTypes = {
+AreaView.propTypes = {
   cafe: propTypes.shape({
     Name: propTypes.string.isRequired,
     Area: propTypes.shape({

@@ -12,7 +12,6 @@ export class AreaCard extends React.Component {
     return (
   <Link to={`/areas/${cafe.Area.Name}`} className="card-content">
     <Card className="h-100">
-      <Card.Img variant="top" src={movie.ImagePath}/>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Area.Name}</Card.Title>
         <Link to={`/areas/${cafe.Area.Name}`}>
