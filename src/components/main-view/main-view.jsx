@@ -14,7 +14,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
-//import AreasList from '../areas-list/areas-list';
+import AreasList from '../areas-list/areas-list';
 
 import "./main-view.scss";
 import { connect } from "react-redux";
@@ -69,6 +69,7 @@ class MainView extends React.Component {
   render(){
      let { cafes } = this.props;
      let { user } = this.state;
+     let { areas } = this.props.Area;
    
     return (
       <Router>
@@ -100,7 +101,7 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route path="/areas" render={() => {
-         // return <AreasList cafes={cafes}/>;
+         return <AreasList areas={areas}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
