@@ -13,10 +13,10 @@ import { Row, Col, Container } from "react-bootstrap";
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
+import AreasList from '../areas-list/areas-list';
 
 import "./main-view.scss";
 import { connect } from "react-redux";
-import AreasList from "../areas-list/areas-list";
 
 
 class MainView extends React.Component {
