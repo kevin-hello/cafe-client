@@ -21,7 +21,7 @@ export function AreaView ({cafes, cafe, onBackClick}) {
       <Button id="return" variant="primary" onClick={() => onBackClick()}>Back</Button>
     </Col>
     </Row>
-    <Row className='movie-div'>
+    <Row className='cafe-div'>
     { cafes && cafes.map((cafe) => (
     <Col className='area-cafe-cards' md={3} key={cafe._id}>
     <CafeCard cafe={cafe} />
