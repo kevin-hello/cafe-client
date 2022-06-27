@@ -12,13 +12,11 @@ export function AreaView ({cafes, cafe, onBackClick}) {
   
   return(
     <Container>
-   
     <Row>
     <Col className="area-view">
       <div className="area-name">
         <h1>{cafe.Area.Name}</h1>
       </div>
-      <Button id="return" variant="primary" onClick={() => onBackClick()}>Back</Button>
     </Col>
     </Row>
     <Row className='cafe-div'>
@@ -27,8 +25,7 @@ export function AreaView ({cafes, cafe, onBackClick}) {
     <CafeCard cafe={cafe} />
     </Col> ))}
     </Row>
-
-
+      <Button id="return" variant="primary" onClick={() => onBackClick()}>Back</Button>
 </Container>
 
   );
