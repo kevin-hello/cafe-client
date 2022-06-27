@@ -42,8 +42,8 @@ constructor(props) {
           <Col sm={12} md={8}>
           <h2>{cafe.Name}</h2>
         <div className="cafe-area">
-          <span className="value">{cafe.Area.Name}</span>
-        </div>
+          <Link to={`/areas/${cafe.Area.Name}`}><span className="value">{cafe.Area.Name}</span>
+        </Link></div>
         <div className="cafe-hours">
           <span className="label">Hours: {cafe.Hours}</span>
         </div>
