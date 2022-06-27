@@ -14,7 +14,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
-import AreasList from '../areas-list/areas-list';
+import AreaCard from '../area-card/area-card';
 
 import "./main-view.scss";
 import { connect } from "react-redux";
