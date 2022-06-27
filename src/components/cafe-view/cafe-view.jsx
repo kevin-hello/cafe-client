@@ -24,7 +24,7 @@ constructor(props) {
       method: 'POST'
     })
     .then(response => {
-      alert(`${cafe.Name} has been added to your favorites`)
+      alert(`${this.props.cafe.Name} has been added to your favorites`)
     })
     .catch(function(error){
       console.log(error);
