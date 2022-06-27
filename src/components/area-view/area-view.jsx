@@ -41,7 +41,7 @@ AreaView.propTypes = {
     Name: propTypes.string.isRequired,
     Area: propTypes.shape({
       Name: propTypes.string.isRequired,
-      Description: propTypes.string,
+      Description: propTypes.string.isRequired,
       StreetAddress: propTypes.string.isRequired,
       City: propTypes.string.isRequired,
       ZipCode: propTypes.string.isRequired,
