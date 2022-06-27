@@ -15,7 +15,6 @@ export class AreaCard extends React.Component {
       <Card.Img variant="top" src={movie.ImagePath}/>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Area.Name}</Card.Title>
-        <Card.Text>{cafe.Area.Name} Description</Card.Text>
         <Link to={`/areas/${cafe.Area.Name}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
