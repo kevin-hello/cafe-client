@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { LoginView } from "../login-view/login-view";
 import { CafeView } from "../cafe-view/cafe-view";
 import { RegistrationView } from "../registration-view/registration-view";
+import { AreaView } from "../areas-view/area-view";
 // import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
 import { Row, Col, Container } from "react-bootstrap";
@@ -97,10 +98,10 @@ class MainView extends React.Component {
           return <AreasList cafes={cafes}/>;
 
         }} />
-        <Route path={`/areas/${cafes.Area.Name}`} render={({ match, history }) => {
+        <Route path={"/areas/:name"} render={({ match, history }) => {
           if (cafes.length === 0) return <div className="main-view"/>; 
           return <Col>
-          <AreasView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
+          <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
           </Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
