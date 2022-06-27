@@ -16,6 +16,7 @@ import CafesList from '../cafes-list/cafes-list';
 
 import "./main-view.scss";
 import { connect } from "react-redux";
+import AreasList from "../areas-list/areas-list";
 
 
 class MainView extends React.Component {
@@ -91,6 +92,10 @@ class MainView extends React.Component {
           return <Col md={12}>
             <CafeView cafe={cafes.find(c => c._id === match.params.id)} onBackClick={() => history.goBack()} />
           </Col>
+        }} />
+        <Route path="/areas" render={() => {
+          return <AreasList cafes={areas}/>;
+
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
