@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { LoginView } from "../login-view/login-view";
 import { CafeView } from "../cafe-view/cafe-view";
 import { RegistrationView } from "../registration-view/registration-view";
+import { AreaCard } from '../area-card/area-card';
 import { AreaView } from "../area-view/area-view";
 // import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
@@ -14,7 +15,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
-import AreaCard from '../area-card/area-card';
+
 
 import "./main-view.scss";
 import { connect } from "react-redux";
