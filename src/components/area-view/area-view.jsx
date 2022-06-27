@@ -23,8 +23,8 @@ export function AreaView ({cafes, cafe, onBackClick}) {
     </Row>
     <Row className='movie-div'>
     { cafes && cafes.map((cafe) => (
-    <Col className='area-cafe-cards' md={3} key={cafe.Area.Name}>
-    <AreaCard cafe={cafe} />
+    <Col className='area-cafe-cards' md={3} key={cafe._id}>
+    <CafeCard cafe={cafe} />
     </Col> ))}
     </Row>
 
