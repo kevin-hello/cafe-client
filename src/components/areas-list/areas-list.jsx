@@ -1,6 +1,7 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
+import { AreaCard } from "../area-card/area-card";
 
 
 function AreasList(props) {
