@@ -97,7 +97,7 @@ class MainView extends React.Component {
           return <AreasList cafes={cafes}/>;
 
         }} />
-        <Route path={`/areas/${cafe.Area.Name}`} render={({ match, history }) => {
+        <Route path={`/areas/${cafes.Area.Name}`} render={({ match, history }) => {
           if (cafes.length === 0) return <div className="main-view"/>; 
           return <Col>
           <AreasView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
