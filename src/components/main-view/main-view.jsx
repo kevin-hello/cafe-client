@@ -14,7 +14,7 @@ import { Row, Col, Container } from "react-bootstrap";
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
-import AreasList from '../areas-list/areas-list';
+//import AreasList from '../areas-list/areas-list';
 
 import "./main-view.scss";
 import { connect } from "react-redux";
@@ -95,13 +95,11 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route path="/areas/:name" render={({ match, history }) => {
-          if (cafes.length === 0) return <div className="main-view"/>; 
           return <Col>
           <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
           </Col>
         }} />
         <Route path="/areas" render={() => {
-          if (cafes.length === 0) return <div className="main-view"/>; 
          // return <AreasList cafes={cafes}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {

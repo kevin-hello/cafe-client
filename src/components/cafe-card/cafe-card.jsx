@@ -15,8 +15,7 @@ export class CafeCard extends React.Component {
       <Card.Img variant="top" src={cafe.ImagePathExterior}/>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Name}</Card.Title>
-        <Link to={`/areas/${cafe.Area.Name}`}><Card.Text>{cafe.Area.Name}</Card.Text></Link>
-        
+        <Card.Text>{cafe.Area.Name}</Card.Text>
         <Link to={`/cafes/${cafe._id}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
