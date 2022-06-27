@@ -79,11 +79,8 @@ class MainView extends React.Component {
           if (!user) return <Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>
-
           if (cafes.length === 0) return <div className="main-view"/>; 
-
           return <CafesList cafes={cafes}/>;
-
         }} />
         <Route path="/register" render={() => {
           if (user) return <Redirect to="/" />
@@ -94,14 +91,14 @@ class MainView extends React.Component {
             <CafeView cafe={cafes.find(c => c._id === match.params.id)} onBackClick={() => history.goBack()} />
           </Col>
         }} />
-        <Route path="/areas" render={() => {
-          return <AreasList cafes={cafes}/>;
-
-        }} />
         <Route path={"/areas/:name"} render={({ match, history }) => {
           return <Col>
           <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
           </Col>
+        }} />
+        <Route path="/areas" render={() => {
+          if (cafes.length === 0) return <div className="main-view"/>; 
+          return <AreasList cafes={cafes}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
