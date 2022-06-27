@@ -1,31 +1,21 @@
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
-const mapStateToProps = state => {
-  const { searchBarFilter } = state;
-  return { searchBarFilter };
-};
 
 function AreasList(props) {
-  const { areas, searchBarFilter } = props;
-  let filteredAreas = areas;
+  const { cafes } = props;
+  let filteredAreas = cafes;
 
 
-if (searchBarFilter !== '' ) {
-  filteredAreas = areas.filter(c=> c.Area.Name.toLowerCase().includes(searchBarFilter.toLowerCase()));
-}
-
-if (!areas) return <div className="main-view"/>;
+if (!cafes) return <div className="main-view"/>;
 
 return <>
-    <Col md={12} className="search-bar-small-screen">
-    <SearchBarFilter searchBarFilter={searchBarFilter} />
-    </Col>
     {filteredAreas.map(c=> (
-      <li area={c.Area.Name}/>
-))}
+    <Col className="card-div"sm={12} md={6} lg={4} key={c.Area.Name}>
+      <AreaCard cafe={c}/>
+    </Col>
+    ))}
 </>;
 }
-export default connect(mapStateToProps)(AreasList);
+export default AreasList;
