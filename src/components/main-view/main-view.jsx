@@ -80,7 +80,7 @@ class MainView extends React.Component {
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>
 
-          if (cafes.length === 0) return <div className="main-view"/>; 
+          //if (cafes.length === 0) return <div className="main-view"/>; 
 
           return <CafesList cafes={cafes}/>;
           
