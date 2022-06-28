@@ -102,9 +102,9 @@ class MainView extends React.Component {
         }} />
         <Route path="/areas" render={() => {
          return <>
-          {cafes.map((c)=> (
-          <Col md={4} key={c.Area.Description}>
-          <AreaCard cafe={c}/>
+          {cafes.map((cafe)=> (
+          <Col md={4} key={cafe.Area}>
+          <AreaCard cafe={cafe}/>
           </Col>
           ))}
         </>;
