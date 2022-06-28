@@ -101,13 +101,7 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route path="/areas" render={() => {
-         return <>
-          {cafes.map((cafe)=> (
-          <Col md={4} key={cafe.Area}>
-          <AreaCard cafe={cafe}/>
-          </Col>
-          ))}
-        </>;
+         return <AreasList cafes={cafes}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 

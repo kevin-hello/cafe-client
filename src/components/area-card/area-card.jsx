@@ -10,7 +10,7 @@ export class AreaCard extends React.Component {
   render() {
     const { cafe } = this.props;
     return (
-  <Link to={`/areas/${cafe.Area.Name}`} className="card-content">
+  <Link to={`/areas/${cafe.Area.Name}`} className="area-card-content">
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Area.Name}</Card.Title>
