@@ -9,8 +9,7 @@ import { CafeCard } from '../cafe-card/cafe-card';
 import "./area-view.scss";
 
 export function AreaView ({cafes, cafe, onBackClick}) {
-  console.log(cafes);
-  console.log(cafe);
+
   return(
     <Container>
       <Row>
