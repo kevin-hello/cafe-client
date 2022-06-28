@@ -101,7 +101,7 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route exact path="/areas" render={() => {
-         return <AreasList cafes={new Set(cafes.Area)}/>;
+         return <AreasList cafes={cafes}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
