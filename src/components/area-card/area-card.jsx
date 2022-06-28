@@ -14,6 +14,7 @@ export class AreaCard extends React.Component {
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Area.Name}</Card.Title>
+        <Card.Text>{cafe.Area.Description}</Card.Text>
         <Link to={`/areas/${cafe.Area.Name}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
