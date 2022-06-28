@@ -1,19 +1,14 @@
 import React from 'react';
+import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
-const AreasList = (props) => {
-   console.log(props);     
-        const mapped = props.map((obj, index) => obj.Area);
-        const filtered = mapped.filter((type, index) =>  mapped.indexOf(type) === index  );
-
-        console.log(filtered);
+function AreasList(props) {
 
 return ( 
 <>
-
-    {/* {props.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
-          <AreaCard cafe={cafe}/>
-        </div>)} */}
+    {props.map(c => ( <Col key={cafe.Area.Name}>
+          <AreaCard cafe={c}/>
+        </Col>))}
 </>
 )
 }

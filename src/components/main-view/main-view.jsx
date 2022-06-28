@@ -66,6 +66,12 @@ class MainView extends React.Component {
     });
   }
 
+  removeDuplicate(obj){
+    let result = []
+    obj.forEach((item, index) => { if (result.indexOf(item) === -1) result.push(item) });
+    return result;
+  }
+
 
 
   render(){
@@ -100,8 +106,8 @@ class MainView extends React.Component {
           <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
           </Col>
         }} />
-        <Route exact path="/areas" render={() => {
-         return <AreasList cafes={cafes}/>;
+        <Route path="/areas" render={() => {
+         return <AreasList cafes={this.removeDuplicate(cafes.Area)}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
