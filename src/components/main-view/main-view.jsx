@@ -66,10 +66,11 @@ class MainView extends React.Component {
     });
   }
 
+
+
   render(){
      let { cafes } = this.props;
      let { user } = this.state;
-   
     return (
       <Router>
         <Menubar user={user}/>
@@ -100,7 +101,7 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route exact path="/areas" render={() => {
-         return <AreasList cafes={cafes}/>;
+         return <AreasList cafes={new Set(cafes.Area.Name)}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
