@@ -3,13 +3,16 @@ import { AreaCard } from '../area-card/area-card';
 
 const AreasList = (props) => {
    var distinctAreas = Array.from(new Set(this.props));
+
+   console.log(props);
+   console.log(distinctAreas);
 return ( 
-<>
+{/* <>
 
     {distinctAreas.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
           <AreaCard cafe={cafe}/>
         </div>)}
-</>
+</> */}
 )
 }
 export default AreasList;
