@@ -6,9 +6,9 @@ function AreasList(props) {
 
 return ( 
 <>
-    {props.map(c => ( <Col key={cafe.Area.Name}>
-          <AreaCard cafe={c}/>
-        </Col>))}
+    {props.cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
+        <AreaCard cafe={cafe}/>
+        </Col>)}
 </>
 )
 }
