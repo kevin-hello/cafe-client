@@ -5,9 +5,10 @@ const AreasList = (props) => {
         
 return ( 
 <>
-    {props.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
+console.log(props);
+    {/* {props.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
           <AreaCard cafe={cafe}/>
-        </div>)}
+        </div>)} */}
 </>
 )
 }
