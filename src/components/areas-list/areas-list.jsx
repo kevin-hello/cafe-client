@@ -2,17 +2,19 @@ import React from 'react';
 import { AreaCard } from '../area-card/area-card';
 
 const AreasList = (props) => {
-   var distinctAreas = Array.from(new Set(this.props));
+   console.log(props);     
+        const mapped = props.map((obj, index) => obj.Area);
+        const filtered = mapped.filter((type, index) =>  mapped.indexOf(type) === index  );
 
-   console.log(props);
-   console.log(distinctAreas);
+        console.log(filtered);
+
 return ( 
-{/* <>
+<>
 
-    {distinctAreas.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
+    {/* {props.cafes.map((cafe, index)=> <div key={cafe.Area.Name}>
           <AreaCard cafe={cafe}/>
-        </div>)}
-</> */}
+        </div>)} */}
+</>
 )
 }
 export default AreasList;
