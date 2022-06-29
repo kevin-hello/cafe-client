@@ -8,15 +8,11 @@ constructor(props) {
   super(props);
 }
 
-RemoveDuplicateAreas(data) {
-        return data.filter((value,index) => data.indexOf(value) === index);
-}
-
   render() {
     const {areas} = this.props;
     return (
       <>
-    { this.RemoveDuplicateAreas(areas).map((area, index)=> <Col key={area.Name}>
+    { this.props.areas.map((area, index)=> <Col key={area.Name}>
         <AreaCard area={area}/>
         </Col>)}
 </>
