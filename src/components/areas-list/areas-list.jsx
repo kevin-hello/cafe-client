@@ -12,7 +12,7 @@ constructor(props) {
     const {areas} = this.props;
     return (
       <>
-    { this.props.areas.map((area, index)=> <Col key={area.Name}>
+    {props.areas.map((area, index)=> <Col key={area.Name}>
         <AreaCard area={area}/>
         </Col>)}
 </>
