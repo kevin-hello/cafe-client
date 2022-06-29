@@ -3,7 +3,7 @@ import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
 function AreasList(props) {
-console.log(props);
+console.log(props.cafes);
 
 const uniqueAreas = props.cafes.Area.filter((value,index)=>{
         return props.cafes.Area.indexOf(value) === index;
