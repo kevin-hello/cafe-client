@@ -90,14 +90,12 @@ class MainView extends React.Component {
             <CafeView cafe={cafes.find(c => c._id === match.params.id)} onBackClick={() => history.goBack()} />
           </Col>
         }} />
-        <Route path="/areas/:name" render={({ match, history }) => {
+        <Route exact path="/areas/:name" render={({ match, history }) => {
           return <Col md={12}>
-          <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
-          </Col>
+          <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
-        <Route path="/areas" render={() => {
-         return <Col md={12}> <AreasList cafes={cafes} />
-         </Col>
+        <Route exact path="/areas" render={() => {
+         return <Col md={12}> <AreasList cafes={cafes} /> </Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
