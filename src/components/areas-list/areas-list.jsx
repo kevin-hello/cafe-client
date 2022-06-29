@@ -3,15 +3,11 @@ import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
 function AreasList(props) {
-console.log(props.cafes);
 
-const uniqueAreas = props.cafes.Area.filter((value,index)=>{
-        return props.cafes.Area.indexOf(value) === index;
-})
+        console.log(props.cafes);
 
-console.log(uniqueAreas);
 return ( <>
-    {uniqueAreas.map((cafe, index)=> <Col>
+    {props.cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
         <AreaCard cafe={cafe}/>
         </Col>)}
 </>
