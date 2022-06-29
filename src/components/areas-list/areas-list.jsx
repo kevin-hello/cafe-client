@@ -3,6 +3,7 @@ import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
 function AreasList(props) {
+const { cafes } = props;
 return(<>
     {cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
         <AreaCard cafe={cafe}/>
