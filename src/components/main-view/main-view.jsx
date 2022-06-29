@@ -9,7 +9,7 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { AreaView } from "../area-view/area-view";
 // import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
-import { AreasList } from "../areas-list/areas-list";
+import AreasList from "../areas-list/areas-list";
 import { Row, Col, Container } from "react-bootstrap";
 
 import { setCafes } from '../../actions/actions';
