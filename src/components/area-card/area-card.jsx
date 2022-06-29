@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 export class AreaCard extends React.Component {
 
   render() {
-    const { area } = this.props;
+    const { cafe } = this.props;
     return (
-  <Link to={`/areas/${area.Name}`} className="area-card-content">
+  <Link to={`/areas/${cafe.Area.Name}`} className="area-card-content">
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
-        <Card.Title>{area.Name}</Card.Title>
-        <Card.Text>{area.Description}</Card.Text>
-        <Link to={`/areas/${area.Name}`}>
+        <Card.Title>{cafe.Area.Name}</Card.Title>
+        <Card.Text>{cafe.Area.Description}</Card.Text>
+        <Link to={`/areas/${cafe.Area.Name}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
       </Card.Body>

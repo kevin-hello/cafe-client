@@ -9,11 +9,11 @@ constructor(props) {
 }
 
   render() {
-    const {areas} = this.props;
+    const {cafes} = this.props;
     return (
       <>
-    {props.areas.map((area, index)=> <Col key={area.Name}>
-        <AreaCard area={area}/>
+    {props.cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
+        <AreaCard cafe={cafe}/>
         </Col>)}
 </>
     );
