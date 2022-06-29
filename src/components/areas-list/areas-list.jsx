@@ -4,8 +4,11 @@ import { AreaCard } from '../area-card/area-card';
 
 function AreasList(props) {
 
+const uniqueAreas = [...new Set(props.cafes.Area.Name)];
+
+console.log(uniqueAreas);
 return ( <>
-    {props.cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
+    {uniqueAreas.map((cafe, index)=> <Col key={cafe.Area.Name}>
         <AreaCard cafe={cafe}/>
         </Col>)}
 </>
