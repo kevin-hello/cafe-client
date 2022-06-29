@@ -2,7 +2,7 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
-export class AreaList extends React.Component {
+export class AreasList extends React.Component {
 
 constructor(props) {
   super(props);
