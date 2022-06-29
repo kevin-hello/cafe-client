@@ -18,7 +18,7 @@ RemoveDuplicateAreas(data) {
 
     return (
       <>
-    {this.RemoveDuplicateAreas(props.cafes).map((cafe, index)=> <Col key={cafe.Area.Name}>
+    {this.RemoveDuplicateAreas(cafes).map((cafe, index)=> <Col key={cafe.Area.Name}>
         <AreaCard cafe={cafe}/>
         </Col>)}
 </>
