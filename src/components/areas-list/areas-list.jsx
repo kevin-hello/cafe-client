@@ -2,19 +2,26 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
-function AreasList(props) {
+export class AreaList extends React.Component {
 
-console.log(props.cafes);
+constructor(props) {
+  super(props);
+}
 
-const uniqueAreasSet = new Set(props.cafes.map((c) => c.Area.Name));
-const uniqueAreas = Array.from(uniqueAreasSet).sort();
+RemoveDuplicateAreas(data) {
+        return data.filter((value, index) => data.indexOf(value) === index);
+}
 
-console.log(uniqueAreas);
 
-return ( <>
-    {props.cafes.map((cafe, index)=> <Col key={cafe.Area.Name}>
+  render() {
+    const {cafes} = this.props;
+
+    return (
+      <>
+    {this.RemoveDuplicateAreas(props.cafes).map((cafe, index)=> <Col key={cafe.Area.Name}>
         <AreaCard cafe={cafe}/>
         </Col>)}
 </>
-)}
-export default AreasList;
+    );
+  }
+}
