@@ -17,11 +17,11 @@ RemoveDuplicateAreas(data, key) {
 }
 
   render() {
-    const {cafes} = this.props;
+    const {areas} = this.props;
     return (
       <>
-    { (JSON.stringify(this.RemoveDuplicateAreas(cafes, c => c.Area.Name))).map((cafe, index)=> <Col key={cafe.Area.Name}>
-        <AreaCard cafe={cafe}/>
+    { (JSON.stringify(this.RemoveDuplicateAreas(areas, c => c.Name))).map((area, index)=> <Col key={cafe.Area.Name}>
+        <AreaCard area={area}/>
         </Col>)}
 </>
     );
