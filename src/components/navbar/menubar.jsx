@@ -1,11 +1,11 @@
 import React from 'react';
 import {Navbar, Nav, Button, Form} from 'react-bootstrap';
 import { Link, Route} from 'react-router-dom';
-import SearchBarFilterCafes from '../search-bar-filter/search-bar-filter-cafes';
+import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
 import './menubar.scss';
 
-export function Menubar ({user, searchBarFilterCafes}) {
+export function Menubar ({user, searchBarFilter}) {
 
   const onLoggedOut = () => {
     localStorage.clear();
@@ -32,7 +32,7 @@ export function Menubar ({user, searchBarFilterCafes}) {
       <Navbar.Brand className="navbar-logo">LA Cafes</Navbar.Brand>
       </Link>
           {isAuth() && (
-          <Route exact path="/" render={() => <Form className="search-input"><SearchBarFilterCafes searchBarFilterCafes={searchBarFilterCafes} /></Form>}/>
+          <Route exact path="/" render={() => <Form className="search-input"><SearchBarFilter searchBarFilter={searchBarFilter} /></Form>}/>
           )}
 
           <Navbar.Toggle aria-controls="responsive-navbar-nav" className='nav-toggle-icon' />
