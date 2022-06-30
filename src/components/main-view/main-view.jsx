@@ -77,7 +77,7 @@ class MainView extends React.Component {
     .then(response => {
       // Assign the result to the state
         this.props.setAreas(response.data);
- 
+        console.log(areas);
     })
     .catch(function (error) {
       console.log(error);

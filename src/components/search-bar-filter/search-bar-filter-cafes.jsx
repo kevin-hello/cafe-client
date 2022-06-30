@@ -5,13 +5,13 @@ import { Form } from 'react-bootstrap';
 
 import { setFilter } from '../../actions/actions';
 
-function SearchBarFilter(props) {
+function SearchBarFilterCafes(props) {
   return ( <Form.Control
     onChange={e => props.setFilter(e.target.value)}
-    value={props.searchBarFilter}
+    value={props.searchBarFilterCafes}
     placeholder="Search for Cafes..."
   />
   );  
 }
 
-export default connect(null, { setFilter })(SearchBarFilter);
+export default connect(null, { setFilter })(SearchBarFilterCafes);
