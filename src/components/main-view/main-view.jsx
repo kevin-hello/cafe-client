@@ -37,6 +37,7 @@ class MainView extends React.Component {
     user: localStorage.getItem("user")
     });
     this.getCafes(accessToken);
+    this.getAreas(accessToken)
     }
   }
 
