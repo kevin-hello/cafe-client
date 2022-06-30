@@ -111,7 +111,6 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return{ cafes: state.cafes,
-          areas: state.areas }
+  return{ cafes: state.cafes }
 }
 export default connect(mapStateToProps, { setCafes })(MainView);
