@@ -115,7 +115,7 @@ class MainView extends React.Component {
             <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
         <Route exact path="/areas" render={() => {
-          return <Col md={12}><AreasList areas={areas}/></Col>
+          return <AreasList areas={areas}/>;
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
