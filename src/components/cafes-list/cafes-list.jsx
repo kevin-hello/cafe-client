@@ -5,7 +5,7 @@ import { CafeCard } from '../cafe-card/cafe-card';
 import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
 const mapStateToProps = state => {
-  const { SearchBarFilter } = state;
+  const { searchBarFilter } = state;
   return { searchBarFilter };
 };
 
