@@ -50,9 +50,6 @@ class MainView extends React.Component {
     this.getCafes(authData.token);
 
   }
-  removeDuplicateAreas(data) {
-    return data.filter((value, index) => data.indexOf(value) === index);
-  }
 
   getCafes(token) {
     axios.get("https://cafe-app-la.herokuapp.com/cafes", 
@@ -98,7 +95,7 @@ class MainView extends React.Component {
             <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
         <Route exact path="/areas" render={() => {
-          return <Col md={12}><AreasList cafes={cafes} /> </Col>
+          return <Col md={12}><AreasList /> </Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
