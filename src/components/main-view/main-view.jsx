@@ -25,8 +25,9 @@ class MainView extends React.Component {
   constructor(){
     super();
     this.state = {
-      user: null,
-      areas: []
+      areas: [],
+      user: null
+
       
     };
   }
@@ -37,7 +38,7 @@ class MainView extends React.Component {
     user: localStorage.getItem("user")
     });
     this.getCafes(accessToken);
-    this.getAreas(accessToken)
+    this.getAreas(accessToken);
     }
   }
 
@@ -77,18 +78,17 @@ class MainView extends React.Component {
       // Assign the result to the state
         this.setState({
           areas: response.data
-        })
+        });
     })
     .catch(function (error) {
       console.log(error);
     });
-    console.log(areas);
   }
   
 
   render(){
      let { cafes } = this.props;
-     let { user, areas } = this.state;
+     let { areas, user } = this.state;
     return (
       <Router>
         <Menubar user={user}/>
