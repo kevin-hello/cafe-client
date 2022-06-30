@@ -9,13 +9,13 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { AreaView } from "../area-view/area-view";
 // import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
-import AreasList from "../areas-list/areas-list";
 import { Row, Col, Container } from "react-bootstrap";
 
 import { setCafes } from '../../actions/actions';
+import { setAreas } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
-
+import AreasList from "../areas-list/areas-list";
 
 import "./main-view.scss";
 import { connect } from "react-redux";
@@ -36,6 +36,7 @@ class MainView extends React.Component {
     user: localStorage.getItem("user")
     });
     this.getCafes(accessToken);
+    this.getAreas(accessToken);
     }
   }
 
@@ -48,6 +49,7 @@ class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getCafes(authData.token);
+    this.getAreas(authData.token);
 
   }
 
@@ -66,8 +68,25 @@ class MainView extends React.Component {
     });
   }
 
+  getAreas(token) {
+    
+    axios.get("https://cafe-app-la.herokuapp.com/areas", 
+    {
+    headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+        this.props.setAreas(response.data);
+ 
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+  
+
   render(){
-     let { cafes } = this.props;
+     let { cafes, areas } = this.props;
      let { user } = this.state;
     return (
       <Router>
@@ -95,7 +114,7 @@ class MainView extends React.Component {
             <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
         <Route exact path="/areas" render={() => {
-          return <Col md={12}><AreasList /> </Col>
+          return <Col md={12}><AreasList areas={areas} /> </Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
@@ -111,6 +130,7 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return{ cafes: state.cafes }
+  return{ cafes: state.cafes,
+          areas: state.areas }
 }
-export default connect(mapStateToProps, { setCafes })(MainView);
+export default connect(mapStateToProps, { setCafes, setAreas })(MainView);
