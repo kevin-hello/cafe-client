@@ -10,7 +10,7 @@ return( <>
     </Col>
     {props.areas.map(a => (
     <Col className="card-div"sm={12} md={6} lg={4} key={a._id}>
-      <AreaCard area={area}/>
+      <AreaCard areas={areas}/>
     </Col>
 ))}
 </>)

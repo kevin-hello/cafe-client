@@ -8,14 +8,14 @@ import { Link } from 'react-router-dom';
 export class AreaCard extends React.Component {
 
   render() {
-    const { area } = this.props;
+    const { areas } = this.props;
     return (
-  <Link to={`/areas/${area.AreaName}`} className="area-card-content">
+  <Link to={`/areas/${areas.AreaName}`} className="area-card-content">
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
-        <Card.Title>{area.AreaName}</Card.Title>
-        <Card.Text>{area.AreaDescription}</Card.Text>
-        <Link to={`/areas/${area.AreaName}`}>
+        <Card.Title>{areas.AreaName}</Card.Title>
+        <Card.Text>{areas.AreaDescription}</Card.Text>
+        <Link to={`/areas/${areas.AreaName}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
       </Card.Body>
@@ -26,7 +26,7 @@ export class AreaCard extends React.Component {
 } 
 
 AreaCard.propTypes = {
-    Area: propTypes.shape({
+    area: propTypes.shape({
       AreaName: propTypes.string.isRequired,
       AreaDescription: propTypes.string.isRequired
     }).isRequired
