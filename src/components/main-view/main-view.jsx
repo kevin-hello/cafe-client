@@ -77,11 +77,11 @@ class MainView extends React.Component {
         this.setState({
           areas: response.data
         })
-        console.log(areas);
     })
     .catch(function (error) {
       console.log(error);
     });
+    console.log(areas);
   }
   
 
