@@ -7,7 +7,7 @@ function AreasList(props) {
 
 return(<>
     {props.areas.map(a => (
-    <Col md={4} key={a._id}>
+    <Col sm={12} md={6} key={a._id}>
       <AreaCard areas={a}/>
     </Col>
     ))}
