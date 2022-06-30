@@ -114,4 +114,4 @@ let mapStateToProps = state => {
   return{ cafes: state.cafes,
           areas: state.areas }
 }
-export default connect(mapStateToProps, { setCafes, setAreas })(MainView);
+export default connect(mapStateToProps, { setCafes })(MainView);
