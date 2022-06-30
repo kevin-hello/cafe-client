@@ -69,7 +69,6 @@ class MainView extends React.Component {
   }
 
   getAreas(token) {
-    
     axios.get("https://cafe-app-la.herokuapp.com/areas", 
     {
     headers: { Authorization: `Bearer ${token}`}
@@ -113,7 +112,7 @@ class MainView extends React.Component {
             <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
         <Route exact path="/areas" render={() => {
-          return <Col md={12}><AreasList areas={areas} /> </Col>
+          return <Col md={12}><AreasList areas={areas}/></Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 

@@ -15,7 +15,7 @@ function CafesList(props) {
 
 
 if (searchBarFilterCafes !== '' ) {
-  filteredCafes = cafes.filter(c=> c.Name.toLowerCase().includes(searchBarFilterCafes.toLowerCase()));
+  filteredCafes = cafes.filter(c => c.Name.toLowerCase().includes(searchBarFilterCafes.toLowerCase()));
 }
 
 if (!cafes) return <div className="main-view"/>;

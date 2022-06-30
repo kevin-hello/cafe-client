@@ -5,7 +5,7 @@ import { AreaCard } from '../area-card/area-card';
 import SearchBarFilterAreas from '../search-bar-filter/search-bar-filter-areas';
 
 const mapStateToProps = state => {
-  const { SearchBarFilterAreas } = state;
+  const { searchBarFilterAreas } = state;
   return { searchBarFilterAreas };
 };
 
@@ -14,7 +14,7 @@ function AreasList(props) {
   let filteredAreas = areas;
 
 
-if (searchBarFilter !== '' ) {
+if (searchBarFilterAreas !== '' ) {
   filteredAreas = areas.filter(a=> a.AreaName.toLowerCase().includes(searchBarFilterAreas.toLowerCase()));
 }
 
