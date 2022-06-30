@@ -12,7 +12,6 @@ import { Menubar } from "../navbar/menubar";
 import { Row, Col, Container } from "react-bootstrap";
 
 import { setCafes } from '../../actions/actions';
-import { setAreas } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
@@ -36,7 +35,6 @@ class MainView extends React.Component {
     user: localStorage.getItem("user")
     });
     this.getCafes(accessToken);
-    // this.getAreas(accessToken);
     }
   }
 
@@ -49,7 +47,6 @@ class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getCafes(authData.token);
-    // this.getAreas(authData.token);
 
   }
 
@@ -67,24 +64,10 @@ class MainView extends React.Component {
       console.log(error);
     });
   }
-
-  // getAreas(token) {
-  //   axios.get("https://cafe-app-la.herokuapp.com/areas", 
-  //   {
-  //   headers: { Authorization: `Bearer ${token}`}
-  //   })
-  //   .then(response => {
-  //     // Assign the result to the state
-  //       this.props.setAreas(response.data);
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  // }
   
 
   render(){
-     let { cafes, areas } = this.props;
+     let { cafes } = this.props;
      let { user } = this.state;
     return (
       <Router>
@@ -112,7 +95,7 @@ class MainView extends React.Component {
             <AreaView cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
         }} />
         <Route exact path="/areas" render={() => {
-          return <Col md={12}><AreasList areas={areas}/></Col>
+          return <Col md={12}><AreasList/></Col>
         }} />
         <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return <Redirect to="/" /> 
