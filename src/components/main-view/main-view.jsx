@@ -36,7 +36,7 @@ class MainView extends React.Component {
     user: localStorage.getItem("user")
     });
     this.getCafes(accessToken);
-    this.getAreas(accessToken);
+    // this.getAreas(accessToken);
     }
   }
 
@@ -49,7 +49,7 @@ class MainView extends React.Component {
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
     this.getCafes(authData.token);
-    this.getAreas(authData.token);
+    // this.getAreas(authData.token);
 
   }
 
@@ -68,19 +68,19 @@ class MainView extends React.Component {
     });
   }
 
-  getAreas(token) {
-    axios.get("https://cafe-app-la.herokuapp.com/areas", 
-    {
-    headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-        this.props.setAreas(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
+  // getAreas(token) {
+  //   axios.get("https://cafe-app-la.herokuapp.com/areas", 
+  //   {
+  //   headers: { Authorization: `Bearer ${token}`}
+  //   })
+  //   .then(response => {
+  //     // Assign the result to the state
+  //       this.props.setAreas(response.data);
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
   
 
   render(){
