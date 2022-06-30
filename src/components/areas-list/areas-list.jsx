@@ -9,7 +9,7 @@ return( <>
     <Col md={12} className="search-bar-small-screen">
     </Col>
     {props.areas.map(a => (
-    <Col sm={12} md={6} lg={4} key={a._id}>
+    <Col sm={12} md={4} key={a._id}>
       <AreaCard areas={a}/>
     </Col>
 ))}
