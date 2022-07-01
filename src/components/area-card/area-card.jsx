@@ -26,7 +26,7 @@ export class AreaCard extends React.Component {
 } 
 
 AreaCard.propTypes = {
-    areas: propTypes.shape({
+    area: propTypes.shape({
       AreaName: propTypes.string.isRequired,
       AreaDescription: propTypes.string.isRequired
     }).isRequired
