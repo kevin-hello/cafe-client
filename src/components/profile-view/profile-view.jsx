@@ -58,7 +58,7 @@ export class ProfileView extends React.Component {
     { headers: { Authorization: `Bearer ${token}` } }
     )
     .then((response) => {
-      alert(`${this.props.cafe.Name} has been removed from favorites`);
+      alert(`${cafe.Name} has been removed from favorites`);
       this.componentDidMount();
     })
     .catch(function (error) {
