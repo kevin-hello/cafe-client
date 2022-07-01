@@ -54,7 +54,7 @@ export class ProfileView extends React.Component {
   onRemoveFavorite = (e, cafe) => {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-    axios.delete(`https://cafe-app-la.herokuapp.com/${username}/cafes/${cafe._id}`, 
+    axios.delete(`https://cafe-app-la.herokuapp.com/users/${username}/cafes/${cafe._id}`, 
     { headers: { Authorization: `Bearer ${token}` } }
     )
     .then((response) => {
