@@ -41,6 +41,21 @@ export function LoginView(props) {
   }
 
   const handleSubmit = (e) => {
+
+    setUsername(username);
+    if (username !== '') {
+      setIsActiveUser(true);
+    } else {
+      setIsActiveUser(false);
+    }
+
+    setPassword(password);
+    if (password !== '') {
+      setIsActivePass(true);
+    } else {
+      setIsActivePass(false);
+    }
+
     e.preventDefault();
     // send a request to the server for authentication 
     axios.post("https://cafe-app-la.herokuapp.com/login",
@@ -58,17 +73,21 @@ export function LoginView(props) {
       alert("User does not exist")
     });
   };
+
+  const [isActiveUser, setIsActiveUser] = useState(false);
+  const [isActivePass, setIsActivePass] = useState(false);
+
   return (
         <Form id="login-form">
             <h1>Login</h1>
             <div className="form-group">
               <input type="text" value={username} id="username" name="Username" className="form-control" onChange={e => setUsername(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="username">Username</label>
+              <label className={ isActiveUser ? "Active" : ""} htmlFor="username">Username</label>
               {usernameErr && <p>{usernameErr}</p>}
             </div>
             <div className="form-group">
               <input type="password" value={password} id="password" name="Password" className="form-control" onChange={e => setPassword(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="password">Password</label>
+              <label className={ isActivePass ? "Active" : ""}  htmlFor="password">Password</label>
               {passwordErr && <p>{passwordErr}</p>}
             </div>
             <Button
