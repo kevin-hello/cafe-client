@@ -80,12 +80,12 @@ export function LoginView(props) {
   return (
         <Form id="login-form">
             <h1>Login</h1>
-            <div className="form-group">
+            <div className="form-group" id="float-label-user">
               <input type="text" value={username} id="username" name="Username" className="form-control" onChange={e => setUsername(e.target.value)} required/>
               <label className={ isActiveUser ? "Active" : ""} htmlFor="username">Username</label>
               {usernameErr && <p>{usernameErr}</p>}
             </div>
-            <div className="form-group">
+            <div className="form-group" id="float-label-pass">
               <input type="password" value={password} id="password" name="Password" className="form-control" onChange={e => setPassword(e.target.value)} required/>
               <label className={ isActivePass ? "Active" : ""}  htmlFor="password">Password</label>
               {passwordErr && <p>{passwordErr}</p>}
