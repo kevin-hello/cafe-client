@@ -40,6 +40,8 @@ form #register{
   pointer-events: none;
   position: absolute;
   transform: translate(0, 26px) scale(1);
+  transform-origin: top left;
+  transition: all 0.2s ease-out;
 }
 
 #float-label-user:focus-within label, #float-label-pass:focus-within label {
