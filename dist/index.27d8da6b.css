@@ -88,7 +88,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
   margin: 10px auto 0;
 }
 
-
+.card-icons {
+  margin-left: .5rem;
+  margin-right: .5rem;
+}
 
 
 

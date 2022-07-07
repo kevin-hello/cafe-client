@@ -79,6 +79,7 @@ CafeView.propTypes = {
     TakeOutOnly: propTypes.boolean,
     Wifi: propTypes.boolean,
     Beans: propTypes.boolean,
+    Restroom: propTypes.boolean
   }).isRequired,
   user: propTypes.shape({
     Username: propTypes.string.isRequired,

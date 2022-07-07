@@ -1,6 +1,10 @@
 import React from 'react';
 import propTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
+import { GiCoffeeBeans } from 'react-icons/gi';
+import { FiWifi, FiWifiOff } from 'react-icons/fi';
+import { FaRestroom } from 'react-icons/fa';
+
 import './cafe-card.scss';
 
 import { Link } from 'react-router-dom';
@@ -16,6 +20,22 @@ export class CafeCard extends React.Component {
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Name}</Card.Title>
         <Card.Text>{cafe.Area.Name}</Card.Text>
+        <Card.Text>{cafe.Hours}</Card.Text>
+        <Card.Text>
+          <GiCoffeeBeans
+          className="card-icons"
+          color={cafe.Beans == true ? 'sienna' : 'grey'}
+          size= "1.5em"
+          />
+          {""}
+            {cafe.Wifi == true ? <FiWifi className="card-icons" color="mediumseagreen" size="1.5em" /> : <FiWifiOff className="card-icons" color="lightcoral" size="1.5em" />}
+          {""}
+          <FaRestroom
+          className="card-icons"
+          color={cafe.Restroom == true ? 'mediumseagreen' : 'lightcoral'}
+          size= "1.5em"
+          />
+          </Card.Text>
         <Link to={`/cafes/${cafe._id}`}>
           <Button id="seemore" variant="link" >See More</Button>
         </Link>
@@ -47,5 +67,6 @@ CafeCard.propTypes = {
     TakeOutOnly: propTypes.boolean,
     Wifi: propTypes.boolean,
     Beans: propTypes.boolean,
+    Restroom: propTypes.boolean
   }).isRequired
 };

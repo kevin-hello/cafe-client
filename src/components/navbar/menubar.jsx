@@ -1,6 +1,7 @@
 import React from 'react';
 import {Navbar, Nav, Button, Form} from 'react-bootstrap';
 import { Link, Route} from 'react-router-dom';
+import { SiBuymeacoffee } from 'react-icons/si';
 import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
 import './menubar.scss';
@@ -29,7 +30,7 @@ export function Menubar ({user, searchBarFilter}) {
   return(
     <Navbar className="main-nav" sticky="top" bg="primary" expand="lg" variant="dark">
       <Link to={`/`}>
-      <Navbar.Brand className="navbar-logo">LA Cafes</Navbar.Brand>
+      <Navbar.Brand className="navbar-logo"><SiBuymeacoffee size="1.5em" /></Navbar.Brand>
       </Link>
           {isAuth() && (
           <Route exact path="/" render={() => <Form className="search-input"><SearchBarFilter searchBarFilter={searchBarFilter} /></Form>}/>
