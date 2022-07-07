@@ -69,24 +69,24 @@ export function RegistrationView(props) {
             <Form id="register-form">
             <h1>Create Account</h1>
 
-            <div className="form-group">
+            <div className="float-label">
               <input type="text" value={username} id="username" name="Username" className="form-control" onChange={e => setUsername(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="username">Username</label>
-              {usernameErr && <p>{usernameErr}</p>}
+              <label className={username && 'filled'} htmlFor="username">Username</label>
+              {usernameErr && <p className="error-message" >{usernameErr}</p>}
             </div>
-            <div className="form-group">
+            <div className="float-label">
               <input type="password" value={password} id="password" name="Password" className="form-control" onChange={e => setPassword(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="password">Password</label>
-              {passwordErr && <p>{passwordErr}</p>}
+              <label className={password && 'filled'} htmlFor="password">Password</label>
+              {passwordErr && <p className="error-message" >{passwordErr}</p>}
             </div>
-            <div className="form-group">
+            <div className="float-label">
               <input type="email" value={email} id="email" name="Email" className="form-control" onChange={e => setEmail(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="email">Email</label>
-              {emailErr && <p>{emailErr}</p>}
+              <label className={email && 'filled'} htmlFor="email">Email</label>
+              {emailErr && <p className="error-message" >{emailErr}</p>}
             </div>
-            <div className="form-group">
+            <div className="float-label">
               <input type="date" value={birthday} id="birthday" name="Birthday" className="form-control" onChange={e => setBirthday(e.target.value)} required/>
-              <label className="form-control-placeholder" htmlFor="birthday">Birthday</label>
+              <label className={birthday && 'filled'} htmlFor="birthday">Birthday</label>
             </div>
             <Button id="submit" type="submit" onClick={handleSubmit}>Submit</Button>
             </Form>

@@ -1,5 +1,5 @@
 #login-form {
-  width: 100%;
+  width: 80%;
   margin: 10px auto 0;
 }
 
@@ -14,13 +14,14 @@ form #register {
   margin-left: 10px;
 }
 
-#float-label-user, #float-label-pass {
+.float-label {
   flex-direction: column;
+  margin: .5rem 0;
   display: flex;
   position: relative;
 }
 
-#float-label-user input, #float-label-pass input {
+.float-label input {
   height: 64px;
   box-shadow: none;
   border: 1px solid #d3d3d3;
@@ -32,7 +33,7 @@ form #register {
   transition: all .2s cubic-bezier(0, 0, .2, 1);
 }
 
-#float-label-user label, #float-label-pass label {
+.float-label label {
   pointer-events: none;
   transform-origin: 0 0;
   color: #6f81a5;
@@ -44,43 +45,83 @@ form #register {
   transform: translate(0, 23px)scale(1);
 }
 
-#float-label-user:focus-within label, #float-label-pass:focus-within label {
+.float-label:focus-within label {
   color: #0a53e4;
   transform: translate(0, 12px)scale(.8);
 }
 
-#float-label-user .filled, #float-label-pass .filled {
+.float-label .filled {
   transform: translate(0, 12px)scale(.8);
 }
 
-#float-label-user input:focus, #float-label-pass input.focus {
+.float-label input:focus {
   box-shadow: 0 0 0 2px #79b1ff;
 }
 
 
 
-#submit {
-  margin-top: 5px;
+#register-form {
+  width: 80%;
+  margin: 10px auto 0;
 }
 
-.form-group {
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+form #submit {
+  border: 0 solid #0000;
+  margin-top: 10px;
+}
+
+form #register {
+  border: 0 solid #0000;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.error-message {
+  color: red;
+}
+
+.float-label {
+  flex-direction: column;
+  margin: .5rem 0;
+  display: flex;
   position: relative;
 }
 
-.form-control-placeholder {
-  opacity: .5;
-  padding: 7px 0 0 13px;
-  transition: all .2s;
-  position: absolute;
-  top: 0;
+.float-label input {
+  height: 64px;
+  box-shadow: none;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  outline: none;
+  padding: 24px 16px 4px;
+  font-size: 16px;
+  line-height: 1;
+  transition: all .2s cubic-bezier(0, 0, .2, 1);
 }
 
-.form-control:focus + .form-control-placeholder, .form-control:valid + .form-control-placeholder {
-  opacity: 1;
-  font-size: 75%;
-  transform: translate3d(0, -100%, 0);
+.float-label label {
+  pointer-events: none;
+  transform-origin: 0 0;
+  color: #6f81a5;
+  font-size: 16px;
+  line-height: 1;
+  transition: all .2s cubic-bezier(0, 0, .2, 1);
+  position: absolute;
+  left: 16px;
+  transform: translate(0, 23px)scale(1);
+}
+
+.float-label:focus-within label {
+  color: #0a53e4;
+  transform: translate(0, 12px)scale(.8);
+}
+
+.float-label .filled {
+  transform: translate(0, 12px)scale(.8);
+}
+
+.float-label input:focus {
+  box-shadow: 0 0 0 2px #79b1ff;
 }
 
 input[type="date"]:required:invalid::-webkit-datetime-edit {
@@ -89,11 +130,6 @@ input[type="date"]:required:invalid::-webkit-datetime-edit {
 
 input[type="date"]:focus::-webkit-datetime-edit {
   color: #000 !important;
-}
-
-#register-form {
-  width: 50%;
-  margin: 10px auto 0;
 }
 
 .card-icons {

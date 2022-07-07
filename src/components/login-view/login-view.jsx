@@ -37,11 +37,11 @@ export function LoginView(props) {
   return (
         <Form id="login-form">
             <h1>Login</h1>
-            <div className="form-group" id="float-label-user">
+            <div className="float-label">
               <input type="text" value={username} id="username" name="Username" className="form-control" onChange={e => setUsername(e.target.value)} required/>
               <label className={username && 'filled'} htmlFor="username">Username</label>
             </div>
-            <div className="form-group" id="float-label-pass">
+            <div className="float-label">
               <input type="password" value={password} id="password" name="Password" className="form-control" onChange={e => setPassword(e.target.value)} required/>
               <label className={password && 'filled'}  htmlFor="password">Password</label>
             </div>
