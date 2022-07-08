@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container, FormControl } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import './registration-view.scss'
 import propTypes from 'prop-types';
 
@@ -66,7 +67,8 @@ export function RegistrationView(props) {
   };
 
   return (
-            <Form id="register-form">
+    <Container fluid id="register-form">
+            <Form >
             <h1>Create Account</h1>
 
             <div className="float-label">
@@ -90,6 +92,12 @@ export function RegistrationView(props) {
             </div>
             <Button id="submit" type="submit" onClick={handleSubmit}>Submit</Button>
             </Form>
+            <div className='login-text'>
+              <span>Already have an account? </span>
+            <Link to={`/`} >
+              <a id="login-link">Login</a> 
+            </Link>
+            </div>
+    </Container>
   );
 }
-

@@ -1,6 +1,17 @@
 #login-form {
-  width: 80%;
-  margin: 10px auto 0;
+  width: 60%;
+  background-color: #ffebcd;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+#login-form h1 {
+  color: tan;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 form #submit {
@@ -61,19 +72,25 @@ form #register {
 
 
 #register-form {
-  width: 80%;
-  margin: 10px auto 0;
+  width: 60%;
+  background-color: #ffebcd;
+  border: 1px solid #000;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+#register-form h1 {
+  color: tan;
+  text-align: center;
+  font-size: 1.5rem;
 }
 
 form #submit {
   border: 0 solid #0000;
   margin-top: 10px;
-}
-
-form #register {
-  border: 0 solid #0000;
-  margin-top: 10px;
-  margin-left: 10px;
 }
 
 .error-message {
@@ -94,7 +111,7 @@ form #register {
   border-radius: 4px;
   outline: none;
   padding: 24px 16px 4px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1;
   transition: all .2s cubic-bezier(0, 0, .2, 1);
 }
@@ -132,6 +149,14 @@ input[type="date"]:focus::-webkit-datetime-edit {
   color: #000 !important;
 }
 
+.login-text {
+  margin: .2rem;
+}
+
+#login-link {
+  text-decoration: underline;
+}
+
 .card-icons {
   margin-left: .5rem;
   margin-right: .5rem;
@@ -141,12 +166,43 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 
 
+.search-input {
+  max-width: 100%;
+  width: 100%;
+  margin-left: 20rem;
+  margin-right: 3rem;
+  display: flex;
+  position: relative;
+}
+
+.search-bar-small-screen {
+  display: none;
+}
+
+@media (max-width: 992px) {
+  .search-input {
+    display: none;
+  }
+
+  .search-bar-small-screen {
+    display: initial;
+    width: 100%;
+    margin: 1rem 3rem;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
 
 
 
+.search-bar {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 
-
-
-
+#main-container {
+  padding-left: 0;
+  padding-right: 0;
+}
 
 /*# sourceMappingURL=index.27d8da6b.css.map */

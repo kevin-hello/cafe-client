@@ -16,7 +16,7 @@ class CafeApplication extends React.Component {
   render() {
     return (
       <Provider store={store}>
-      <Container>   
+      <Container fluid id="main-container">   
       <MainView />     
       </Container>
       </Provider>

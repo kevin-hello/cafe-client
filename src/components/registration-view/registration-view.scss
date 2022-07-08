@@ -1,17 +1,25 @@
 #register-form{
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
-  margin-top: 10px;
+  align-items: center;
+  justify-content: center;
+  background-color: blanchedalmond;
+  padding: 1rem 2rem;
+  border-radius: 5px;
+  border: 1px solid black;
+}
+
+
+#register-form h1{
+  color: tan;
+  text-align: center;
+  font-size: 1.5rem;
 }
 form #submit{
   margin-top: 10px;
   border: 0px solid transparent;
 }
-form #register{
-  margin-top: 10px;
-  margin-left: 10px;
-  border: 0px solid transparent;
-}
+
 .error-message{
   color: red;
 }
@@ -27,7 +35,7 @@ form #register{
   border-radius: 4px;
   border: 1px solid lightgray;
   padding: 24px 16px 4px 16px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1;
   outline: none;
   box-shadow: none;
@@ -67,3 +75,10 @@ input[type=date]:focus::-webkit-datetime-edit {
   color: black !important;
 }
 
+.login-text{
+margin: 0.2rem;
+}
+
+#login-link{
+  text-decoration: underline;
+}
