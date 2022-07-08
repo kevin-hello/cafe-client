@@ -24,20 +24,20 @@ export class CafeCard extends React.Component {
         <Card.Text>
           <GiCoffeeBeans
           className="card-icons"
-          color={cafe.Beans == true ? 'sienna' : 'grey'}
+          color={cafe.Beans == true ? '#816550' : '#b8b7b7'}
           size= "1.5em"
           />
           {""}
-            {cafe.Wifi == true ? <FiWifi className="card-icons" color="mediumseagreen" size="1.5em" /> : <FiWifiOff className="card-icons" color="lightcoral" size="1.5em" />}
+            {cafe.Wifi == true ? <FiWifi className="card-icons" color="#007BFF" size="1.5em" /> : <FiWifiOff className="card-icons" color="#b8b7b7" size="1.5em" />}
           {""}
           <FaRestroom
           className="card-icons"
-          color={cafe.Restroom == true ? 'mediumseagreen' : 'lightcoral'}
+          color={cafe.Restroom == true ? 'mediumseagreen' : '#b8b7b7'}
           size= "1.5em"
           />
           </Card.Text>
         <Link to={`/cafes/${cafe._id}`}>
-          <Button id="seemore" variant="link" >See More</Button>
+          <Button id="details" variant="link" >See More</Button>
         </Link>
       </Card.Body>
     </Card>

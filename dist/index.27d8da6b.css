@@ -162,21 +162,76 @@ input[type="date"]:focus::-webkit-datetime-edit {
   margin-right: .5rem;
 }
 
+.card-content, .card-content:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+#details {
+  border: 0 solid #0000;
+  padding: 0%;
+}
+
 
 
 
 
 .search-input {
-  max-width: 100%;
-  width: 100%;
-  margin-left: 20rem;
-  margin-right: 3rem;
+  text-align: center;
+  width: 400px;
+  min-width: 280px;
+  margin-left: 30%;
+  margin-right: 5%;
   display: flex;
   position: relative;
 }
 
+.search-input .form-control {
+  height: calc(1.75rem + 2px);
+}
+
 .search-bar-small-screen {
   display: none;
+}
+
+@media (max-width: 1300px) {
+  .search-input {
+    text-align: center;
+    width: 400px;
+    min-width: 280px;
+    margin-left: 10%;
+    margin-right: 2%;
+    display: flex;
+    position: relative;
+  }
+
+  .search-input .form-control {
+    height: calc(1.75rem + 2px);
+  }
+
+  .search-bar-small-screen {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .search-input {
+    text-align: center;
+    width: 400px;
+    min-width: 280px;
+    margin-left: 5%;
+    margin-right: 2%;
+    display: flex;
+    position: relative;
+  }
+
+  .search-input .form-control {
+    height: calc(1.75rem + 2px);
+  }
+
+  .search-bar-small-screen {
+    display: none;
+  }
 }
 
 @media (max-width: 992px) {
@@ -186,14 +241,47 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
   .search-bar-small-screen {
     display: initial;
-    width: 100%;
-    margin: 1rem 3rem;
     padding-left: 0;
     padding-right: 0;
+  }
+
+  .search-bar-small-screen .form-control {
+    height: calc(1.75rem + 2px);
+    max-width: 500px;
+    min-width: 280px;
+    text-align: center;
+    margin: .5em auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .search-input {
+    display: none;
+  }
+
+  .search-bar-small-screen {
+    display: initial;
+    padding-left: 0;
+    padding-right: 0;
+  }
+
+  .search-bar-small-screen .form-control {
+    height: calc(1.75rem + 2px);
+    max-width: 500px;
+    min-width: 280px;
+    text-align: center;
+    margin: .5em auto;
   }
 }
 
 
+
+.main-view .cafe-card-div {
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+  padding-left: 2.5px;
+  padding-right: 2.5px;
+}
 
 .search-bar {
   margin-top: 1em;

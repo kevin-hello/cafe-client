@@ -72,25 +72,78 @@ export function RegistrationView(props) {
             <h1>Create Account</h1>
 
             <div className="float-label">
-              <input type="text" value={username} id="username" name="Username" className="form-control" onChange={e => setUsername(e.target.value)} required/>
-              <label className={username && 'filled'} htmlFor="username">Username</label>
+              <input
+                type="text"
+                value={username}
+                id="username"
+                name="Username"
+                className="form-control"
+                onChange={e => setUsername(e.target.value)}
+                required
+              />
+              <label
+                className={username && 'filled'}
+                htmlFor="username">
+                Username
+              </label>
               {usernameErr && <p className="error-message" >{usernameErr}</p>}
             </div>
             <div className="float-label">
-              <input type="password" value={password} id="password" name="Password" className="form-control" onChange={e => setPassword(e.target.value)} required/>
-              <label className={password && 'filled'} htmlFor="password">Password</label>
+              <input
+                type="password"
+                value={password}
+                id="password"
+                name="Password"
+                className="form-control"
+                onChange={e => setPassword(e.target.value)}
+                required
+              />
+              <label
+                className={password && 'filled'}
+                htmlFor="password">
+                Password
+              </label>
               {passwordErr && <p className="error-message" >{passwordErr}</p>}
             </div>
             <div className="float-label">
-              <input type="email" value={email} id="email" name="Email" className="form-control" onChange={e => setEmail(e.target.value)} required/>
-              <label className={email && 'filled'} htmlFor="email">Email</label>
+              <input
+                type="email"
+                value={email}
+                id="email"
+                name="Email"
+                className="form-control"
+                onChange={e => setEmail(e.target.value)}
+                required
+              />
+              <label
+                className={email && 'filled'}
+                htmlFor="email">
+                Email
+              </label>
               {emailErr && <p className="error-message" >{emailErr}</p>}
             </div>
             <div className="float-label">
-              <input type="date" value={birthday} id="birthday" name="Birthday" className="form-control" onChange={e => setBirthday(e.target.value)} required/>
-              <label className={birthday && 'filled'} htmlFor="birthday">Birthday</label>
+              <input
+                type="date"
+                value={birthday}
+                id="birthday"
+                name="Birthday"
+                className="form-control"
+                onChange={e => setBirthday(e.target.value)}
+                required
+              />
+              <label
+                className={birthday && 'filled'}
+                htmlFor="birthday">
+                Birthday
+              </label>
             </div>
-            <Button id="submit" type="submit" onClick={handleSubmit}>Submit</Button>
+            <Button
+            id="submit"
+            type="submit"
+            onClick={handleSubmit}>
+            Submit
+            </Button>
             </Form>
             <div className='login-text'>
               <span>Already have an account? </span>
