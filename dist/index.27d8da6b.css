@@ -162,6 +162,15 @@ input[type="date"]:focus::-webkit-datetime-edit {
   margin-right: .5rem;
 }
 
+.area-text, .hours-text {
+  align-items: center;
+  display: flex;
+}
+
+.card-img-top {
+  max-height: 400px;
+}
+
 .card-content, .card-content:hover {
   color: #000;
   text-decoration: none;
@@ -277,10 +286,8 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 
 .main-view .cafe-card-div {
-  margin-top: 2.5px;
-  margin-bottom: 2.5px;
-  padding-left: 2.5px;
-  padding-right: 2.5px;
+  margin: 20px 0;
+  padding: 0 20px;
 }
 
 .search-bar {

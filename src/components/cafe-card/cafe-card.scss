@@ -2,7 +2,19 @@
   margin-right: 0.5rem;
   margin-left: 0.5rem;
 }
+.area-text {
+  display: flex;
+  align-items: center;
+}
 
+.hours-text {
+  display: flex;
+  align-items: center;
+}
+
+.card-img-top {
+max-height: 400px;
+}
 .card-content{
   text-decoration: none;
   color:black;

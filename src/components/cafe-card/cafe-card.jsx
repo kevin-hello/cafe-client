@@ -3,7 +3,8 @@ import propTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
 import { GiCoffeeBeans } from 'react-icons/gi';
 import { FiWifi, FiWifiOff } from 'react-icons/fi';
-import { FaRestroom } from 'react-icons/fa';
+import { MdOutlineTimer } from 'react-icons/md';
+import { FaMapMarkerAlt, FaRestroom } from 'react-icons/fa';
 
 import './cafe-card.scss';
 
@@ -19,8 +20,19 @@ export class CafeCard extends React.Component {
       <Card.Img variant="top" src={cafe.ImagePathExterior}/>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Name}</Card.Title>
-        <Card.Text>{cafe.Area.Name}</Card.Text>
-        <Card.Text>{cafe.Hours}</Card.Text>
+        <Card.Text className="area-text">
+          <FaMapMarkerAlt
+          className="area-icon"
+          color="#b8b7b7"
+          size="0.85em"
+          />{cafe.Area.Name}</Card.Text>
+        <Card.Text className="hours-text">
+          <MdOutlineTimer
+          className="hours-icon"
+          color="#b8b7b7"
+          size="0.85em"
+          />{cafe.Hours}
+        </Card.Text>
         <Card.Text>
           <GiCoffeeBeans
           className="card-icons"
