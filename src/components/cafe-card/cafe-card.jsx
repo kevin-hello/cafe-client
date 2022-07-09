@@ -3,8 +3,8 @@ import propTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
 import { GiCoffeeBeans } from 'react-icons/gi';
 import { FiWifi, FiWifiOff } from 'react-icons/fi';
-import { MdOutlineTimer } from 'react-icons/md';
 import { FaMapMarkerAlt, FaRestroom } from 'react-icons/fa';
+import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
 
 import './cafe-card.scss';
 
@@ -27,29 +27,50 @@ export class CafeCard extends React.Component {
           size="0.85em"
           />{cafe.Area.Name}</Card.Text>
         <Card.Text className="hours-text">
-          <MdOutlineTimer
-          className="hours-icon"
-          color="#b8b7b7"
-          size="0.85em"
-          />{cafe.Hours}
+          {cafe.Hours}
         </Card.Text>
+        <div className="cafe-details">
         <Card.Text>
           <GiCoffeeBeans
           className="card-icons"
           color={cafe.Beans == true ? '#816550' : '#b8b7b7'}
-          size= "1.5em"
+          size= "1.2em"
           />
           {""}
-            {cafe.Wifi == true ? <FiWifi className="card-icons" color="#007BFF" size="1.5em" /> : <FiWifiOff className="card-icons" color="#b8b7b7" size="1.5em" />}
+              {cafe.Beans == true ? <span>Sells Beans</span> : <span>Does not sell Beans</span>}
           {""}
+        </Card.Text>  
+        <Card.Text>
+            {""}
+              {cafe.Wifi == true ? 
+              <FiWifi
+              className="card-icons"
+              color="#007BFF"
+              size="1.2em"
+              /> : 
+              <FiWifiOff
+              className="card-icons"
+              color="#b8b7b7"
+              size="1.2em"
+              />}
+            {""}
+            {""}
+              {cafe.Wifi == true ? <span>Wifi available</span> : <span>No Wifi</span>}
+            {""}
+        </Card.Text>
+        <Card.Text>
           <FaRestroom
           className="card-icons"
           color={cafe.Restroom == true ? 'mediumseagreen' : '#b8b7b7'}
-          size= "1.5em"
+          size= "1.2em"
           />
-          </Card.Text>
+            {""}
+              {cafe.Restroom == true ? <span>Restroom available</span> : <span>No Restroom</span>}
+            {""}
+        </Card.Text>
+        </div>
         <Link to={`/cafes/${cafe._id}`}>
-          <Button id="details" variant="link" >See More</Button>
+          <Button id="details" variant="link" >Learn More<MdOutlineKeyboardArrowRight/></Button>
         </Link>
       </Card.Body>
     </Card>

@@ -25,7 +25,7 @@ return <>
     <SearchBarFilter searchBarFilter={searchBarFilter} />
     </Col>
     {filteredCafes.map(c=> (
-    <Col className="cafe-card-div"sm={12} md={6} lg={4} key={c._id}>
+    <Col className="cafe-card-div" md={12} lg={4} key={c._id}>
       <CafeCard cafe={c}/>
     </Col>
 ))}
