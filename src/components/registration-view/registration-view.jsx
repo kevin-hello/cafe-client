@@ -1,156 +1,227 @@
 import axios from 'axios';
-import React, { useState } from 'react';
-import { Form, Button, Container, FormControl } from 'react-bootstrap';
+import React, { useRef, useState, useEffect } from "react";
+import { Form, Button, Container, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { FaCheck, FaInfoCircle, FaTimes  } from 'react-icons/fa';
 import './registration-view.scss'
-import propTypes from 'prop-types';
 
-export function RegistrationView(props) {
-  const [ username, setUsername ] = useState('');
-  const [ password, setPassword ] = useState('');
-  const [ email, setEmail ] = useState('');
+const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9·-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+
+export function RegistrationView() {
+  const userRef = useRef();
+  const errRef = useRef();
+
+  const [username, setUsername ] = useState('');
+  const [validUsername, setValidUsername] = useState(false);
+  const [usernameFocus, setUsernameFocus] = useState(false);
+
+  const [password, setPassword ] = useState('');
+  const [validPassword, setValidPassword] = useState(false);
+  const [passwordFocus, setPasswordFocus] = useState(false);
+
+  const [matchPassword, setMatchPassword] = useState('');
+  const [validMatchPassword, setValidMatchPassword] = useState(false);
+  const [matchPasswordFocus, setMatchPasswordFocus] = useState(false);
+
+  const [email, setEmail] = useState('');
+  const [validEmail, setValidEmail] = useState(false);
+  const [emailFocus, setEmailFocus] = useState(false);
+
   const [ birthday, setBirthday ] = useState('');
-//hook for input validation
-  const [ usernameErr, setUsernameErr ] = useState('');
-  const [ passwordErr, setPasswordErr ] = useState('');
-  const [ emailErr, setEmailErr ] = useState('');
 
-  // validate user inputs
-  const validate = () => {
-    let isReq = true;
-    if(!username){
-    setUsernameErr('Username Required');
-    isReq = false;
-    }else if(username.length < 4){
-    setUsernameErr('Username must be at least 4 characters long');
-    isReq = false;
-    }
-    if(!password){
-    setPasswordErr('Password Required');
-    isReq = false;
-    }else if(password.length < 6){
-    setPasswordErr('Password must be 6 characters long');
-    isReq = false;
-    }
-    if(!email){
-      setEmailErr('Email Required');
-      isReq = false;
-    }else if(email.indexOf('@') === -1){
-      setEmailErr('Please enter a valid email');
-      isReq = false;
-    }
-    return isReq;
-  }
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const isReq  = validate();
-    if(isReq) {
-      axios.post('https://cafe-app-la.herokuapp.com/users',
-      {
-        Username: username,
-        Password: password,
-        Email: email,
-        Birthday: birthday
-      })
-      .then(response => {
-        const data = response.data;
-        console.log(data);
-        alert('Registration successful, please login');
-        window.open("/",'_self');  
-        //_self is needed to open page in the current tab
-      })
-      .catch(response => {
-        console.error(response);
-        alert('unable to register');
-      });
-    }
-  };
+  const [errMsg, setErrMsg] = useState('');
+  const [success, setSuccess] = useState(false);
+
+  useEffect(() => {
+        userRef.current.focus();
+  }, [])
+
+  useEffect(() => {
+        setValidUsername(USER_REGEX.test(username));
+  }, [username])
+
+  useEffect(() => {
+        setValidPassword(PWD_REGEX.test(password));
+        setValidMatchPassword(password === matchPassword);
+  }, [password, matchPassword])
+
+  useEffect(() => {
+        setValidEmail(EMAIL_REGEX.test(email));
+  }, [email])
+
+  useEffect(() => {
+        setErrMsg('');
+  }, [username, password, matchPassword, email])
+
+  const handleSubmit = async (e) => {
+        e.preventDefault();
+        // if button enabled with JS hack
+        const v1 = USER_REGEX.test(username);
+        const v2 = PWD_REGEX.test(password);
+        const v3 = EMAIL_REGEX.test(email);
+        if (!v1 || !v2 || !v3) {
+            setErrMsg("Invalid Entry");
+            return;
+        }
+        try {
+            const response = await axios.post('https://cafe-app-la.herokuapp.com/users',
+                JSON.stringify({ username, password, email, birthday }),
+                {
+                    Username: username,
+                    Password: password,
+                    Email: email,
+                    Birthday: birthday
+                }
+            );
+            console.log(response?.data);
+            console.log(response?.accessToken);
+            console.log(JSON.stringify(response))
+            setSuccess(true);
+            //clear state and controlled inputs
+            //need value attrib on inputs for this
+            setUsername('');
+            setPassword('');
+            setMatchPassword('');
+            setEmail('');
+            setBirthday('');
+            } catch (err) {
+            if (!err?.response) {
+                setErrMsg('No Server Response');
+            } else if (err.response?.status === 400) {
+                setErrMsg('Username Taken');
+            } else {
+                setErrMsg('Registration Failed')
+            }
+            errRef.current.focus();
+        }
+      }
 
   return (
-    <Container fluid id="register-form">
-            <Form >
-            <h1>Create Account</h1>
+    <>
+            {success ? (
+                <Card>
+                    <h1>Success!</h1>
+                    <Link to={`/`} >
+                          <a id="login-link">Login</a> 
+                    </Link>
+                </Card>
+            ) : (
+                <Container className="register-container">
+                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1>Register</h1>
+                    <Form className="register-form" onSubmit={handleSubmit}>
+                      <div>
+                        <label htmlFor="username">
+                            Username: 
+                            <FaCheck className={validUsername ? "valid" : "hide"} />
+                            <FaTimes className={validUsername || !username ? "hide" : "invalid"} />
+                        </label>
+                        <input
+                            type="text"
+                            id="username"
+                            ref={userRef}
+                            autoComplete="off"
+                            onChange={(e) => setUsername(e.target.value)}
+                            value={username}
+                            name="Username"
+                            required
+                            aria-invalid={validUsername ? "false" : "true"}
+                            aria-describedby="uidnote"
+                            onFocus={() => setUsernameFocus(true)}
+                            onBlur={() => setUsernameFocus(false)}
+                        />
+                        <p id="uidnote" className={usernameFocus && username && !validUsername ? "instructions" : "offscreen"}>
+                            <FaInfoCircle />
+                            4 to 16 characters.<br />
+                            Must begin with a letter.<br />
+                            Letters, numbers, underscores, hyphens allowed.
+                        </p>
+                      </div>
+                      <div>
+                        <label htmlFor="password">
+                            Password: 
+                            <FaCheck className={validPassword ? "valid" : "hide"} />
+                            <FaTimes className={validPassword || !password ? "hide" : "invalid"} />
+                        </label>
+                        <input
+                            type="password"
+                            id="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                            value={password}
+                            name="Password"
+                            required
+                            aria-invalid={validPassword ? "false" : "true"}
+                            aria-describedby="passwordnote"
+                            onFocus={() => setPasswordFocus(true)}
+                            onBlur={() => setPasswordFocus(false)}
+                        />
+                        <p id="passwordnote" className={passwordFocus && !validPassword ? "instructions" : "offscreen"}>
+                            <FaInfoCircle />
+                            8 to 24 characters.<br />
+                            Must include uppercase and lowercase letters, a number and a special character.<br />
+                            Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
+                        </p>
+                      </div>
+                      <div>
+                        <label htmlFor="confirm_password">
+                            Confirm Password: 
+                            <FaCheck className={validMatchPassword && matchPassword ? "valid" : "hide"} />
+                            <FaTimes className={validMatchPassword || !matchPassword  ? "hide" : "invalid"} />
+                        </label>
+                        <input
+                            type="password"
+                            id="confirm_password"
+                            onChange={(e) => setMatchPassword(e.target.value)}
+                            value={matchPassword}
+                            required
+                            aria-invalid={validMatchPassword ? "false" : "true"}
+                            aria-describedby="confirmnote"
+                            onFocus={() => setMatchPasswordFocus(true)}
+                            onBlur={() => setMatchPasswordFocus(false)}
+                        />
+                        <p id="confirmnote" className={matchPasswordFocus && !validMatchPassword ? "instructions" : "offscreen"}>
+                            <FaInfoCircle />
+                            Must match the first password input field.
+                        </p>
+                      </div>
+                      <div>
+                        <label htmlFor="email">
+                            Email: 
+                            <FaCheck className={validEmail ? "valid" : "hide"} />
+                            <FaTimes className={validEmail || !email ? "hide" : "invalid"} />
+                        </label>
+                        <input
+                            type="email"
+                            id="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            value={email}
+                            name="Email"
+                            required
+                            aria-invalid={validEmail ? "false" : "true"}
+                            aria-describedby="emailnote"
+                            onFocus={() => setEmailFocus(true)}
+                            onBlur={() => setEmailFocus(false)}
+                        />
+                        <p id="confirmnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
+                            <FaInfoCircle />
+                            Please enter a valid email
+                        </p>
+                      </div>
 
-            <div className="float-label">
-              <input
-                type="text"
-                value={username}
-                id="username"
-                name="Username"
-                className="form-control"
-                onChange={e => setUsername(e.target.value)}
-                required
-              />
-              <label
-                className={username && 'filled'}
-                htmlFor="username">
-                Username
-              </label>
-              {usernameErr && <p className="error-message" >{usernameErr}</p>}
-            </div>
-            <div className="float-label">
-              <input
-                type="password"
-                value={password}
-                id="password"
-                name="Password"
-                className="form-control"
-                onChange={e => setPassword(e.target.value)}
-                required
-              />
-              <label
-                className={password && 'filled'}
-                htmlFor="password">
-                Password
-              </label>
-              {passwordErr && <p className="error-message" >{passwordErr}</p>}
-            </div>
-            <div className="float-label">
-              <input
-                type="email"
-                value={email}
-                id="email"
-                name="Email"
-                className="form-control"
-                onChange={e => setEmail(e.target.value)}
-                required
-              />
-              <label
-                className={email && 'filled'}
-                htmlFor="email">
-                Email
-              </label>
-              {emailErr && <p className="error-message" >{emailErr}</p>}
-            </div>
-            <div className="float-label">
-              <input
-                type="date"
-                value={birthday}
-                id="birthday"
-                name="Birthday"
-                className="form-control"
-                onChange={e => setBirthday(e.target.value)}
-                required
-              />
-              <label
-                className={birthday && 'filled'}
-                htmlFor="birthday">
-                Birthday
-              </label>
-            </div>
-            <Button
-            id="submit"
-            type="submit"
-            onClick={handleSubmit}>
-            Submit
-            </Button>
-            </Form>
-            <div className='login-text'>
-              <span>Already have an account? </span>
-            <Link to={`/`} >
-              <a id="login-link">Login</a> 
-            </Link>
-            </div>
-    </Container>
-  );
+                        <Button disabled={!validUsername || !validPassword || !validMatchPassword || !validEmail ? true : false} className="register-button" type="submit">Sign Up</Button>
+                    </Form>
+                      <div className='login-text'>
+                        <span>Already have an account? </span>
+                        <div>
+                        <Link to={`/`} >
+                          <a id="login-link">Login</a> 
+                        </Link>
+                        </div>
+                      </div>
+                </Container>
+            )}
+        </>
+    )
 }
