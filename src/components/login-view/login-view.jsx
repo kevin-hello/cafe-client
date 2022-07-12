@@ -4,7 +4,7 @@ import propTypes from 'prop-types';
 
 import { Link } from 'react-router-dom';
 // UI Elements
-import { Form, Button } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 //styling
 import './login-view.scss';
 
@@ -35,6 +35,7 @@ export function LoginView(props) {
 
 
   return (
+    <Container>
         <Form id="login-form">
             <h1>Login</h1>
             <div className="float-label">
@@ -49,11 +50,18 @@ export function LoginView(props) {
             id= "submit"
             variant="primary link"
             type="submit"
-            onClick={handleSubmit}>Login</Button>
-            <Link to={`/register`} >
-              <Button id="register" variant="secondary">Register</Button> 
-            </Link>
+            onClick={handleSubmit}>Login
+            </Button>
         </Form>
+        <div className='secondary-text'>
+          <span>Don't have an account? </span>
+            <div>
+              <Link to={`/register`} >
+                <a id="secondary-link">Register</a> 
+              </Link>
+            </div>
+        </div>
+        </Container>
   );
 }
 

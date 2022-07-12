@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useRef, useState, useEffect } from "react";
-import { Form, Button, Container, Card } from 'react-bootstrap';
+import { Form, Button, Container, Card, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaInfoCircle, FaTimes  } from 'react-icons/fa';
 import './registration-view.scss'
@@ -29,7 +29,7 @@ export function RegistrationView() {
   const [validEmail, setValidEmail] = useState(false);
   const [emailFocus, setEmailFocus] = useState(false);
 
-  const [ birthday, setBirthday ] = useState('');
+  const [birthday, setBirthday ] = useState('');
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
@@ -108,12 +108,14 @@ export function RegistrationView() {
                     </Link>
                 </Card>
             ) : (
-                <Container className="register-container">
-                    <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
-                    <h1>Register</h1>
+                <Container>
                     <Form className="register-form" onSubmit={handleSubmit}>
-                      <div>
-                        <label htmlFor="username">
+                      <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
+                    <h1>Register</h1>
+                      <div className="float-label">
+                        <label
+                        className={username && 'filled'}
+                        htmlFor="username">
                             Username: 
                             <FaCheck className={validUsername ? "valid" : "hide"} />
                             <FaTimes className={validUsername || !username ? "hide" : "invalid"} />
@@ -128,19 +130,21 @@ export function RegistrationView() {
                             name="Username"
                             required
                             aria-invalid={validUsername ? "false" : "true"}
-                            aria-describedby="uidnote"
+                            aria-describedby="usernamenote"
                             onFocus={() => setUsernameFocus(true)}
                             onBlur={() => setUsernameFocus(false)}
                         />
-                        <p id="uidnote" className={usernameFocus && username && !validUsername ? "instructions" : "offscreen"}>
+                        <p id="usernamenote" className={usernameFocus && username && !validUsername ? "instructions" : "offscreen"}>
                             <FaInfoCircle />
                             4 to 16 characters.<br />
                             Must begin with a letter.<br />
                             Letters, numbers, underscores, hyphens allowed.
                         </p>
                       </div>
-                      <div>
-                        <label htmlFor="password">
+                      <div className="float-label">
+                        <label
+                        className={password && 'filled'}
+                        htmlFor="password">
                             Password: 
                             <FaCheck className={validPassword ? "valid" : "hide"} />
                             <FaTimes className={validPassword || !password ? "hide" : "invalid"} />
@@ -164,8 +168,10 @@ export function RegistrationView() {
                             Allowed special characters: <span aria-label="exclamation mark">!</span> <span aria-label="at symbol">@</span> <span aria-label="hashtag">#</span> <span aria-label="dollar sign">$</span> <span aria-label="percent">%</span>
                         </p>
                       </div>
-                      <div>
-                        <label htmlFor="confirm_password">
+                      <div className="float-label">
+                        <label
+                        className={matchPassword && 'filled'}
+                        htmlFor="confirm_password">
                             Confirm Password: 
                             <FaCheck className={validMatchPassword && matchPassword ? "valid" : "hide"} />
                             <FaTimes className={validMatchPassword || !matchPassword  ? "hide" : "invalid"} />
@@ -186,8 +192,10 @@ export function RegistrationView() {
                             Must match the first password input field.
                         </p>
                       </div>
-                      <div>
-                        <label htmlFor="email">
+                      <div className="float-label">
+                        <label
+                        className={email && 'filled'}
+                        htmlFor="email">
                             Email: 
                             <FaCheck className={validEmail ? "valid" : "hide"} />
                             <FaTimes className={validEmail || !email ? "hide" : "invalid"} />
@@ -204,19 +212,33 @@ export function RegistrationView() {
                             onFocus={() => setEmailFocus(true)}
                             onBlur={() => setEmailFocus(false)}
                         />
-                        <p id="confirmnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
+                        <p id="emailnote" className={emailFocus && !validEmail ? "instructions" : "offscreen"}>
                             <FaInfoCircle />
                             Please enter a valid email
                         </p>
                       </div>
-
+                      <div className="float-label">
+                        <label
+                        className={birthday && 'filled'}
+                        htmlFor="birthday">
+                            Birthday:
+                        </label>
+                        <input
+                            type="date"
+                            id="birthday"
+                            onChange={(e) => setBirthday(e.target.value)}
+                            value={birthday}
+                            name="Birthday"
+                            required
+                        />
+                      </div>
                         <Button disabled={!validUsername || !validPassword || !validMatchPassword || !validEmail ? true : false} className="register-button" type="submit">Sign Up</Button>
                     </Form>
-                      <div className='login-text'>
+                      <div className='secondary-text'>
                         <span>Already have an account? </span>
                         <div>
                         <Link to={`/`} >
-                          <a id="login-link">Login</a> 
+                          <a id="secondary-link">Login</a> 
                         </Link>
                         </div>
                       </div>
