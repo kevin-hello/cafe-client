@@ -7,7 +7,7 @@ import './registration-view.scss'
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
-const EMAIL_REGEX = /[a-zA-Z0-9._%+-]+@[a-zA-Z0-9·-]+\.[a-z]{2,8}(.[a-z{2,8}])?/g
+const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 
 export function RegistrationView() {
   const userRef = useRef();
@@ -67,7 +67,6 @@ export function RegistrationView() {
         }
         try {
             const response = await axios.post('https://cafe-app-la.herokuapp.com/users',
-                JSON.stringify({ username, password, email, birthday }),
                 {
                     Username: username,
                     Password: password,
@@ -77,7 +76,7 @@ export function RegistrationView() {
             );
             console.log(response?.data);
             console.log(response?.accessToken);
-            console.log(JSON.stringify(response))
+            console.log(response)
             setSuccess(true);
             //clear state and controlled inputs
             //need value attrib on inputs for this
@@ -89,7 +88,7 @@ export function RegistrationView() {
             } catch (err) {
             if (!err?.response) {
                 setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
+            } else if (err.response?.status === 409) {
                 setErrMsg('Username Taken');
             } else {
                 setErrMsg('Registration Failed')
@@ -101,10 +100,10 @@ export function RegistrationView() {
   return (
     <>
             {success ? (
-                <Card>
-                    <h1>Success!</h1>
+                <Card id="success">
+                    <h3>Registration Successful!</h3>
                     <Link to={`/`} >
-                          <a id="login-link">Login</a> 
+                          <Button id="success-button" type="primary">Login</Button>
                     </Link>
                 </Card>
             ) : (
