@@ -1,12 +1,12 @@
 #login-form {
   width: 60%;
   text-align: center;
-  background-color: #ffebcd;
-  border: 1px solid #000;
+  background-color: #ddcabb;
+  border: 0 solid #000;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 1rem 2rem;
 }
 
@@ -76,12 +76,12 @@ form #register {
 .register-form {
   width: 60%;
   text-align: center;
-  background-color: #ffebcd;
-  border: 1px solid #000;
+  background-color: #ddcabb;
+  border: 0 solid #000;
   border-radius: 5px;
   justify-content: center;
   align-items: center;
-  margin: 0 auto;
+  margin: 1rem auto;
   padding: 1rem 2rem;
 }
 
@@ -142,10 +142,11 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
 
 .secondary-text {
   text-align: center;
-  margin: .2rem;
 }
 
-#secondary-link {
+.secondary-text .secondary-link {
+  border-width: 0;
+  padding: 0;
   text-decoration: underline;
 }
 
@@ -258,7 +259,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 #details {
-  color: #b7a79b;
+  color: #a99789;
   border: 0 solid #0000;
   padding: 0%;
   font-size: .7em;
@@ -274,6 +275,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 
 
+
+.main-nav {
+  background-color: #a99789;
+}
 
 .search-input {
   text-align: center;
@@ -381,10 +386,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .card:hover {
-  opacity: .8;
-  background-color: #dbd3cd;
-  border-width: 0;
-  transition: all .3s ease-in;
+  opacity: .9;
+  background-color: #c8e0f4;
+  border: 1px solid #fff;
+  transition: all .2s ease-in;
 }
 
 .search-bar {

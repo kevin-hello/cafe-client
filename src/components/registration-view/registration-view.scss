@@ -1,13 +1,13 @@
 .register-form{
   width: 60%;
-  margin: 0 auto;
+  margin: 1rem auto;
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: blanchedalmond;
+  background-color: #DDCABB;
   padding: 1rem 2rem;
   border-radius: 5px;
-  border: 1px solid black;
+  border: 0px solid black;
 }
 
 input[type="text"],
@@ -72,12 +72,13 @@ textarea {
 
 .secondary-text{
   text-align: center;
-  margin: 0.2rem;
+}
+.secondary-text .secondary-link{
+  text-decoration: underline;
+  padding: 0;
+  border-width: 0;
 }
 
-#secondary-link{
-  text-decoration: underline;
-}
 .instructions {
     font-size: 0.6rem;
     border-radius: 0.5rem;

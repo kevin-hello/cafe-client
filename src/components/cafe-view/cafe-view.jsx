@@ -1,6 +1,9 @@
 import React from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
+import { GiCoffeeBeans } from 'react-icons/gi';
+import { FiWifi, FiWifiOff } from 'react-icons/fi';
+import { FaMapMarkerAlt, FaRestroom } from 'react-icons/fa';
 
 import { Link } from 'react-router-dom';
 //UI components 
@@ -39,16 +42,82 @@ constructor(props) {
         <Col sm={12} md={4} className="cafe-exterior">
           <img height = "auto" width="100%"  src={cafe.ImagePathExterior}/>
           </Col>
+          <Col sm={12} md={4} className="cafe-interior">
+          <img height = "auto" width="100%"  src={cafe.ImagePathInterior}/>
+          </Col>
+          <Col sm={12} md={4} className="cafe-misc">
+          <img height = "auto" width="100%"  src={cafe.ImagePathMisc}/>
+          </Col>
           <Col sm={12} md={8}>
           <h2>{cafe.Name}</h2>
         <div className="cafe-area">
           <Link to={`/areas/${cafe.Area.Name}`}><span className="value">{cafe.Area.Name}</span>
         </Link></div>
-        <div className="cafe-hours">
-          <span className="label">Hours: {cafe.Hours}</span>
+        <div className="cafe-details">
+          <span className="label">{cafe.Hours}</span>
         </div>
-        <div className="cafe-website">
-        <a href={cafe.Website} target="_blank">Cafe's Website</a>
+        <div className="cafe-details">
+          {""}
+          <span className="label">Phone:
+            {cafe.Phone.length === 0 ? <span> Unavailable</span> : <span> {cafe.Phone}</span>}
+          </span>
+          {""}  
+        </div>
+        <div className="cafe-details">
+          <span className="label">Seating: {cafe.Seating}</span>
+        </div>
+        <div className="cafe-details">
+          <span className="label">Parking: {cafe.Parking}</span>
+        </div>
+        <div className="cafe-details">
+        {""}
+          <span className="label">
+            {cafe.Website.length === 0 ? <span>Website: Unavailable</span> : <a href={cafe.Website} target="_blank">Cafe's Website</a>}
+          </span>
+        {""}  
+        </div>
+        <div className="cafe-details">
+        {""}
+          <span className="label">
+            {cafe.Instagram.length === 0 ? <span>Instagram: Unavailable</span> : <a href={cafe.Instagram} target="_blank">Cafe's Instagram</a>}
+          </span>
+        {""}  
+        </div>
+        <div className="cafe-details">
+          <GiCoffeeBeans
+          className="card-icons"
+          color={cafe.Beans == true ? '#816550' : '#b8b7b7'}
+          size= "1.2em"
+          />
+          {""}
+              {cafe.Beans == true ? <span>Sells Beans</span> : <span>Does not sell Beans</span>}
+          {""}  
+          </div><div className="cafe-details">
+          {""}
+              {cafe.Wifi == true ? 
+              <FiWifi
+              className="card-icons"
+              color="#007BFF"
+              size="1.2em"
+              /> : 
+              <FiWifiOff
+              className="card-icons"
+              color="#b8b7b7"
+              size="1.2em"
+              />}
+            {""}
+            {""}
+              {cafe.Wifi == true ? <span>Wifi available</span> : <span>No Wifi</span>}
+            {""}
+          </div><div className="cafe-details">
+          <FaRestroom
+          className="card-icons"
+          color={cafe.Restroom == true ? 'mediumseagreen' : '#b8b7b7'}
+          size= "1.2em"
+          />
+            {""}
+              {cafe.Restroom == true ? <span>Restroom available</span> : <span>No Restroom</span>}
+            {""}
         </div>
         <Button variant="primary" id="back" onClick={() => { onBackClick(null);}}>Back</Button>
         <Button variant="danger" id="favcafe" value={cafe._id} onClick={(e) => this.addFavoriteCafe(e, cafe)}>Add to favorites</Button>
@@ -79,7 +148,8 @@ CafeView.propTypes = {
     TakeOutOnly: propTypes.boolean,
     Wifi: propTypes.boolean,
     Beans: propTypes.boolean,
-    Restroom: propTypes.boolean
+    Restroom: propTypes.boolean,
+    Instagram: propTypes.string
   }).isRequired,
   user: propTypes.shape({
     Username: propTypes.string.isRequired,

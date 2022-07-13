@@ -100,6 +100,7 @@ CafeCard.propTypes = {
     TakeOutOnly: propTypes.boolean,
     Wifi: propTypes.boolean,
     Beans: propTypes.boolean,
-    Restroom: propTypes.boolean
+    Restroom: propTypes.boolean,
+    Instagram: propTypes.string,
   }).isRequired
 };

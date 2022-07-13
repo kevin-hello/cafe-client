@@ -28,7 +28,7 @@ export function Menubar ({user, searchBarFilter}) {
   
 
   return(
-    <Navbar className="main-nav" sticky="top" bg="primary" expand="lg" variant="dark">
+    <Navbar className="main-nav"  sticky="top" expand="lg" variant="dark">
       <Link to={`/`}>
       <Navbar.Brand className="navbar-logo"><SiBuymeacoffee size="1.5em" /></Navbar.Brand>
       </Link>

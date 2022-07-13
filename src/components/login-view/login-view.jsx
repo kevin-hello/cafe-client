@@ -54,12 +54,10 @@ export function LoginView(props) {
             </Button>
         </Form>
         <div className='secondary-text'>
-          <span>Don't have an account? </span>
-            <div>
+          <div>Don't have an account? </div>
               <Link to={`/register`} >
-                <a id="secondary-link">Register</a> 
+                <Button variant="link" className="secondary-link">Register</Button> 
               </Link>
-            </div>
         </div>
         </Container>
   );

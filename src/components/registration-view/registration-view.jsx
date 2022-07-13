@@ -8,6 +8,8 @@ import './registration-view.scss'
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+const BDAY_REGEX = /^(?:(?:19|20)[0-9]{2})-(0[1-9]|[12][0-9]|3[01])/;
+
 
 export function RegistrationView() {
   const userRef = useRef();
@@ -30,6 +32,8 @@ export function RegistrationView() {
   const [emailFocus, setEmailFocus] = useState(false);
 
   const [birthday, setBirthday ] = useState('');
+  const [validBirthday, setValidBirthday] = useState(false);
+  const [birthdayFocus, setBirthdayFocus] = useState(false);
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
@@ -52,8 +56,12 @@ export function RegistrationView() {
   }, [email])
 
   useEffect(() => {
+        setValidBirthday(BDAY_REGEX.test(birthday));
+  }, [birthday])
+
+  useEffect(() => {
         setErrMsg('');
-  }, [username, password, matchPassword, email])
+  }, [username, password, matchPassword, email, birthday])
 
   const handleSubmit = async (e) => {
         e.preventDefault();
@@ -61,7 +69,8 @@ export function RegistrationView() {
         const v1 = USER_REGEX.test(username);
         const v2 = PWD_REGEX.test(password);
         const v3 = EMAIL_REGEX.test(email);
-        if (!v1 || !v2 || !v3) {
+        const v4 = BDAY_REGEX.test(birthday);
+        if (!v1 || !v2 || !v3 || !v4) {
             setErrMsg("Invalid Entry");
             return;
         }
@@ -221,6 +230,8 @@ export function RegistrationView() {
                         className={birthday && 'filled'}
                         htmlFor="birthday">
                             Birthday:
+                            <FaCheck className={validBirthday ? "valid" : "hide"} />
+                            <FaTimes className={validBirthday || !birthday ? "hide" : "invalid"} />
                         </label>
                         <input
                             type="date"
@@ -229,15 +240,23 @@ export function RegistrationView() {
                             value={birthday}
                             name="Birthday"
                             required
+                            aria-invalid={validBirthday ? "false" : "true"}
+                            aria-describedby="bdaynote"
+                            onFocus={() => setBirthdayFocus(true)}
+                            onBlur={() => setBirthdayFocus(false)}
                         />
+                        <p id="bdaynote" className={birthdayFocus && !validBirthday ? "instructions" : "offscreen"}>
+                            <FaInfoCircle />
+                            Please enter a valid date between the years (1900-2099)
+                        </p>
                       </div>
-                        <Button disabled={!validUsername || !validPassword || !validMatchPassword || !validEmail ? true : false} className="register-button" type="submit">Sign Up</Button>
+                        <Button disabled={!validUsername || !validPassword || !validMatchPassword || !validEmail || !validBirthday ? true : false} className="register-button" type="submit">Sign Up</Button>
                     </Form>
                       <div className='secondary-text'>
                         <span>Already have an account? </span>
                         <div>
                         <Link to={`/`} >
-                          <a id="secondary-link">Login</a> 
+                          <Button variant="link" className="secondary-link">Login</Button> 
                         </Link>
                         </div>
                       </div>
