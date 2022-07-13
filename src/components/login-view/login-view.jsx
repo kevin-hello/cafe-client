@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import propTypes from 'prop-types';
-
+import LoadingSpinner from '../loading-spinner/loading-spinner';
 import { Link } from 'react-router-dom';
 // UI Elements
 import { Form, Button, Container } from 'react-bootstrap';
@@ -12,10 +12,12 @@ import './login-view.scss';
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
 
     e.preventDefault();
+    setIsLoading(true);
     // send a request to the server for authentication 
     axios.post("https://cafe-app-la.herokuapp.com/login",
     {
@@ -26,6 +28,7 @@ export function LoginView(props) {
     .then(response=>{
       const data = response.data;
       props.onLoggedIn(data);
+      setIsLoading(false);
     })
     .catch(e => {
       console.log("no such user");
@@ -36,6 +39,7 @@ export function LoginView(props) {
 
   return (
     <Container>
+      {isLoading && <LoadingSpinner/>}
         <Form id="login-form">
             <h1>Login</h1>
             <div className="float-label">

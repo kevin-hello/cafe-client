@@ -3,6 +3,8 @@ import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaInfoCircle, FaTimes  } from 'react-icons/fa';
+import LoadingSpinner from '../loading-spinner/loading-spinner';
+
 import './registration-view.scss'
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,15}$/;
@@ -37,6 +39,8 @@ export function RegistrationView() {
 
   const [errMsg, setErrMsg] = useState('');
   const [success, setSuccess] = useState(false);
+
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
         userRef.current.focus();
@@ -75,6 +79,7 @@ export function RegistrationView() {
             return;
         }
         try {
+            setIsLoading(true);
             const response = await axios.post('https://cafe-app-la.herokuapp.com/users',
                 {
                     Username: username,
@@ -86,6 +91,7 @@ export function RegistrationView() {
             console.log(response?.data);
             console.log(response?.accessToken);
             console.log(response)
+            setIsLoading(false);
             setSuccess(true);
             //clear state and controlled inputs
             //need value attrib on inputs for this
@@ -117,6 +123,7 @@ export function RegistrationView() {
                 </Container>
             ) : (
                 <Container>
+                    {isLoading && <LoadingSpinner/>}
                     <Form className="register-form" onSubmit={handleSubmit}>
                       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>
