@@ -69,20 +69,16 @@ constructor(props) {
         <div className="cafe-details">
           <span className="label">Parking: {cafe.Parking}</span>
         </div>
-        <div className="cafe-details">
+        <span>
         {""}
-          <span className="label">
-            {cafe.Website.length === 0 ? <span>Website: Unavailable</span> : <a href={cafe.Website} target="_blank">Cafe's Website</a>}
-          </span>
+            {cafe.Website.length === 0 ? <span></span> : <div className="cafe-details"><span className="label"><a href={cafe.Website} target="_blank">Cafe's Website</a></span></div>}
         {""}  
-        </div>
-        <div className="cafe-details">
-        {""}
-          <span className="label">
-            {cafe.Instagram.length === 0 ? <span>Instagram: Unavailable</span> : <a href={cafe.Instagram} target="_blank">Cafe's Instagram</a>}
-          </span>
+        </span>
+        <span>
+        {""} 
+            {cafe.Instagram.length === 0 ? <span></span> : <div className="cafe-details"><span className="label"><a href={cafe.Instagram} target="_blank">Cafe's Instagram</a></span></div>}
         {""}  
-        </div>
+        </span>
         <div className="cafe-details">
           <GiCoffeeBeans
           className="card-icons"

@@ -206,9 +206,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 #success {
-  width: 70%;
   text-align: center;
-  background-color: #b7a79b;
   margin: 1rem auto;
 }
 

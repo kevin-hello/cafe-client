@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useRef, useState, useEffect } from "react";
-import { Form, Button, Container, Card, Col, Row } from 'react-bootstrap';
+import { Form, Button, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaInfoCircle, FaTimes  } from 'react-icons/fa';
 import './registration-view.scss'
@@ -109,12 +109,12 @@ export function RegistrationView() {
   return (
     <>
             {success ? (
-                <Card id="success">
+                <Container id="success">
                     <h3>Registration Successful!</h3>
                     <Link to={`/`} >
                           <Button id="success-button" type="primary">Login</Button>
                     </Link>
-                </Card>
+                </Container>
             ) : (
                 <Container>
                     <Form className="register-form" onSubmit={handleSubmit}>
