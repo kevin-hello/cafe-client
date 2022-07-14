@@ -1,0 +1,22 @@
+.area-name{
+  margin-top: 0.5rem;
+}
+
+.area-cafes h4{
+  font-size: 1.15rem;
+}
+
+#return{
+margin: 0.5rem 0;
+padding: 0.2rem 0.5rem;
+background-color:#A99789;
+border-color: #A99789;
+}
+
+#return:hover{
+background-color:#948578;
+border-color: #948578;
+}
+#return:focus{
+box-shadow: 0 0 0 0.15rem #a99789a8;
+}

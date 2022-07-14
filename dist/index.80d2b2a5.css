@@ -270,6 +270,36 @@ input[type="date"]:focus::-webkit-datetime-edit {
   padding: .25rem .75rem;
 }
 
+.area-name {
+  margin-top: .5rem;
+}
+
+.area-cafes h4 {
+  font-size: 1.15rem;
+}
+
+#return {
+  background-color: #a99789;
+  border-color: #a99789;
+  margin: .5rem 0;
+  padding: .2rem .5rem;
+}
+
+#return:hover {
+  background-color: #948578;
+  border-color: #948578;
+}
+
+#return:focus {
+  box-shadow: 0 0 0 .15rem #a99789a8;
+}
+
+.simple-cafe-title {
+  font-size: .9rem;
+}
+
+
+
 .card-icons {
   margin-left: .5rem;
   margin-right: .5rem;
@@ -319,10 +349,6 @@ input[type="date"]:focus::-webkit-datetime-edit {
 #details:hover {
   color: #fff;
 }
-
-
-
-
 
 .main-nav {
   background-color: #a99789;
