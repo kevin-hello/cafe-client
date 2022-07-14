@@ -426,7 +426,9 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 }
 
-
+.area-description {
+  font-size: .85rem;
+}
 
 .main-view .cafe-card-div {
   margin: 20px 0;
