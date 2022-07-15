@@ -11,7 +11,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
 
 
-import { setCafes } from '../../actions/actions';
+import { setCafes, setUser } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
@@ -34,9 +34,7 @@ class MainView extends React.Component {
   componentDidMount(){
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-    this.setState({
-    user: localStorage.getItem("user")
-    });
+    this.props.setUser(localStorage.getItem("user"));
     this.getCafes(accessToken);
     this.getAreas(accessToken);
     }
@@ -44,12 +42,10 @@ class MainView extends React.Component {
 
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-
     localStorage.setItem("token", authData.token);
     localStorage.setItem("user", authData.user.Username);
+    const { setUser } = this.props;
+    setUser(authData.user.Username);
     this.getCafes(authData.token);
     this.getAreas(authData.token);
   }
@@ -87,8 +83,8 @@ class MainView extends React.Component {
   
 
   render(){
-     let { cafes } = this.props;
-     let { areas, user } = this.state;
+     let { cafes, user } = this.props;
+     let { areas } = this.state;
     return (
       <Router>
         <Menubar user={user}/>
@@ -129,6 +125,8 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return{ cafes: state.cafes }
+  return{ cafes: state.cafes,
+          user: state.user        
+  }
 }
-export default connect(mapStateToProps, { setCafes })(MainView);
+export default connect(mapStateToProps, { setCafes, setUser })(MainView);

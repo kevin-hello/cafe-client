@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
 
-import { SET_FILTER, SET_CAFES } from "../actions/actions";
+import { SET_FILTER, SET_CAFES, SET_USER } from "../actions/actions";
 
 function searchBarFilter(state = "", action) {
   switch (action.type) {
@@ -20,9 +20,20 @@ function cafes(state = [], action) {
   }
 }
 
+function user(state = "", action) {
+  switch (action.type) {
+    case SET_USER:
+      return action.value;
+
+    default:
+      return state;
+  }
+}
+
 const cafesApp = combineReducers({
   searchBarFilter,
   cafes,
+  user,
 });
 
 export default cafesApp;
