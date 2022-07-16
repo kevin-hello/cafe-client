@@ -126,7 +126,7 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>;
         }} />
-        <Route path={"/users/:userid"} render={({ history }) => {
+        <Route path={`/users/${user._id}`} render={({ history }) => {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
