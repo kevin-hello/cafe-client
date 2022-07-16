@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import propTypes from 'prop-types';
 
@@ -12,17 +12,14 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView () {
-  const [user, setUser] = useState({});
-
-// [] is used for an Array object such as FaveCafes, {} is used for a plain object such as user data.
+export function ProfileView (props) {
+  const [user, setUser] = useState(props.user);
+  const token = localStorage.getItem('token');
+  console.log(props);
   
   const getUser = () => {
-    const user = localStorage.getItem("user");
-    const token = localStorage.getItem("token");
-
     axios
-        .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
+        .get(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -37,38 +34,17 @@ export function ProfileView () {
     getUser();
   }, [])
 
-  const onRemoveFavorite = (e, cafe) => {
-    const user = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.delete(`https://cafe-app-la.herokuapp.com/users/${user._id}/cafes/${cafe._id}`, 
-    { headers: { Authorization: `Bearer ${token}` } }
-    )
-    .then((response) => {
-      console.log(response);
-
-      alert(`${cafe.Name} has been removed from favorites`);
-      setFavoriteCafes(FavoriteCafes.filter(c => c._id != id));
-    })
-    .catch(function (error) {
-
-      console.log(error);
-    });
-  }
-
 
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      const token = localStorage.getItem('token');
-      const user = localStorage.getItem('user');
-      console.log(user);
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${user}`,
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
         console.log(response);
-        alert(`Account has been deleted.`);
+
+        alert("Account has been deleted.");
         localStorage.removeItem('user');
         localStorage.removeItem('token');
         window.open("/",'_self'); 
@@ -81,13 +57,13 @@ export function ProfileView () {
 
     return (
       <Container className="profile-view">
-        <UserInfo user={user}/>
+        <UserInfo user={user} deleteUser={deleteUser}/>
         <UpdateUserForm />
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>
-          <div><Button id="delete" variant="danger" type="button" onClick={(e) => deleteUser()}><BsTrash /> Delete Account</Button></div>
-        </div>
+          <Button id="delete" variant="danger" type="button" onClick={(e) => this.deleteUser()}><BsTrash /> Delete Account</Button>
+          </div>
       </Container>
     );
 

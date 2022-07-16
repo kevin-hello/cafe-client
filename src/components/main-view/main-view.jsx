@@ -31,11 +31,11 @@ class MainView extends React.Component {
     };
   }
   componentDidMount(){
-    let accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-    this.getUser(accessToken);
-    this.getCafes(accessToken);
-    this.getAreas(accessToken);
+    let token = localStorage.getItem('token');
+    if (token !== null) {
+    this.getUser(token);
+    this.getCafes(token);
+    this.getAreas(token);
     }
   }
 
@@ -126,11 +126,13 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>;
         }} />
-        <Route path={`/users/${user._id}`} render={({match, history }) => {
-          if (!user) return <Redirect to="/" /> 
-          return <Col>
-          <ProfileView />
-          </Col>
+        <Route path={"/users/:userid"} render={({ history }) => {
+          if (!user) return (<Col>
+          <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
+          </Col>)
+
+          return (<ProfileView onBackClick={() => history.goBack()} user={user} />
+          )
         }} />
         </Row>
       </Router>  
