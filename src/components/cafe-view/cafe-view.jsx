@@ -3,8 +3,7 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 import { GiCoffeeBeans } from 'react-icons/gi';
 import { FiWifi, FiWifiOff } from 'react-icons/fi';
-import { FaMapMarkerAlt, FaRestroom } from 'react-icons/fa';
-
+import { FaRestroom } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 //UI components 
 import {Col, Row, Button} from 'react-bootstrap';

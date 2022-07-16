@@ -32,15 +32,16 @@ export function LoginView(props) {
       setIsLoading(false);
     })
     .catch(e => {
+      setIsLoading(false);
       console.log("no such user");
-      alert("User does not exist")
+      alert("Something broke! Please check your username and password")
     });
   };
 
 
   return (
     <Container>
-      {isLoading && <LoadingSpinner/>}
+      {isLoading && <LoadingSpinner text={'Loading...'}/>}
         <Form id="login-form">
             <h1>Login</h1>
             <div className="float-label">

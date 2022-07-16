@@ -101,6 +101,7 @@ export function RegistrationView() {
             setEmail('');
             setBirthday('');
             } catch (err) {
+            setIsLoading(false);
             if (!err?.response) {
                 setErrMsg('No Server Response');
             } else if (err.response?.status === 409) {
@@ -108,6 +109,7 @@ export function RegistrationView() {
             } else {
                 setErrMsg('Registration Failed')
             }
+            
             errRef.current.focus();
         }
       }
@@ -123,7 +125,7 @@ export function RegistrationView() {
                 </Container>
             ) : (
                 <Container>
-                    {isLoading && <LoadingSpinner/>}
+                    {isLoading && <LoadingSpinner text={'Loading...'}/>}
                     <Form className="register-form" onSubmit={handleSubmit}>
                       <p ref={errRef} className={errMsg ? "errmsg" : "offscreen"} aria-live="assertive">{errMsg}</p>
                     <h1>Register</h1>

@@ -25,16 +25,15 @@ class MainView extends React.Component {
   constructor(){
     super();
     this.state = {
-      areas: [],
-      user: null
+      areas: []
 
       
     };
   }
   componentDidMount(){
-    let accessToken = localStorage.getItem("token");
+    let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-    this.props.setUser(localStorage.getItem("user"));
+    this.getUser(accessToken);
     this.getCafes(accessToken);
     this.getAreas(accessToken);
     }
@@ -42,13 +41,28 @@ class MainView extends React.Component {
 
   onLoggedIn(authData) {
     console.log(authData);
-    localStorage.setItem("token", authData.token);
-    localStorage.setItem("user", authData.user.Username);
-    const { setUser } = this.props;
-    setUser(authData.user.Username);
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user);
+    this.getUser(authData.token);
     this.getCafes(authData.token);
     this.getAreas(authData.token);
   }
+  getUser(token) {
+    const user = localStorage.getItem("user");
+    axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
+    {
+    headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+        this.props.setUser(response.data);
+ 
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
 
   getCafes(token) {
     axios.get("https://cafe-app-la.herokuapp.com/cafes", 
@@ -112,10 +126,10 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>;
         }} />
-        <Route path={`/users/${user}`} render={({ history }) => {
+        <Route path={`/users/${user._id}`} render={({match, history }) => {
           if (!user) return <Redirect to="/" /> 
           return <Col>
-          <ProfileView cafes={cafes} user={user} onBackClick={() => history.goBack()} />
+          <ProfileView />
           </Col>
         }} />
         </Row>
