@@ -11,7 +11,7 @@ import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
 
 
-import { setCafes, setUser } from '../../actions/actions';
+import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
@@ -26,29 +26,31 @@ class MainView extends React.Component {
     super();
     this.state = {
       areas: []
-
-      
     };
   }
   componentDidMount(){
-    let token = localStorage.getItem('token');
-    if (token !== null) {
-    this.getUser(token);
-    this.getCafes(token);
-    this.getAreas(token);
+    let accessToken = localStorage.getItem('token');
+    if (accessToken !== null) {
+    this.setState({
+    user: localStorage.getItem("user")
+    });
+    this.getCafes(accessToken);
+    this.getAreas(accessToken);
     }
   }
 
   onLoggedIn(authData) {
     console.log(authData);
+    this.setState({
+      user: authData.user.Username
+    });
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user);
-    this.getUser(authData.token);
     this.getCafes(authData.token);
     this.getAreas(authData.token);
   }
   getUser(token) {
-    const user = localStorage.getItem("user");
+    const user = localStorage.getItem('user');
     axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
     {
     headers: { Authorization: `Bearer ${token}`}
@@ -56,7 +58,6 @@ class MainView extends React.Component {
     .then(response => {
       // Assign the result to the state
         this.props.setUser(response.data);
- 
     })
     .catch(function (error) {
       console.log(error);
@@ -72,7 +73,6 @@ class MainView extends React.Component {
     .then(response => {
       // Assign the result to the state
         this.props.setCafes(response.data);
- 
     })
     .catch(function (error) {
       console.log(error);
@@ -97,8 +97,8 @@ class MainView extends React.Component {
   
 
   render(){
-     let { cafes, user } = this.props;
-     let { areas } = this.state;
+     let { cafes} = this.props;
+     let { areas, user  } = this.state;
     return (
       <Router>
         <Menubar user={user}/>
@@ -130,9 +130,11 @@ class MainView extends React.Component {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
-
           return (<ProfileView onBackClick={() => history.goBack()} user={user} />
           )
+        }} />
+        <Route path="/favorites" render={() => {
+          return <FavoriteCafes cafes={cafes}/>
         }} />
         </Row>
       </Router>  
@@ -141,8 +143,8 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return{ cafes: state.cafes,
-          user: state.user        
+  return{ cafes: state.cafes
+       
   }
 }
-export default connect(mapStateToProps, { setCafes, setUser })(MainView);
+export default connect(mapStateToProps, { setCafes })(MainView);

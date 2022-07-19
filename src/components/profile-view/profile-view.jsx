@@ -13,13 +13,13 @@ import  UpdateUserForm from './update-user-form';
 import './profile-view.scss';
 
 export function ProfileView (props) {
-  const [user, setUser] = useState(props.user);
+  const [user, setUser] = useState(props);
   const token = localStorage.getItem('token');
   console.log(props);
   
   const getUser = () => {
     axios
-        .get(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`, {
+        .get(`https://cafe-app-la.herokuapp.com/users/${props._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -38,7 +38,7 @@ export function ProfileView (props) {
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`,
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props._id}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
@@ -62,7 +62,7 @@ export function ProfileView (props) {
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>
-          <Button id="delete" variant="danger" type="button" onClick={(e) => this.deleteUser()}><BsTrash /> Delete Account</Button>
+          <Button id="delete" variant="danger" type="button" onClick={(e) => deleteUser()}><BsTrash /> Delete Account</Button>
           </div>
       </Container>
     );

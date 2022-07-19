@@ -56,7 +56,12 @@ export function Menubar ({user, searchBarFilter}) {
               </Link>
               )}
               {isAuth() && (
-              <Link>
+              <Link to={`/favorites`}>
+              <Button style={{color:"white"}} className="nav-item" variant="link">Favorites</Button> 
+              </Link>
+              )}
+              {isAuth() && (
+              <Link to={`/`}>
               <Button style={{color:"white"}} className="nav-item" variant="link" onClick={() => { onLoggedOut() }}>Logout</Button>
               </Link>
               )}
