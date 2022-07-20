@@ -90,7 +90,7 @@ export default function UpdateUserForm() {
       setIsLoading(false);
       console.log(response.data);
       alert('Profile updated');
-      localStorage.setItem('user',response.data._id);
+      localStorage.setItem('user',response.data);
       window.open(`/users/${response.data._id}`,'_self');
     }))       
     .catch(function (error){

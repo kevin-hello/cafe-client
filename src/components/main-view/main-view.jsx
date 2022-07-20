@@ -1,6 +1,6 @@
 import React from "react";
 import axios from "axios";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
@@ -10,21 +10,20 @@ import { AreaView } from "../area-view/area-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
 
-
+import { connect } from "react-redux"
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
 
 import "./main-view.scss";
-import { connect } from "react-redux";
-
 
 class MainView extends React.Component {
 
   constructor(){
     super();
     this.state = {
+      user: null,
       areas: []
     };
   }
@@ -32,38 +31,12 @@ class MainView extends React.Component {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
     this.setState({
-    user: localStorage.getItem("user")
+    user: localStorage.getItem('user')
     });
     this.getCafes(accessToken);
     this.getAreas(accessToken);
     }
   }
-
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-      user: authData.user.Username
-    });
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user);
-    this.getCafes(authData.token);
-    this.getAreas(authData.token);
-  }
-  getUser(token) {
-    const user = localStorage.getItem('user');
-    axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
-    {
-    headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-        this.props.setUser(response.data);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
 
   getCafes(token) {
     axios.get("https://cafe-app-la.herokuapp.com/cafes", 
@@ -94,11 +67,41 @@ class MainView extends React.Component {
       console.log(error);
     });
   }
+
+    getUser(token) {
+    const user = localStorage.getItem('user');
+    axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
+    {
+    headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      // Assign the result to the state
+      this.setState({
+          user: response.data
+        });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+    user: authData.user
+    });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user);
+    this.getCafes(authData.token);
+    this.getAreas(authData.token);
+  }
 
   render(){
-     let { cafes} = this.props;
-     let { areas, user  } = this.state;
+     let { cafes } = this.props;
+     let { user, areas  } = this.state;
+
     return (
       <Router>
         <Menubar user={user}/>

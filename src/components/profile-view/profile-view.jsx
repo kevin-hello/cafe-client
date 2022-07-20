@@ -13,13 +13,13 @@ import  UpdateUserForm from './update-user-form';
 import './profile-view.scss';
 
 export function ProfileView (props) {
-  const [user, setUser] = useState(props);
+  const [user, setUser] = useState(props.user);
   const token = localStorage.getItem('token');
-  console.log(props);
+  console.log(props.user);
   
   const getUser = () => {
     axios
-        .get(`https://cafe-app-la.herokuapp.com/users/${props._id}`, {
+        .get(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -38,7 +38,7 @@ export function ProfileView (props) {
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props._id}`,
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
