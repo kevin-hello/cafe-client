@@ -34,7 +34,7 @@ export function LoginView(props) {
     .catch(e => {
       setIsLoading(false);
       console.log("no such user");
-      alert("Something broke! Please check your username and password")
+      alert("Login failed! Please check your username and password")
     });
   };
 

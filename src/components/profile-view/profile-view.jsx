@@ -13,9 +13,9 @@ import  UpdateUserForm from './update-user-form';
 import './profile-view.scss';
 
 export function ProfileView (props) {
-  const [user, setUser] = useState(props.user);
+  const [user, setUser] = useState({});
   const token = localStorage.getItem('token');
-  console.log(props.user);
+  console.log(this.props);
   
   const getUser = () => {
     axios

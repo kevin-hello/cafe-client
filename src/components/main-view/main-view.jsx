@@ -10,23 +10,26 @@ import { AreaView } from "../area-view/area-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
 
-import { connect } from "react-redux"
+
 import { setCafes } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
 
 import "./main-view.scss";
+import { connect } from "react-redux";
 
 class MainView extends React.Component {
 
   constructor(){
     super();
+
     this.state = {
       user: null,
       areas: []
     };
   }
+
   componentDidMount(){
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
@@ -36,6 +39,18 @@ class MainView extends React.Component {
     this.getCafes(accessToken);
     this.getAreas(accessToken);
     }
+  }
+
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+    user: authData.user
+    });
+
+    localStorage.setItem('token', authData.token);
+    localStorage.setItem('user', authData.user);
+    this.getCafes(authData.token);
+    this.getAreas(authData.token);
   }
 
   getCafes(token) {
@@ -68,35 +83,23 @@ class MainView extends React.Component {
     });
   }
 
-    getUser(token) {
-    const user = localStorage.getItem('user');
-    axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
-    {
-    headers: { Authorization: `Bearer ${token}`}
-    })
-    .then(response => {
-      // Assign the result to the state
-      this.setState({
-          user: response.data
-        });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
+  //   getUser(token) {
+  //   const user = localStorage.getItem('user');
+  //   axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
+  //   {
+  //   headers: { Authorization: `Bearer ${token}`}
+  //   })
+  //   .then(response => {
+  //     // Assign the result to the state
+  //     this.setState({
+  //         user: response.data
+  //       });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
   
-  onLoggedIn(authData) {
-    console.log(authData);
-    this.setState({
-    user: authData.user
-    });
-
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user);
-    this.getCafes(authData.token);
-    this.getAreas(authData.token);
-  }
 
   render(){
      let { cafes } = this.props;
@@ -129,7 +132,7 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>;
         }} />
-        <Route path={`/users/${user._id}`} render={({ history }) => {
+        <Route path={`/users/${user}`} render={({ history }) => {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
