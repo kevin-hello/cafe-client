@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 // styling 
 import './profile-view.scss';
 
-export default function UserInfo({user}){
+export default function UserInfo({username, email, birthday}){
 
   return(
     <Row className="justify-content-md-center">
@@ -12,9 +12,9 @@ export default function UserInfo({user}){
     <div className="profileContent">
       <h1>Account Details</h1>
     </div>
-    <h4>Username: {user.Username}</h4>
-    <h4>Email: {user.Email}</h4>
-    <h4>Birthday: {user.Birthday}</h4>
+    <h4>Username: {username}</h4>
+    <h4>Email: {email}</h4>
+    <h4>Birthday: {birthday}</h4>
     </Col>
     </Row>
   )

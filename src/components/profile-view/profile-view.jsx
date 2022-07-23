@@ -12,19 +12,17 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView () {
-  const [user, setUser] = useState({});
-
+export function ProfileView ({user}) {
+  const [newUser, setNewUser] = useState();
+  const token = localStorage.getItem('token');
   
   const getUser = () => {
-  const user = localStorage.getItem("user");
-  const token = localStorage.getItem("token");
     axios
         .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
-          setUser(response.data);
+          setNewUser(response.data);
         })
         .catch(function (error) {
           console.log(error);
@@ -33,8 +31,14 @@ export function ProfileView () {
 
 
     useEffect(() => {
-        getUser()
-    }, [])
+    let token = localStorage.getItem("token");
+    let user = localStorage.getItem("user");
+    if (token !== null && user !== null) {
+      getUser(user, token);
+    }
+  }, []);
+
+    if (!user) return <p>No User data</p>;
 
 
   const deleteUser = () => {
@@ -61,7 +65,7 @@ export function ProfileView () {
 
     return (
       <Container className="profile-view">
-        <UserInfo user={user} deleteUser={deleteUser}/>
+        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
         <UpdateUserForm user={user}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
