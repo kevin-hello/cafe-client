@@ -12,14 +12,15 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView (props) {
+export function ProfileView () {
   const [user, setUser] = useState({});
-  const token = localStorage.getItem('token');
-  console.log(this.props);
+
   
   const getUser = () => {
+  const user = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
     axios
-        .get(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`, {
+        .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
@@ -30,15 +31,18 @@ export function ProfileView (props) {
         });
     }
 
+
     useEffect(() => {
-    getUser();
-  }, [])
+        getUser()
+    }, [])
 
 
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${props.user._id}`,
+      const user = localStorage.getItem("user");
+      const token = localStorage.getItem("token");
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${user._id}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
@@ -58,7 +62,7 @@ export function ProfileView (props) {
     return (
       <Container className="profile-view">
         <UserInfo user={user} deleteUser={deleteUser}/>
-        <UpdateUserForm />
+        <UpdateUserForm user={user}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>

@@ -9,14 +9,12 @@ import { Form, Button, Container } from 'react-bootstrap';
 //styling
 import './login-view.scss';
 
-
 export function LoginView(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = (e) => {
-
     e.preventDefault();
     setIsLoading(true);
     // send a request to the server for authentication 
@@ -27,9 +25,9 @@ export function LoginView(props) {
 
     })
     .then(response=>{
+      setIsLoading(false);
       const data = response.data;
       props.onLoggedIn(data);
-      setIsLoading(false);
     })
     .catch(e => {
       setIsLoading(false);
@@ -37,7 +35,6 @@ export function LoginView(props) {
       alert("Login failed! Please check your username and password")
     });
   };
-
 
   return (
     <Container>

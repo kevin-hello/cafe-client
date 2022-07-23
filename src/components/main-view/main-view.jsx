@@ -1,6 +1,5 @@
 import React from "react";
 import axios from "axios";
-import { Row, Col } from "react-bootstrap";
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
@@ -9,9 +8,9 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { AreaView } from "../area-view/area-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { Menubar } from "../navbar/menubar";
+import { Row, Col } from "react-bootstrap";
 
-
-import { setCafes } from '../../actions/actions';
+import { setCafes, setAreas } from '../../actions/actions';
 
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
@@ -25,8 +24,7 @@ class MainView extends React.Component {
     super();
 
     this.state = {
-      user: null,
-      areas: []
+    user: null
     };
   }
 
@@ -37,7 +35,7 @@ class MainView extends React.Component {
     user: localStorage.getItem('user')
     });
     this.getCafes(accessToken);
-    this.getAreas(accessToken);
+    this.getAreas(accessToken);    
     }
   }
 
@@ -46,7 +44,6 @@ class MainView extends React.Component {
     this.setState({
     user: authData.user
     });
-
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user);
     this.getCafes(authData.token);
@@ -74,36 +71,17 @@ class MainView extends React.Component {
     })
     .then(response => {
       // Assign the result to the state
-        this.setState({
-          areas: response.data
-        });
+      this.props.setAreas(response.data);
     })
     .catch(function (error) {
       console.log(error);
     });
   }
 
-  //   getUser(token) {
-  //   const user = localStorage.getItem('user');
-  //   axios.get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, 
-  //   {
-  //   headers: { Authorization: `Bearer ${token}`}
-  //   })
-  //   .then(response => {
-  //     // Assign the result to the state
-  //     this.setState({
-  //         user: response.data
-  //       });
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   });
-  // }
   
-
   render(){
-     let { cafes } = this.props;
-     let { user, areas  } = this.state;
+     let { cafes, areas } = this.props;
+     let { user } = this.state;
 
     return (
       <Router>
@@ -132,11 +110,11 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>;
         }} />
-        <Route path={`/users/${user}`} render={({ history }) => {
+        <Route path={`/profile`} render={() => {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
-          return (<ProfileView onBackClick={() => history.goBack()} user={user} />
+          return (<ProfileView />
           )
         }} />
         <Route path="/favorites" render={() => {
@@ -149,8 +127,8 @@ class MainView extends React.Component {
 }
 
 let mapStateToProps = state => {
-  return{ cafes: state.cafes
+  return{ cafes: state.cafes, areas: state.areas,
        
   }
 }
-export default connect(mapStateToProps, { setCafes })(MainView);
+export default connect(mapStateToProps, { setCafes, setAreas })(MainView);

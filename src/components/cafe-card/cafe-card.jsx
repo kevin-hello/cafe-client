@@ -15,9 +15,10 @@ export class CafeCard extends React.Component {
   render() {
     const { cafe } = this.props;
     return (
-  <Link to={`/cafes/${cafe._id}`} className="card-content">
     <Card className="h-100">
-      <Card.Img variant="top" src={cafe.ImagePathExterior}/>
+      <Link to={`/cafes/${cafe._id}`} className="card-content">
+        <Card.Img variant="top" src={cafe.ImagePathExterior}/>
+      </Link>
       <Card.Body className="d-flex flex-column">
         <Card.Title>{cafe.Name}</Card.Title>
         <Card.Text className="area-text">
@@ -74,7 +75,6 @@ export class CafeCard extends React.Component {
         </Link>
       </Card.Body>
     </Card>
-  </Link>
     );
   }
 } 

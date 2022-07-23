@@ -11,11 +11,12 @@ export class AreaCard extends React.Component {
   render() {
     const { areas } = this.props;
     return (
-  <Link to={`/areas/${areas.AreaName}`} className="card-content">
     <Card className="h-100">
       <Card.Body className="d-flex flex-column">
+        <Link to={`/areas/${areas.AreaName}`} className="card-content">
         <Card.Title className="area-title">{areas.AreaName}</Card.Title>
         <Card.Text className="area-description">{areas.AreaDescription}</Card.Text>
+        </Link>
         <Link to={`/areas/${areas.AreaName}`}>
           <Button
           id="details"
@@ -26,13 +27,12 @@ export class AreaCard extends React.Component {
         </Link>
       </Card.Body>
     </Card>
-  </Link>
     );
   }
 } 
 
 AreaCard.propTypes = {
-    area: propTypes.shape({
+    areas: propTypes.shape({
       AreaName: propTypes.string.isRequired,
       AreaDescription: propTypes.string.isRequired
     }).isRequired
