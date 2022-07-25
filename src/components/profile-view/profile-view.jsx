@@ -12,41 +12,42 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView ({user}) {
-  const [newUser, setNewUser] = useState();
-  const token = localStorage.getItem('token');
+export function ProfileView(props) {
+  const [userData, setUserData] = useState({});
+  const [updatedUser, setUpdatedUser] = useState({});
   
+  const token = localStorage.getItem('token');
+
   const getUser = () => {
+    const user = localStorage.getItem('user');
     axios
-        .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
-          headers: { Authorization: `Bearer ${token}` },
-        })
-        .then((response) => {
-          setNewUser(response.data);
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
-    }
+      .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then((response) => {
+        setUserData(response.data);
+        setUpdatedUser(response.data);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
 
-
-    useEffect(() => {
-    let token = localStorage.getItem("token");
-    let user = localStorage.getItem("user");
-    if (token !== null && user !== null) {
-      getUser(user, token);
+  useEffect(() => {
+    let accessToken = localStorage.getItem("token");
+    let userData = localStorage.getItem("user");
+    if (accessToken !== null && userData !== null) {
+      getUser(props.user, accessToken);
+      console.log(userData);
     }
   }, []);
-
-    if (!user) return <p>No User data</p>;
-
 
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      const user = localStorage.getItem("user");
+      const userData = localStorage.getItem("user");
       const token = localStorage.getItem("token");
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${user._id}`,
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${userData._id}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
@@ -65,8 +66,8 @@ export function ProfileView ({user}) {
 
     return (
       <Container className="profile-view">
-        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
-        <UpdateUserForm user={user}/>
+        <UserInfo username={userData.Username} email={userData.Email} birthday={userData.Birthday}/>
+        <UpdateUserForm user={userData}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>
@@ -76,12 +77,12 @@ export function ProfileView ({user}) {
     );
 
     }
-ProfileView.propTypes = {
-  user: propTypes.shape({
-    Username: propTypes.string.isRequired,
-    Password: propTypes.string.isRequired,
-    Email: propTypes.string.isRequired,
-    Birthday: propTypes.date,
-    FavoriteCafes: propTypes.array
-  }).isRequired,
-}
+// ProfileView.propTypes = {
+//   user: propTypes.shape({
+//     Username: propTypes.string.isRequired,
+//     Password: propTypes.string.isRequired,
+//     Email: propTypes.string.isRequired,
+//     Birthday: propTypes.date,
+//     FavoriteCafes: propTypes.array
+//   }).isRequired,
+// }

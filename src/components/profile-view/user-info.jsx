@@ -4,7 +4,7 @@ import { Col, Row } from 'react-bootstrap';
 // styling 
 import './profile-view.scss';
 
-export default function UserInfo({username, email, birthday}){
+export default function UserInfo ({username, email, birthday}) {
 
   return(
     <Row className="justify-content-md-center">

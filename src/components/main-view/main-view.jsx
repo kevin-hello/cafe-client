@@ -45,7 +45,7 @@ class MainView extends React.Component {
     user: authData.user
     });
     localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user);
+    localStorage.setItem('user', JSON.stringify(authData.user));
     this.getCafes(authData.token);
     this.getAreas(authData.token);
   }
@@ -114,7 +114,7 @@ class MainView extends React.Component {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
-          return <ProfileView user={user} />
+          return <ProfileView user={user}/>
 
         }} />
         <Route path="/favorites" render={() => {

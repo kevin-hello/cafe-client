@@ -10,7 +10,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const BDAY_REGEX = /^(?:(?:19|20)[0-9]{2})-(0[1-9]|[12][0-9]|3[01])/;
 
 
-export default function UpdateUserForm() {
+export default function UpdateUserForm({user}) {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -91,7 +91,7 @@ export default function UpdateUserForm() {
       console.log(response.data);
       alert('Profile updated');
       localStorage.setItem('user',response.data);
-      window.open(`/profile`,'_self');
+      // window.open(`/profile`,'_self'); 
     }))       
     .catch(function (error){
       setIsLoading(false);  
