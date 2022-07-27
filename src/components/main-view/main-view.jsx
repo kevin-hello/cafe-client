@@ -42,10 +42,14 @@ class MainView extends React.Component {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
+    userID: authData.user._id,
     user: authData.user
+
     });
     localStorage.setItem('token', authData.token);
+    localStorage.setItem('userID', authData.user._id);
     localStorage.setItem('user', JSON.stringify(authData.user));
+
     this.getCafes(authData.token);
     this.getAreas(authData.token);
   }
@@ -81,11 +85,11 @@ class MainView extends React.Component {
   
   render(){
      let { cafes, areas } = this.props;
-     let { user } = this.state;
+     let { user, userID } = this.state;
 
     return (
       <Router>
-        <Menubar user={user}/>
+        <Menubar userID={userID}/>
         <Row className="main-view justify-content-md-center">
         <Route exact path="/" render={() => {
           if (!user) return <Col>
@@ -110,11 +114,11 @@ class MainView extends React.Component {
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>
         }} />
-        <Route path={`/profile`} render={() => {
+        <Route path={`/users/${userID}`} render={() => {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
-          return <ProfileView user={user}/>
+          return <ProfileView/>
 
         }} />
         <Route path="/favorites" render={() => {

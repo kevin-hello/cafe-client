@@ -12,9 +12,9 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView(props) {
-  const [userData, setUserData] = useState({});
-  const [updatedUser, setUpdatedUser] = useState({});
+export function ProfileView({}) {
+  const [userData, setUserData] = useState();
+
   
   const token = localStorage.getItem('token');
 
@@ -26,7 +26,9 @@ export function ProfileView(props) {
       })
       .then((response) => {
         setUserData(response.data);
-        setUpdatedUser(response.data);
+        localStorage.setItem('userData', JSON.stringify(response.data.user));
+        console.log(response.data);
+
       })
       .catch(function (error) {
         console.log(error);
@@ -37,7 +39,7 @@ export function ProfileView(props) {
     let accessToken = localStorage.getItem("token");
     let userData = localStorage.getItem("user");
     if (accessToken !== null && userData !== null) {
-      getUser(props.user, accessToken);
+      getUser(userData._id, accessToken);
       console.log(userData);
     }
   }, []);

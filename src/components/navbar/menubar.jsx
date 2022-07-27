@@ -6,7 +6,7 @@ import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
 import './menubar.scss';
 
-export function Menubar ({user, searchBarFilter}) {
+export function Menubar ({userID, searchBarFilter}) {
 
   const onLoggedOut = () => {
     localStorage.clear();
@@ -51,7 +51,7 @@ export function Menubar ({user, searchBarFilter}) {
               </Link>
               )}
               {isAuth() && (
-              <Link to={`/profile`}>
+              <Link to={`/users/${userID}`}>
               <Button style={{color:"white"}} className="nav-item" variant="link">Account</Button> 
               </Link>
               )}

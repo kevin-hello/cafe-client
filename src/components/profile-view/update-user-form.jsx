@@ -10,7 +10,7 @@ const EMAIL_REGEX = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
 const BDAY_REGEX = /^(?:(?:19|20)[0-9]{2})-(0[1-9]|[12][0-9]|3[01])/;
 
 
-export default function UpdateUserForm({user}) {
+export default function UpdateUserForm({userData}) {
   const userRef = useRef();
   const errRef = useRef();
 
@@ -75,9 +75,9 @@ export default function UpdateUserForm({user}) {
             return;
         }
             setIsLoading(true);
-            const user = localStorage.getItem('user');
             const token = localStorage.getItem('token');
-            axios.put(`https://cafe-app-la.herokuapp.com/users/${user._id}`,
+            const userData = JSON.parse(localStorage.getItem('user'));
+            axios.put(`https://cafe-app-la.herokuapp.com/users/${userData._id}`,
                 {
                     Username: username,
                     Password: password,
@@ -90,8 +90,9 @@ export default function UpdateUserForm({user}) {
       setIsLoading(false);
       console.log(response.data);
       alert('Profile updated');
-      localStorage.setItem('user',response.data);
-      // window.open(`/profile`,'_self'); 
+      localStorage.setItem('user', JSON.stringify(response.data));
+      const userData = JSON.parse(localStorage.getItem('user'));
+      window.open(`/users/${userData._id}`,'_self'); 
     }))       
     .catch(function (error){
       setIsLoading(false);  
