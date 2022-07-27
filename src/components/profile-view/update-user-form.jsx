@@ -76,8 +76,8 @@ export default function UpdateUserForm({userData}) {
         }
             setIsLoading(true);
             const token = localStorage.getItem('token');
-            const userData = JSON.parse(localStorage.getItem('user'));
-            axios.put(`https://cafe-app-la.herokuapp.com/users/${userData._id}`,
+            const userID = localStorage.getItem('userID');
+            axios.put(`https://cafe-app-la.herokuapp.com/users/${userID}`,
                 {
                     Username: username,
                     Password: password,
@@ -90,9 +90,10 @@ export default function UpdateUserForm({userData}) {
       setIsLoading(false);
       console.log(response.data);
       alert('Profile updated');
-      localStorage.setItem('user', JSON.stringify(response.data));
-      const userData = JSON.parse(localStorage.getItem('user'));
-      window.open(`/users/${userData._id}`,'_self'); 
+      localStorage.setItem('username',response.data.Username);
+      localStorage.setItem('userid', response.data._id)
+      const userID = localStorage.getItem('userID');
+      window.open(`/users/${userID}`,'_self'); 
     }))       
     .catch(function (error){
       setIsLoading(false);  

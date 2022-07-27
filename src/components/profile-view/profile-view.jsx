@@ -12,23 +12,24 @@ import  UpdateUserForm from './update-user-form';
 // styling 
 import './profile-view.scss';
 
-export function ProfileView({}) {
+export function ProfileView() {
   const [userData, setUserData] = useState();
-
-  
   const token = localStorage.getItem('token');
-
+  const userID = localStorage.getitem('userID');
+  
   const getUser = () => {
-    const user = localStorage.getItem('user');
     axios
-      .get(`https://cafe-app-la.herokuapp.com/users/${user._id}`, {
+      .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
         setUserData(response.data);
-        localStorage.setItem('userData', JSON.stringify(response.data.user));
         console.log(response.data);
-
+        console.log(userData.Username);
+        console.log(userData.Email);
+        console.log(userData.Birthday);
+        localStorage.setItem('username',response.data.Username);
+        localStorage.setItem('userID', response.data._id)
       })
       .catch(function (error) {
         console.log(error);
@@ -36,27 +37,24 @@ export function ProfileView({}) {
   };
 
   useEffect(() => {
-    let accessToken = localStorage.getItem("token");
-    let userData = localStorage.getItem("user");
-    if (accessToken !== null && userData !== null) {
-      getUser(userData._id, accessToken);
+      getUser();
       console.log(userData);
-    }
   }, []);
 
   const deleteUser = () => {
     const confirmation = window.confirm("Are you sure you want to delete your account?");
     if (confirmation) {
-      const userData = localStorage.getItem("user");
-      const token = localStorage.getItem("token");
-      axios.delete(`https://cafe-app-la.herokuapp.com/users/${userData._id}`,
+      const userID = localStorage.getItem('userID');
+      const username = localStorage.getItem('username')
+      axios.delete(`https://cafe-app-la.herokuapp.com/users/${userID}`,
       { headers: {Authorization: `Bearer ${token}`} }
       )
       .then((response) => {
         console.log(response);
 
-        alert("Account has been deleted.");
-        localStorage.removeItem('user');
+        alert(`${username} has been deleted.`);
+        localStorage.removeItem('userID');
+        localStorage.removeItem('username');
         localStorage.removeItem('token');
         window.open("/",'_self'); 
       })
@@ -68,8 +66,8 @@ export function ProfileView({}) {
 
     return (
       <Container className="profile-view">
-        <UserInfo username={userData.Username} email={userData.Email} birthday={userData.Birthday}/>
-        <UpdateUserForm user={userData}/>
+        {/* <UserInfo username={userData.Username} email={userData.Email} birthday={userData.Birthday}/> */}
+        <UpdateUserForm/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>

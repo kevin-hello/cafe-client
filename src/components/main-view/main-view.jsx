@@ -118,7 +118,7 @@ class MainView extends React.Component {
           if (!user) return (<Col>
           <LoginView cafes={cafes} onLoggedIn={user => this.onLoggedIn(user)} />
           </Col>)
-          return <ProfileView/>
+          return <ProfileView />
 
         }} />
         <Route path="/favorites" render={() => {
