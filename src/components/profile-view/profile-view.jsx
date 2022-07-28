@@ -35,6 +35,10 @@ export function ProfileView() {
       });
   };
 
+  const handleUpdate = (newUserData) => {
+    setUser(newUserData);
+  };
+
   useEffect(() => {
       getUser();
   }, []);
@@ -51,6 +55,7 @@ export function ProfileView() {
         console.log(response);
 
         alert(`${username} has been deleted.`);
+        localStorage.removeItem('user');
         localStorage.removeItem('userID');
         localStorage.removeItem('username');
         localStorage.removeItem('token');
@@ -65,7 +70,7 @@ export function ProfileView() {
     return (
       <Container className="profile-view">
         <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
-        <UpdateUserForm/>
+        <UpdateUserForm handleUpdate={handleUpdate}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
           <p>Do you want to delete your account?</p>
