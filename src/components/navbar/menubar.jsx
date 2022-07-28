@@ -51,7 +51,7 @@ export function Menubar ({userID, searchBarFilter}) {
               </Link>
               )}
               {isAuth() && (
-              <Link to={`/users/${userID}`}>
+              <Link to={`/profile`}>
               <Button style={{color:"white"}} className="nav-item" variant="link">Account</Button> 
               </Link>
               )}

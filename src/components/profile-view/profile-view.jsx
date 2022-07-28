@@ -13,21 +13,20 @@ import  UpdateUserForm from './update-user-form';
 import './profile-view.scss';
 
 export function ProfileView() {
-  const [userData, setUserData] = useState();
+  const [user, setUser] = useState({});
   const token = localStorage.getItem('token');
-  const userID = localStorage.getitem('userID');
   
   const getUser = () => {
+
+    const userID = localStorage.getItem('userID');
     axios
       .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((response) => {
-        setUserData(response.data);
+        setUser(response.data);
         console.log(response.data);
-        console.log(userData.Username);
-        console.log(userData.Email);
-        console.log(userData.Birthday);
+        localStorage.setItem('user', JSON.stringify(response.data));
         localStorage.setItem('username',response.data.Username);
         localStorage.setItem('userID', response.data._id)
       })
@@ -38,7 +37,6 @@ export function ProfileView() {
 
   useEffect(() => {
       getUser();
-      console.log(userData);
   }, []);
 
   const deleteUser = () => {
@@ -66,7 +64,7 @@ export function ProfileView() {
 
     return (
       <Container className="profile-view">
-        {/* <UserInfo username={userData.Username} email={userData.Email} birthday={userData.Birthday}/> */}
+        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
         <UpdateUserForm/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
@@ -77,12 +75,12 @@ export function ProfileView() {
     );
 
     }
-// ProfileView.propTypes = {
-//   user: propTypes.shape({
-//     Username: propTypes.string.isRequired,
-//     Password: propTypes.string.isRequired,
-//     Email: propTypes.string.isRequired,
-//     Birthday: propTypes.date,
-//     FavoriteCafes: propTypes.array
-//   }).isRequired,
-// }
+ProfileView.propTypes = {
+  user: propTypes.shape({
+    Username: propTypes.string.isRequired,
+    Password: propTypes.string.isRequired,
+    Email: propTypes.string.isRequired,
+    Birthday: propTypes.date,
+    FavoriteCafes: propTypes.array
+  }).isRequired,
+}
