@@ -2,11 +2,10 @@ import React from 'react';
 import { Col } from 'react-bootstrap';
 import { AreaCard } from '../area-card/area-card';
 
-function AreasList(props) {
-  const { areas } = props;
+function AreasList({areas}) {
 
 return(<>
-    {props.areas.map(a => (
+    {areas.map(a => (
     <Col className ="area-card-col"sm={12} md={6} key={a._id}>
       <AreaCard areas={a}/>
     </Col>

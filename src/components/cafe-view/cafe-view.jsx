@@ -19,9 +19,9 @@ constructor(props) {
 
   addFavoriteCafe() {
     const token = localStorage.getItem('token');
-    const username = localStorage.getItem('user');
+    const userID = localStorage.getItem('userID');
 
-    axios.post(`https://cafe-app-la.herokuapp.com/users/${username}/cafes/${this.props.cafe._id}`, {}, {
+    axios.post(`https://cafe-app-la.herokuapp.com/users/${userID}/cafes/${this.props.cafe._id}`, {}, {
       headers: { Authorization: `Bearer ${token}`},
       method: 'POST'
     })

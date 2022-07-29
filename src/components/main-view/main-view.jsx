@@ -7,6 +7,7 @@ import { CafeView } from "../cafe-view/cafe-view";
 import { RegistrationView } from "../registration-view/registration-view";
 import { AreaView } from "../area-view/area-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { FavoriteCafes } from "../favorite-cafes/favorite-cafes";
 import { Menubar } from "../navbar/menubar";
 import { Row, Col } from "react-bootstrap";
 
@@ -120,7 +121,7 @@ class MainView extends React.Component {
 
         }} />
         <Route path="/favorites" render={() => {
-          return <FavoriteCafes cafes={cafes}/>
+          return <FavoriteCafes user={user}/>
         }} />
         </Row>
       </Router>  
