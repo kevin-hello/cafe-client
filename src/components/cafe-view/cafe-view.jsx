@@ -50,7 +50,7 @@ componentDidMount(){
     console.log(cafeID);
     console.log(cafeName);
 
-    let isFavorited = favorites.some((cafeID, i) => favorites.indexOf(cafeID) === i);
+    let isFavorited = favorites.find(c => c._id === cafeID);
     console.log(isFavorited);
     if (!isFavorited) {
     const token = localStorage.getItem('token');
@@ -63,6 +63,7 @@ componentDidMount(){
     .then(response => {
       console.log(response);
       alert(`${cafeName} has been added to your favorites`)
+      this.getFavorites();
     })
     .catch(function(error){
       console.log(error);
