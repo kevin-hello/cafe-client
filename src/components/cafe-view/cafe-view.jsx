@@ -14,28 +14,66 @@ import './cafe-view.scss';
 export class CafeView extends React.Component {
 
 constructor(props) {
-  super(props);
+    super(props);
+    this.state={
+      FavoriteCafesList: [],
+    };
+}
+componentDidMount(){
+  this.getFavorites();
 }
 
+    getFavorites() {
+    const userID = localStorage.getItem('userID');
+    const token = localStorage.getItem('token');
+      axios
+        .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          this.setState({
+            FavoriteCafesList: response.data.FavoriteCafes
+          });
+          console.log(this.state.FavoriteCafesList);
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
   addFavoriteCafe() {
+
+    const favorites = this.state.FavoriteCafesList;
+    const cafeID = this.props.cafe._id;
+    const cafeName = this.props.cafe.Name;
+    console.log(favorites);
+    console.log(cafeID);
+    console.log(cafeName);
+
+    let isFavorited = favorites.some((cafeID, i) => favorites.indexOf(cafeID) === i);
+    console.log(isFavorited);
+    if (!isFavorited) {
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
-
-    axios.post(`https://cafe-app-la.herokuapp.com/users/${userID}/cafes/${this.props.cafe._id}`, {}, {
+    
+    axios.post(`https://cafe-app-la.herokuapp.com/users/${userID}/cafes/${cafeID}`, {}, {
       headers: { Authorization: `Bearer ${token}`},
       method: 'POST'
     })
     .then(response => {
-      alert(`${this.props.cafe.Name} has been added to your favorites`)
+      console.log(response);
+      alert(`${cafeName} has been added to your favorites`)
     })
     .catch(function(error){
       console.log(error);
     });
+  }
+  else { return alert(`${cafeName} is already in your favorites`)
+}
   };
 
   render() {
     const {cafe, onBackClick} = this.props;
-
     return (
       <Row className="cafe-view">
         <Col sm={12} md={4} className="cafe-exterior">
@@ -147,8 +185,7 @@ CafeView.propTypes = {
     Instagram: propTypes.string
   }).isRequired,
   user: propTypes.shape({
-    Username: propTypes.string.isRequired,
-    FavoriteCafes: propTypes.array.isRequired
+    FavoriteCafesList: propTypes.array.isRequired
   }).isRequired,
   addFavoriteCafe: propTypes.func.isRequired,
   onBackClick: propTypes.func.isRequired

@@ -1,90 +1,86 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
 import axios from 'axios';
+import propTypes from 'prop-types';
 
 // UI elements 
-import { Link } from "react-router-dom";
-import { Col, Row, Figure, Button } from "react-bootstrap";
+import {Button, Col, Row } from 'react-bootstrap';
+
+//card components 
+
+import { CafeCard } from '../cafe-card/cafe-card';
 
 // styling 
 import './favorite-cafes.scss';
 
-export function FavoriteCafes({user}) {
-  const [favoriteCafes, setFavoriteCafes] = useState([]);
-  const token = localStorage.getItem('token');
-  
-const getFavoriteCafes = () => {
-    axios
-      .get("https://cafe-app-la.herokuapp.com/cafes", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-      .then((response) => {
-        setFavoriteCafes(
-          response.data.filter((cafe) => {
-            return user.FavoriteCafes.includes(cafe._id);
-          })
-        );
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  };
+export class FavoriteCafes extends React.Component {
+  constructor() {
+    super();
+    this.state={
+      FavoriteCafesList: [],
+    };
+  }
 
-  useEffect(() => {
-    if (user) {
-      getFavoriteCafes();
-    }
-  }, [user]);
+  componentDidMount() {
+    this.getFavorites()
+  }
 
-
-    const removeFavoriteCafe = (id) => {
+  getFavorites() {
     const userID = localStorage.getItem('userID');
-    axios.delete(`https://cafe-app-la.herokuapp.com/users/${userID}/movies/${id}`,
-      { headers: { Authorization: `Bearer ${token}` } }
-  ).then((response) => {
-    alert("cafe has been removed from your favorites");
-    getFavoriteCafes();
-  })
-  .catch(function(error){
-    console.log(error);
-  });
+    const token = localStorage.getItem('token');
+      axios
+        .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((response) => {
+          this.setState({
+            FavoriteCafesList: response.data.FavoriteCafes
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
+
+  onRemoveFavorite = (e, cafe) => {
+    const userID = localStorage.getItem('userID');
+    const token = localStorage.getItem('token');
+    axios.delete(`https://cafe-app-la.herokuapp.com/users/${userID}/cafes/${cafe._id}`, 
+    { headers: { Authorization: `Bearer ${token}` } }
+    )
+    .then((response) => {
+      console.log(response);
+      alert(`${cafe.Name} has been removed from favorites`);
+      this.componentDidMount();
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
   }
 
 
+  render() {
+    const { FavoriteCafesList } = this.state;
     return (
-<>
- <Col>
-          <h4 className="text-center">Favorite Cafes</h4>
-        </Col>
-        {favoriteCafes.map(({ ImagePath, Name, _id }) => {
-          return (
-            <Row>
-              <Col
-                key={_id}
-              >
-                <Figure className="text-center">
-                  <Link to={`/cafes/${_id}`}>
-                    <Figure.Image
-                      style={{ width: "250px", height: "350px" }}
-                      src={ImagePath}
-                      alt={Name}
-                    />
-                  </Link>
-                  <Figure.Caption>{Name}</Figure.Caption>
-                </Figure>
-              </Col>
-              <Col md={12} style={{display: "flex", justifyContent: "center", paddingBottom: "100px" }}>
-                <Button
-                  style={{ marginTop: "20px"}}
-                  variant="dark"
-                  onClick={() => removeFavoriteCafe(_id)}
-                >
-                  Remove
-                </Button>
-              </Col>
-            </Row>
-          );
-        })}
-    </>
+        <div>
+        <h3>Favorite Cafes</h3>
+        <Row>
+         { FavoriteCafesList && FavoriteCafesList.map((cafe) => (
+        <Col md={4} key={cafe._id}>
+        <div className="favoriteCafeDiv" >
+        <CafeCard cafe={cafe} />
+        <Button bg="danger" variant="danger" className="removefav-button" value={cafe._id} onClick={(e) => this.onRemoveFavorite(e, cafe)}>
+        Delete From Favorites
+        </Button>
+        </div>
+        </Col> ))}
+        </Row>
+        </div>
     );
+  }
+}
 
-    }
+FavoriteCafes.propTypes = {
+  user: propTypes.shape({
+    FavoriteCafes: propTypes.array
+  }).isRequired
+}

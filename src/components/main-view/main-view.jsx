@@ -120,8 +120,8 @@ class MainView extends React.Component {
           return <ProfileView/>
 
         }} />
-        <Route path="/favorites" render={() => {
-          return <FavoriteCafes user={user}/>
+        <Route path="/favorites" render={({ history }) => {
+          return <FavoriteCafes cafes={cafes} onBackClick={() => history.goBack()}/>
         }} />
         </Row>
       </Router>  
