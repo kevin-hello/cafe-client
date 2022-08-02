@@ -5,6 +5,8 @@ import { GiCoffeeBeans } from 'react-icons/gi';
 import { FiWifi, FiWifiOff } from 'react-icons/fi';
 import { FaRestroom } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import LoadingSpinner from '../loading-spinner/loading-spinner';
+
 //UI components 
 import {Col, Row, Button} from 'react-bootstrap';
 //styling
@@ -17,6 +19,7 @@ constructor(props) {
     super(props);
     this.state={
       FavoriteCafesList: [],
+      isLoading: false,
     };
 }
 componentDidMount(){
@@ -53,6 +56,9 @@ componentDidMount(){
     let isFavorited = favorites.find(c => c._id === cafeID);
     console.log(isFavorited);
     if (!isFavorited) {
+    this.setState({
+            isLoading: true
+          });
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
     
@@ -61,11 +67,17 @@ componentDidMount(){
       method: 'POST'
     })
     .then(response => {
+    this.setState({
+            isLoading: false
+          });
       console.log(response);
       alert(`${cafeName} has been added to your favorites`)
       this.getFavorites();
     })
     .catch(function(error){
+    this.setState({
+            isLoading: false
+          });
       console.log(error);
     });
   }
@@ -75,8 +87,10 @@ componentDidMount(){
 
   render() {
     const {cafe, onBackClick} = this.props;
+    const {isLoading} = this.state;
     return (
       <Row className="cafe-view">
+        {isLoading && <LoadingSpinner text={'Adding to Favorites...'}/>}
         <Col sm={12} md={4} className="cafe-exterior">
           <img height = "auto" width="100%"  src={cafe.ImagePathExterior}/>
           </Col>

@@ -4,10 +4,9 @@ import propTypes from 'prop-types';
 
 // UI elements 
 import {Button, Col, Row } from 'react-bootstrap';
-
+import LoadingSpinner from '../loading-spinner/loading-spinner';
 //card components 
-
-import { CafeCard } from '../cafe-card/cafe-card';
+import { FavoriteCafeCard } from '../favorite-cafe-card/favorite-cafe-card';
 
 // styling 
 import './favorite-cafes.scss';
@@ -17,6 +16,8 @@ export class FavoriteCafes extends React.Component {
     super();
     this.state={
       FavoriteCafesList: [],
+      isLoading: false,
+      isRemoving: false,
     };
   }
 
@@ -27,16 +28,25 @@ export class FavoriteCafes extends React.Component {
   getFavorites() {
     const userID = localStorage.getItem('userID');
     const token = localStorage.getItem('token');
+    this.setState({
+            isLoading: true
+          });
       axios
         .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
           headers: { Authorization: `Bearer ${token}` },
         })
         .then((response) => {
           this.setState({
+            isLoading: false
+          });
+          this.setState({
             FavoriteCafesList: response.data.FavoriteCafes
           });
         })
         .catch(function (error) {
+          this.setState({
+            isLoading: false
+          });
           console.log(error);
         });
     }
@@ -44,34 +54,40 @@ export class FavoriteCafes extends React.Component {
   onRemoveFavorite = (e, cafe) => {
     const userID = localStorage.getItem('userID');
     const token = localStorage.getItem('token');
+    this.setState({
+            isRemoving: true
+          });
     axios.delete(`https://cafe-app-la.herokuapp.com/users/${userID}/cafes/${cafe._id}`, 
     { headers: { Authorization: `Bearer ${token}` } }
     )
     .then((response) => {
+      this.setState({
+            isRemoving: false
+          });
       console.log(response);
       alert(`${cafe.Name} has been removed from favorites`);
       this.componentDidMount();
     })
     .catch(function (error) {
+      this.setState({
+            isRemoving: false
+          });
       console.log(error);
     });
   }
 
 
   render() {
-    const { FavoriteCafesList } = this.state;
+    const { FavoriteCafesList, isLoading, isRemoving } = this.state;
     return (
-        <div>
+        <div className="favoriteCafesDiv">
+        {isLoading && <LoadingSpinner text={'Loading Favorites...'}/>}
+        {isRemoving && <LoadingSpinner text={'Removing Cafe...'}/>}
         <h3>Favorite Cafes</h3>
         <Row>
          { FavoriteCafesList && FavoriteCafesList.map((cafe) => (
-        <Col md={4} key={cafe._id}>
-        <div className="favoriteCafeDiv" >
-        <CafeCard cafe={cafe} />
-        <Button bg="danger" variant="danger" className="removefav-button" value={cafe._id} onClick={(e) => this.onRemoveFavorite(e, cafe)}>
-        Delete From Favorites
-        </Button>
-        </div>
+        <Col className="favoriteCafeCardDiv" md={4} key={cafe._id}>
+        <FavoriteCafeCard cafe={cafe} onRemoveFavorite={this.onRemoveFavorite}/>
         </Col> ))}
         </Row>
         </div>
