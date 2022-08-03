@@ -69,7 +69,7 @@ export function ProfileView() {
 
     return (
       <Container className="profile-view">
-        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
+        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday ? user.Birthday.split("T")[0] : user.Birthday}/>
         <UpdateUserForm handleUpdate={handleUpdate}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>

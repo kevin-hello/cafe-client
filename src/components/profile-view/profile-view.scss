@@ -1,10 +1,14 @@
+.profileContent{
+  width: 70%;
+  margin: 1rem 15%;
+}
+
 .update-user-form{
-  width: 60%;
-  margin: 1rem auto;
+  width: 70%;
+  margin: 1rem 15%;
   text-align: center;
   align-items: center;
   justify-content: center;
-  float: left;
   background-color: #DDCABB;
   padding: 1rem 2rem;
   border-radius: 5px;
@@ -12,12 +16,40 @@
 }
 
 .delete-div{
-width: 60%;
-float: left;
+width: 70%;
+margin: 1rem 15%;
 }
 .delete-div h5{
   color: red;
 }
 #delete{
   padding: 0.25rem 1rem .25rem 0.5rem;
+}
+
+
+
+@media (max-width: 992px) {
+.profileContent{
+  width: 80%;
+  margin: 1rem 9%;
+  font-size: 1rem;
+}
+
+
+.update-user-form{
+  width: 80%;
+  margin: 1rem 9%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background-color: #DDCABB;
+  padding: 0.75rem 1rem;
+  border-radius: 5px;
+  border: 0px solid black;
+}
+
+.delete-div{
+width: 80%;
+margin: 1rem 9%;
+}
 }
