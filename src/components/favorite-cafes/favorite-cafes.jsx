@@ -3,7 +3,7 @@ import axios from 'axios';
 import propTypes from 'prop-types';
 
 // UI elements 
-import {Button, Col, Row } from 'react-bootstrap';
+import { Col } from 'react-bootstrap';
 import LoadingSpinner from '../loading-spinner/loading-spinner';
 //card components 
 import { FavoriteCafeCard } from '../favorite-cafe-card/favorite-cafe-card';
@@ -75,22 +75,18 @@ export class FavoriteCafes extends React.Component {
       console.log(error);
     });
   }
-
-
   render() {
     const { FavoriteCafesList, isLoading, isRemoving } = this.state;
     return (
-        <div className="favoriteCafesDiv">
+        <>
+        <Col lg={12} className="text-center"><h3>Favorite Cafes</h3></Col>    
         {isLoading && <LoadingSpinner text={'Loading Favorites...'}/>}
         {isRemoving && <LoadingSpinner text={'Removing Cafe...'}/>}
-        <h3>Favorite Cafes</h3>
-        <Row>
-         { FavoriteCafesList && FavoriteCafesList.map((cafe) => (
-        <Col className="favoriteCafeCardDiv" md={4} key={cafe._id}>
+        {FavoriteCafesList && FavoriteCafesList.map((cafe) => (
+        <Col className="favoriteCafeCardDiv" md={12} lg={4} key={cafe._id}>
         <FavoriteCafeCard cafe={cafe} onRemoveFavorite={this.onRemoveFavorite}/>
         </Col> ))}
-        </Row>
-        </div>
+        </>
     );
   }
 }

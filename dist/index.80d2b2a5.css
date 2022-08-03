@@ -324,10 +324,6 @@ input[type="date"]:focus::-webkit-datetime-edit {
   padding: .25rem 1rem .25rem .5rem;
 }
 
-.favoriteCafesDiv h3 {
-  text-align: center;
-}
-
 .favoriteCafeCardDiv .card-text:nth-last-child(1) {
   padding-bottom: 1.6rem;
 }
@@ -338,6 +334,11 @@ input[type="date"]:focus::-webkit-datetime-edit {
   position: absolute;
   bottom: .8rem;
   left: 1.4rem;
+}
+
+.text-center h3 {
+  margin: 1rem;
+  font-size: 2rem;
 }
 
 .main-nav {
@@ -444,7 +445,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 .card-img-top {
   width: 100%;
-  height: 15vw;
+  height: 25vw;
   object-fit: cover;
 }
 
@@ -496,6 +497,12 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 #details:hover {
   color: #fff;
+}
+
+@media (max-width: 992px) {
+  .card-img-top {
+    height: 50vw;
+  }
 }
 
 .area-description {
