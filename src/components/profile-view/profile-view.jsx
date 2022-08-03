@@ -15,9 +15,8 @@ import './profile-view.scss';
 export function ProfileView() {
   const [user, setUser] = useState({});
   const token = localStorage.getItem('token');
-  
-  const getUser = () => {
 
+  const getUser = () => {
     const userID = localStorage.getItem('userID');
     axios
       .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
@@ -67,9 +66,11 @@ export function ProfileView() {
       })};
   }
 
+
+
     return (
       <Container className="profile-view">
-        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday ? user.Birthday.split("T")[0] : user.Birthday}/>
+        <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
         <UpdateUserForm handleUpdate={handleUpdate}/>
         <div className="delete-div">
           <h5>Danger Zone</h5>
