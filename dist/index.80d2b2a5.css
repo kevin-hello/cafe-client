@@ -121,6 +121,13 @@ form #register {
   box-shadow: 0 0 0 2px #79b1ff;
 }
 
+@media (max-width: 992px) {
+  #login-form {
+    width: 85%;
+    padding: .5rem 1rem;
+  }
+}
+
 
 
 .register-form {
@@ -268,6 +275,13 @@ input[type="date"]:focus::-webkit-datetime-edit {
 #success-button {
   margin: .5rem;
   padding: .25rem .75rem;
+}
+
+@media (max-width: 992px) {
+  .register-form {
+    width: 85%;
+    padding: .5rem 1rem;
+  }
 }
 
 .simple-cafe-title {

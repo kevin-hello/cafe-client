@@ -148,3 +148,13 @@ input[type=date]:focus::-webkit-datetime-edit {
   margin: 0.5rem;
   padding: 0.25rem 0.75rem;
 }
+
+@media (max-width: 992px) {
+.register-form{
+  width: 85%;
+  padding: 0.5rem 1rem;
+}
+
+
+
+}
