@@ -14,7 +14,7 @@ export class BasicCafeCard extends React.Component {
     return (
   <Link to={`/cafes/${cafe._id}`} className="card-content">
     <Card className="h-100">
-      <Card.Img variant="top" src={cafe.ImagePathExterior}/>
+      <Card.Img className="basic-card-img" variant="top" src={cafe.ImagePathExterior}/>
       <Card.Body className="d-flex flex-column">
         <Card.Title className="simple-cafe-title">{cafe.Name}</Card.Title>
         <Link to={`/cafes/${cafe._id}`}>

@@ -128,7 +128,58 @@ form #register {
   }
 }
 
+.cafe-view img {
+  height: 25vw;
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
 
+.cafe-details, .cafe-view h2, .cafe-area {
+  margin: .25rem 1rem;
+}
+
+#back {
+  background-color: #a99789;
+  border-color: #a99789;
+  margin: .5rem .25rem;
+  padding: .2rem .5rem;
+}
+
+#back:hover {
+  background-color: #948578;
+  border-color: #948578;
+}
+
+#back:focus {
+  box-shadow: 0 0 0 .15rem #a99789a8;
+}
+
+#favcafe {
+  background-color: #e24b5a;
+  border-color: #e24b5a;
+  margin: .5rem .25rem;
+  padding: .2rem .5rem;
+}
+
+#favcafe:hover {
+  background-color: #b53a46;
+  border-color: #b53a46;
+}
+
+#favcafe:focus {
+  box-shadow: 0 0 0 .15rem #a2343fbd;
+}
+
+@media (max-width: 768px) {
+  .cafe-view img {
+    height: 65vw;
+  }
+
+  .cafe-exterior, .cafe-misc {
+    display: none;
+  }
+}
 
 .register-form {
   width: 60%;
@@ -288,18 +339,35 @@ input[type="date"]:focus::-webkit-datetime-edit {
   font-size: .9rem;
 }
 
+.card basic-card-img {
+  width: 100%;
+  height: 25vw;
+  object-fit: cover;
+}
+
+@media (max-width: 992px) {
+  .area-cafe-cards .basic-card-img {
+    height: 50vw;
+  }
+}
+
 .area-name {
-  margin-top: .5rem;
+  margin: .5rem 1rem .25rem;
+}
+
+.area-description {
+  margin: 0 1rem;
 }
 
 .area-cafes h4 {
+  margin: 1rem;
   font-size: 1.15rem;
 }
 
 #return {
   background-color: #a99789;
   border-color: #a99789;
-  margin: .5rem 0;
+  margin: .35rem 1rem;
   padding: .2rem .5rem;
 }
 
@@ -543,7 +611,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 @media (max-width: 992px) {
-  .card-img-top {
+  .cafe-card-div .card-img-top {
     height: 50vw;
   }
 }

@@ -1,0 +1,49 @@
+.cafe-view img{
+height: 25vw;
+width: 100%;
+height: 25vw;
+object-fit: cover;
+}
+
+.cafe-details, .cafe-view h2, .cafe-area {
+  margin: 0.25rem 1rem;
+}
+
+#back{
+margin: 0.5rem 0.25rem;
+padding: 0.2rem 0.5rem;
+background-color:#A99789;
+border-color: #A99789;
+}
+
+#back:hover{
+background-color:#948578;
+border-color: #948578;
+}
+#back:focus{
+box-shadow: 0 0 0 0.15rem #a99789a8;
+}
+
+#favcafe{
+margin: 0.5rem 0.25rem;
+padding: 0.2rem 0.5rem;
+background-color:#e24b5a;
+border-color: #e24b5a;
+}
+
+#favcafe:hover{
+background-color:#B53A46;
+border-color: #B53A46;
+}
+#favcafe:focus{
+box-shadow: 0 0 0 0.15rem #a2343fbd;
+}
+
+@media (max-width: 768px) {
+.cafe-view img {
+    height: 65vw;
+}
+.cafe-exterior, .cafe-misc {
+  display: none;
+}
+}
