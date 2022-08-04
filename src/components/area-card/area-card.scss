@@ -1,11 +1,19 @@
 .area-description{
   font-size: 0.85rem;
 }
-.main-view .area-card-col{
-  margin-top: 0.25rem;
-  padding: 0.25rem;
-}
-
 .area-description {
   padding-bottom: 10px;
+}
+
+.main-view .area-card-col{
+  margin-top: 0.25rem;
+}
+
+.area-card-col .area-card{
+  margin: 1.5rem;
+}
+
+.areas-header h2{
+  font-size: 3rem;
+  margin: 1rem 0 -1rem 0;
 }

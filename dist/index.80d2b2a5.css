@@ -447,6 +447,12 @@ input[type="date"]:focus::-webkit-datetime-edit {
   left: 1.4rem;
 }
 
+@media (max-width: 992px) {
+  .favoriteCafeCardDiv .card-img-top {
+    height: 50vw;
+  }
+}
+
 .text-center h3 {
   margin: 1rem;
   font-size: 2rem;
@@ -617,16 +623,21 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .area-description {
+  padding-bottom: 10px;
   font-size: .85rem;
 }
 
 .main-view .area-card-col {
   margin-top: .25rem;
-  padding: .25rem;
 }
 
-.area-description {
-  padding-bottom: 10px;
+.area-card-col .area-card {
+  margin: 1.5rem;
+}
+
+.areas-header h2 {
+  margin: 1rem 0 -1rem;
+  font-size: 3rem;
 }
 
 .main-view .cafe-card-div {

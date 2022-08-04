@@ -11,7 +11,7 @@ export class AreaCard extends React.Component {
   render() {
     const { areas } = this.props;
     return (
-    <Card className="h-100 area-card">
+    <Card className="h-100 w-100 area-card">
       <Card.Body className="d-flex flex-column">
         <Link to={`/areas/${areas.AreaName}`} className="card-content">
         <Card.Title className="area-title">{areas.AreaName}</Card.Title>
