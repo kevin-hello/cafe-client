@@ -620,8 +620,13 @@ input[type="date"]:focus::-webkit-datetime-edit {
   font-size: .85rem;
 }
 
-.area-card-col {
-  margin-top: .75rem;
+.main-view .area-card-col {
+  margin-top: .25rem;
+  padding: .25rem;
+}
+
+.area-description {
+  padding-bottom: 10px;
 }
 
 .main-view .cafe-card-div {
