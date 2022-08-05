@@ -1,5 +1,5 @@
-.favoriteCafeCardDiv .card-text:nth-last-child(1) {
-  padding-bottom: 1.6rem;
+.favoriteCafeCardDiv{
+  margin-bottom: 1.75rem;
 }
 
 .favoriteCafeCardDiv .removefav-button{
@@ -8,6 +8,10 @@
   position: absolute;
   bottom: 0.8rem;
   left: 1.4rem;
+}
+
+.favoriteCafeCardDiv .card{
+  margin: 1.5rem;
 }
 
 @media (max-width: 992px) {

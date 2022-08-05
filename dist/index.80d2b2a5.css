@@ -435,8 +435,8 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 }
 
-.favoriteCafeCardDiv .card-text:nth-last-child(1) {
-  padding-bottom: 1.6rem;
+.favoriteCafeCardDiv {
+  margin-bottom: 1.75rem;
 }
 
 .favoriteCafeCardDiv .removefav-button {
@@ -447,6 +447,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
   left: 1.4rem;
 }
 
+.favoriteCafeCardDiv .card {
+  margin: 1.5rem;
+}
+
 @media (max-width: 992px) {
   .favoriteCafeCardDiv .card-img-top {
     height: 50vw;
@@ -454,7 +458,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .text-center h3 {
-  margin: 1rem;
+  margin: 1.5rem 0 -.75rem;
   font-size: 2rem;
 }
 

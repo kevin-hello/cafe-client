@@ -16,6 +16,8 @@ import { setCafes, setAreas } from '../../actions/actions';
 import CafesList from '../cafes-list/cafes-list';
 import AreasList from "../areas-list/areas-list";
 
+import LoadingSpinner from "../loading-spinner/loading-spinner";
+
 import "./main-view.scss";
 import { connect } from "react-redux";
 
@@ -25,7 +27,8 @@ class MainView extends React.Component {
     super();
 
     this.state = {
-    user: null
+    user: null,
+    isLoading: false,
     };
   }
 
@@ -54,40 +57,61 @@ class MainView extends React.Component {
   }
 
   getCafes(token) {
+    this.setState({
+            isLoading: true
+          });
     axios.get("https://cafe-app-la.herokuapp.com/cafes", 
     {
     headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
+      this.setState({
+            isLoading: false
+          });
       // Assign the result to the state
         this.props.setCafes(response.data);
     })
     .catch(function (error) {
+      this.setState({
+            isLoading: false
+          });
       console.log(error);
     });
   }
 
     getAreas(token) {
+    this.setState({
+            isLoading: true
+          });
     axios.get("https://cafe-app-la.herokuapp.com/areas", 
     {
     headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
+      this.setState({
+            isLoading: false
+          });
       // Assign the result to the state
       this.props.setAreas(response.data);
+      
     })
     .catch(function (error) {
+      this.setState({
+            isLoading: false
+          });
       console.log(error);
+      
     });
   }
 
   
   render(){
      let { cafes, areas } = this.props;
-     let { user } = this.state;
+     let { user, isLoading } = this.state;
 
     return (
       <Router>
+        {isLoading && <LoadingSpinner text={'Loading...'}/>}
         <Menubar/>
         <Row className="main-view justify-content-md-center">
         <Route exact path="/" render={() => {
