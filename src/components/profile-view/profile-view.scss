@@ -9,10 +9,10 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: #DDCABB;
+  background-color: var(--light-primary-color);
   padding: 1rem 2rem;
   border-radius: 5px;
-  border: 0px solid black;
+  border: 0px solid var(--primary-color);
 }
 
 .delete-div{
@@ -20,7 +20,7 @@ width: 70%;
 margin: 1rem 15%;
 }
 .delete-div h5{
-  color: red;
+  color: var(--delete-color);
 }
 #delete{
   padding: 0.25rem 1rem .25rem 0.5rem;
@@ -39,13 +39,9 @@ margin: 1rem 15%;
 .update-user-form{
   width: 80%;
   margin: 1rem 9%;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  background-color: #DDCABB;
   padding: 0.75rem 1rem;
-  border-radius: 5px;
-  border: 0px solid black;
+
+
 }
 
 .delete-div{

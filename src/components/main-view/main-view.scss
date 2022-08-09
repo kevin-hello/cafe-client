@@ -1,14 +1,71 @@
+:root{
+--primary-color:#A99789;
+--secondary-color:#fff;
+--accent-color:#fff;
+
+--lighter-primary-color: #BFB1A7;
+--lightest-primary-color: #D4CBC4;
+
+--darker-primary-color: #9B8575;
+--darkest-primary-color: #8C7360;
+
+--navbar-color:#A99789;
+
+--loading-spinner-color: #D4CBC4;
+--loading-spinner-background-color: rgba(0,0,0,0.6);
+--loading-spinner-color-shadow: #000;
+
+--primary-font-color:#000;
+--secondary-font-color:#808080;
+
+--card-color:#fff;
+--card-hover-color:#D4CBC4;
+
+--favorite-button:#e24b5a;
+--favorite-button-hover:#B53A46;
+--favorite-button-focus:#a2343fbd;
+
+--delete-color: #C90000;
+
+--back-button:#A99789;
+--back-button-hover:#9B8575;
+--back-button-focus:#8C7360;
+
+--details-button:#A99789;
+--details-button-hover:#9B8575;
+--details-button-focus:#8C7360;
+}
+ 
+ 
+ 
+ 
  .main-view .cafe-card-div {
   margin: 20px 0;
   padding: 0 20px;
   }
 
 .card:hover{
-  transition: ease-in;
-  transition-duration : 200ms ;
-  background-color: #c8e0f4;
+  -webkit-transition: all 0.2s ease-in;
+  -moz-transition: all 0.2s ease-in;
+  -ms-transition: all 0.2s ease-in;
+  -o-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  background-color: var(--card-hover-color);
+  border: 1px solid var(--accent-color);
+}
+.card:hover img {
   opacity: 90%;
-  border: 1px solid #fff;
+}
+
+.card:hover #details, .card:hover .hours-text, .card:hover .cafe-details{
+  color: var(--primary-font-color);
+}
+.card:hover .area-icon, .card:hover .card-icons{
+ fill: var(--primary-font-color);
+}
+
+.card:hover #wifi {
+color: var(--primary-font-color);
 }
 
 .search-bar{

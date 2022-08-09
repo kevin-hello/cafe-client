@@ -13,14 +13,14 @@
 #return{
 margin: 0.35rem 1rem;
 padding: 0.2rem 0.5rem;
-background-color:#A99789;
-border-color: #A99789;
+background-color: var(--back-button);
+border-color: var(--back-button);
 }
 
 #return:hover{
-background-color:#948578;
-border-color: #948578;
+background-color: var(--back-button-hover);
+border-color: var(--back-button-hover);
 }
 #return:focus{
-box-shadow: 0 0 0 0.15rem #a99789a8;
+box-shadow: 0 0 0 0.15rem var(--back-button-focus);
 }

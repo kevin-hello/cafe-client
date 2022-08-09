@@ -8,8 +8,8 @@
   content: " ";
   width: 64px;
   height: 64px;
-  border: 6px solid #ead2bf;
-  border-color: #ead2bf #0000;
+  border: 6px solid var(--loading-spinner-color);
+  border-color: var(--loading-spinner-color) transparent var(--loading-spinner-color) transparent;
   border-radius: 50%;
   animation: lds-dual-ring 1.2s linear infinite;
   display: block;
@@ -34,15 +34,15 @@
 }
 
 .spinner-styles h2 {
-  color: #ead2bf;
-  text-shadow: 1px 1px #000;
+  color: var(--loading-spinner-color);
+  text-shadow: 1px 1px var(--loading-spinner-color-shadow);
 }
 
 .overlay {
   width: 100%;
   height: 100%;
+  background-color: var(--loading-spinner-background-color);
   z-index: 1;
-  background-color: #0009;
   position: fixed;
   top: 0;
   left: 0;
@@ -51,8 +51,8 @@
 #login-form {
   width: 60%;
   text-align: center;
-  background-color: #ddcabb;
-  border: 0 solid #000;
+  background-color: var(--lightest-primary-color);
+  border: 0px solid var(--primary-color);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -118,7 +118,7 @@ form #register {
 }
 
 .float-label input:focus {
-  box-shadow: 0 0 0 2px #79b1ff;
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 @media (max-width: 992px) {
@@ -140,38 +140,38 @@ form #register {
 }
 
 #back {
-  background-color: #a99789;
-  border-color: #a99789;
+  background-color: var(--back-button);
+  border-color: var(--back-button);
   margin: .5rem .25rem;
   padding: .2rem .5rem;
 }
 
 #back:hover {
-  background-color: #948578;
-  border-color: #948578;
+  background-color: var(--back-button-hover);
+  border-color: var(--back-button-hover);
 }
 
 #back:focus {
-  box-shadow: 0 0 0 .15rem #a99789a8;
+  box-shadow: 0 0 0 .15rem var(--back-button-focus);
 }
 
 #favcafe {
-  background-color: #e24b5a;
-  border-color: #e24b5a;
+  background-color: var(--favorite-button);
+  border-color: var(--favorite-button);
   margin: .5rem .25rem;
   padding: .2rem .5rem;
 }
 
 #favcafe:hover {
-  background-color: #b53a46;
-  border-color: #b53a46;
+  background-color: var(--favorite-button-hover);
+  border-color: var(--favorite-button-hover);
 }
 
 #favcafe:focus {
-  box-shadow: 0 0 0 .15rem #a2343fbd;
+  box-shadow: 0 0 0 .15rem var(--favorite-button-focus);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
   .cafe-view img {
     height: 65vw;
   }
@@ -184,8 +184,8 @@ form #register {
 .register-form {
   width: 60%;
   text-align: center;
-  background-color: #ddcabb;
-  border: 0 solid #000;
+  background-color: var(--lightest-primary-color);
+  border: 0px solid var(--primary-color);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -263,7 +263,7 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
   background: #fff;
   border-radius: .5rem;
   padding: .2rem .05rem;
-  font-size: .6rem;
+  font-size: .85rem;
   position: relative;
   bottom: -10px;
 }
@@ -365,19 +365,19 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 #return {
-  background-color: #a99789;
-  border-color: #a99789;
+  background-color: var(--back-button);
+  border-color: var(--back-button);
   margin: .35rem 1rem;
   padding: .2rem .5rem;
 }
 
 #return:hover {
-  background-color: #948578;
-  border-color: #948578;
+  background-color: var(--back-button-hover);
+  border-color: var(--back-button-hover);
 }
 
 #return:focus {
-  box-shadow: 0 0 0 .15rem #a99789a8;
+  box-shadow: 0 0 0 .15rem var(--back-button-focus);
 }
 
 .profileContent {
@@ -388,8 +388,8 @@ input[type="date"]:focus::-webkit-datetime-edit {
 .update-user-form {
   width: 70%;
   text-align: center;
-  background-color: #ddcabb;
-  border: 0 solid #000;
+  background-color: var(--light-primary-color);
+  border: 0px solid var(--primary-color);
   border-radius: 5px;
   justify-content: center;
   align-items: center;
@@ -403,7 +403,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .delete-div h5 {
-  color: red;
+  color: var(--delete-color);
 }
 
 #delete {
@@ -419,12 +419,6 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
   .update-user-form {
     width: 80%;
-    text-align: center;
-    background-color: #ddcabb;
-    border: 0 solid #000;
-    border-radius: 5px;
-    justify-content: center;
-    align-items: center;
     margin: 1rem 9%;
     padding: .75rem 1rem;
   }
@@ -463,7 +457,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .main-nav {
-  background-color: #a99789;
+  background-color: var(--navbar-color);
 }
 
 .search-input {
@@ -586,7 +580,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .cafe-details {
-  color: gray;
+  color: var(--secondary-font-color);
   font-size: .7em;
 }
 
@@ -595,19 +589,19 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .hours-text {
-  color: gray;
+  color: var(--secondary-font-color);
   margin-bottom: .65rem;
   margin-left: 23px;
   font-size: .7em;
 }
 
 .card-content, .card-content:hover {
-  color: #000;
+  color: var(--primary-font-color);
   text-decoration: none;
 }
 
 #details {
-  color: #a99789;
+  color: var(--details-button);
   border: 0 solid #0000;
   padding: 0%;
   font-size: .7em;
@@ -617,7 +611,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 #details:hover {
-  color: #fff;
+  color: var(--details-button-hover);
 }
 
 @media (max-width: 992px) {
@@ -635,13 +629,43 @@ input[type="date"]:focus::-webkit-datetime-edit {
   margin-top: .25rem;
 }
 
-.area-card-col .area-card {
-  margin: 1.5rem;
+.area-card-col .card {
+  margin-left: 1rem;
+  margin-right: 1rem;
 }
 
 .areas-header h2 {
-  margin: 1rem 0 -1rem;
+  text-align: center;
+  margin: 1rem 0 -.75rem;
   font-size: 3rem;
+}
+
+:root {
+  --primary-color: #a99789;
+  --secondary-color: #fff;
+  --accent-color: #fff;
+  --lighter-primary-color: #bfb1a7;
+  --lightest-primary-color: #d4cbc4;
+  --darker-primary-color: #9b8575;
+  --darkest-primary-color: #8c7360;
+  --navbar-color: #a99789;
+  --loading-spinner-color: #d4cbc4;
+  --loading-spinner-background-color: #0009;
+  --loading-spinner-color-shadow: #000;
+  --primary-font-color: #000;
+  --secondary-font-color: gray;
+  --card-color: #fff;
+  --card-hover-color: #d4cbc4;
+  --favorite-button: #e24b5a;
+  --favorite-button-hover: #b53a46;
+  --favorite-button-focus: #a2343fbd;
+  --delete-color: #c90000;
+  --back-button: #a99789;
+  --back-button-hover: #9b8575;
+  --back-button-focus: #8c7360;
+  --details-button: #a99789;
+  --details-button-hover: #9b8575;
+  --details-button-focus: #8c7360;
 }
 
 .main-view .cafe-card-div {
@@ -650,10 +674,26 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 .card:hover {
-  opacity: .9;
-  background-color: #c8e0f4;
-  border: 1px solid #fff;
+  -o-transition: all .2s ease-in;
+  background-color: var(--card-hover-color);
+  border: 1px solid var(--accent-color);
   transition: all .2s ease-in;
+}
+
+.card:hover img {
+  opacity: .9;
+}
+
+.card:hover #details, .card:hover .hours-text, .card:hover .cafe-details {
+  color: var(--primary-font-color);
+}
+
+.card:hover .area-icon, .card:hover .card-icons {
+  fill: var(--primary-font-color);
+}
+
+.card:hover #wifi {
+  color: var(--primary-font-color);
 }
 
 .search-bar {

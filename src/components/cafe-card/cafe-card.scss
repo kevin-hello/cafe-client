@@ -17,29 +17,29 @@
 }
 .cafe-details{
   font-size: 0.7em;
-  color: #808080;
+  color: var(--secondary-font-color);
 }
 .cafe-details .card-text{
   margin-bottom: 5px;
 }
 .hours-text {
   font-size: 0.7em;
-  color: #808080;
+  color: var(--secondary-font-color);
   margin-left: 23px;
   margin-bottom: 0.65rem;
 }
 
 .card-content{
   text-decoration: none;
-  color:black;
+  color: var(--primary-font-color);
 }
 .card-content:hover {
   text-decoration: none;
-  color:black;
+  color: var(--primary-font-color);
 }
 
 #details {
-  color:#A99789;
+  color:var(--details-button);
   padding:0%;
   border: 0px solid transparent;
   font-size: 0.7em;
@@ -49,7 +49,7 @@
 }
 
 #details:hover{
-  color:#FFF
+  color:var(--details-button-hover);
 }
 
 @media (max-width: 992px) {

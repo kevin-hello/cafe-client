@@ -6,7 +6,7 @@ import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 
 import './menubar.scss';
 
-export function Menubar ({userID, searchBarFilter}) {
+export function Menubar ({ searchBarFilter }) {
 
   const onLoggedOut = () => {
     localStorage.clear();

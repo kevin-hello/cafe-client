@@ -4,10 +4,10 @@
   text-align: center;
   align-items: center;
   justify-content: center;
-  background-color: #DDCABB;
+  background-color: var(--lightest-primary-color);
   padding: 1rem 2rem;
   border-radius: 5px;
-  border: 0px solid black;
+  border: 0px solid var(--primary-color);
 }
 
 
@@ -69,7 +69,7 @@ form #register{
 }
 
 .float-label input:focus{
-  box-shadow: 0 0 0 2px #79b1ff;
+  box-shadow: 0 0 0 2px var(--primary-color);
 }
 
 @media (max-width: 992px) {

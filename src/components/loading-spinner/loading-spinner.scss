@@ -9,8 +9,8 @@
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  border: 6px solid #ead2bf;
-  border-color: #ead2bf transparent #ead2bf transparent;
+  border: 6px solid var(--loading-spinner-color);
+  border-color: var(--loading-spinner-color) transparent var(--loading-spinner-color) transparent;
   animation: lds-dual-ring 1.2s linear infinite;
 }
 @keyframes lds-dual-ring {
@@ -31,8 +31,8 @@
 }
 
 .spinner-styles h2 {
-  color: #ead2bf;
-  text-shadow: 1px 1px #000;
+  color: var(--loading-spinner-color);
+  text-shadow: 1px 1px var(--loading-spinner-color-shadow);
 }
 .overlay{
   position: fixed;
@@ -40,6 +40,6 @@
   left: 0px;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,0.6);
+  background-color: var(--loading-spinner-background-color);
   z-index: 1;
 }

@@ -91,16 +91,16 @@ componentDidMount(){
     return (
       <Row className="cafe-view">
         {isLoading && <LoadingSpinner text={'Adding to Favorites...'}/>}
-        <Col sm={12} md={4} className="cafe-exterior">
+        <Col md={12} lg={4} className="cafe-exterior">
           <img height = "auto" width="100%"  src={cafe.ImagePathExterior}/>
           </Col>
-          <Col sm={12} md={4} className="cafe-interior">
+          <Col md={12} lg={4} className="cafe-interior">
           <img height = "auto" width="100%"  src={cafe.ImagePathInterior}/>
           </Col>
-          <Col sm={12} md={4} className="cafe-misc">
+          <Col md={12} lg={4} className="cafe-misc">
           <img height = "auto" width="100%"  src={cafe.ImagePathMisc}/>
           </Col>
-          <Col sm={12} md={8}>
+          <Col md={12} lg={8}>
           <h2>{cafe.Name}</h2>
         <div className="cafe-area">
           <Link to={`/areas/${cafe.Area.Name}`}><span className="value">{cafe.Area.Name}</span>

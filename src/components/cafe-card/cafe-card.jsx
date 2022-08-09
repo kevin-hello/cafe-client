@@ -46,11 +46,13 @@ export class CafeCard extends React.Component {
               {cafe.Wifi == true ? 
               <FiWifi
               className="card-icons"
+              id="wifi"
               color="#007BFF"
               size="1.2em"
               /> : 
               <FiWifiOff
               className="card-icons"
+              id="wifi"
               color="#b8b7b7"
               size="1.2em"
               />}
