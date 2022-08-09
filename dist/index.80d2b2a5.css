@@ -388,7 +388,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 .update-user-form {
   width: 70%;
   text-align: center;
-  background-color: var(--light-primary-color);
+  background-color: var(--lightest-primary-color);
   border: 0px solid var(--primary-color);
   border-radius: 5px;
   justify-content: center;
