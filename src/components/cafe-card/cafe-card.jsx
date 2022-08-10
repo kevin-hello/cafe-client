@@ -2,9 +2,8 @@ import React from 'react';
 import propTypes from 'prop-types';
 import {Button, Card} from 'react-bootstrap';
 import { GiCoffeeBeans } from 'react-icons/gi';
-import { FiWifi, FiWifiOff } from 'react-icons/fi';
 import { FaMapMarkerAlt, FaRestroom } from 'react-icons/fa';
-import { MdOutlineKeyboardArrowRight } from 'react-icons/md';
+import { MdOutlineKeyboardArrowRight, MdWifiOff, MdWifi } from 'react-icons/md';
 
 import './cafe-card.scss';
 
@@ -44,13 +43,13 @@ export class CafeCard extends React.Component {
         <Card.Text>
             {""}
               {cafe.Wifi == true ? 
-              <FiWifi
+              <MdWifi
               className="card-icons"
               id="wifi"
               color="#007BFF"
               size="1.2em"
               /> : 
-              <FiWifiOff
+              <MdWifiOff
               className="card-icons"
               id="wifi"
               color="#b8b7b7"
