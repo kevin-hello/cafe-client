@@ -15,7 +15,7 @@ export class FavoriteCafeCard extends React.Component {
   render() {
     const { cafe, onRemoveFavorite } = this.props;
     return (
-    <Card className="h-100 w-100">
+    <Card className="h-100">
       <Link to={`/cafes/${cafe._id}`} className="card-content">
         <Card.Img variant="top" src={cafe.ImagePathExterior}/>
       </Link>
