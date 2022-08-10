@@ -610,10 +610,6 @@ input[type="date"]:focus::-webkit-datetime-edit {
   right: 10px;
 }
 
-#details:hover {
-  color: var(--details-button-hover);
-}
-
 @media (max-width: 992px) {
   .cafe-card-div .card-img-top {
     height: 50vw;
@@ -648,6 +644,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   --lightest-primary-color: #d4cbc4;
   --darker-primary-color: #9b8575;
   --darkest-primary-color: #8c7360;
+  --even-darker-primary-color: #745f50;
   --navbar-color: #a99789;
   --loading-spinner-color: #d4cbc4;
   --loading-spinner-background-color: #0009;
@@ -663,9 +660,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   --back-button: #a99789;
   --back-button-hover: #9b8575;
   --back-button-focus: #8c7360;
-  --details-button: #a99789;
-  --details-button-hover: #9b8575;
-  --details-button-focus: #8c7360;
+  --details-button: #8c7360;
 }
 
 .main-view .cafe-card-div {
