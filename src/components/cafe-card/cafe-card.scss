@@ -53,3 +53,18 @@
     height: 50vw;
 }
 }
+
+@media (max-width: 576px) {
+.card .hours-text, #details{
+  font-size: medium;
+}
+.cafe-details .card-text {
+  font-size: larger;
+}
+.area-text{
+  font-size: large;
+}
+.card-title{
+  font-size: x-large;
+}
+}

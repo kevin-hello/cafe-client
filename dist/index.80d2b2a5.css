@@ -128,6 +128,13 @@ form #register {
   }
 }
 
+@media (max-width: 576px) {
+  .register-form {
+    width: 95%;
+    padding: .5rem 1rem;
+  }
+}
+
 .cafe-view img {
   height: 25vw;
   width: 100%;
@@ -335,6 +342,13 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 }
 
+@media (max-width: 576px) {
+  .register-form {
+    width: 95%;
+    padding: .5rem 1rem;
+  }
+}
+
 .simple-cafe-title {
   font-size: .9rem;
 }
@@ -448,6 +462,24 @@ input[type="date"]:focus::-webkit-datetime-edit {
 @media (max-width: 992px) {
   .favoriteCafeCardDiv .card-img-top {
     height: 50vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .favoriteCafeCardDiv .removefav-button, .card .hours-text, #details {
+    font-size: medium;
+  }
+
+  .cafe-details .card-text {
+    font-size: larger;
+  }
+
+  .area-text {
+    font-size: large;
+  }
+
+  .card-title {
+    font-size: x-large;
   }
 }
 
@@ -613,6 +645,24 @@ input[type="date"]:focus::-webkit-datetime-edit {
 @media (max-width: 992px) {
   .cafe-card-div .card-img-top {
     height: 50vw;
+  }
+}
+
+@media (max-width: 576px) {
+  .card .hours-text, #details {
+    font-size: medium;
+  }
+
+  .cafe-details .card-text {
+    font-size: larger;
+  }
+
+  .area-text {
+    font-size: large;
+  }
+
+  .card-title {
+    font-size: x-large;
   }
 }
 

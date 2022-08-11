@@ -18,4 +18,20 @@
 .favoriteCafeCardDiv .card-img-top {
     height: 50vw;
 }
+
+}
+
+@media (max-width: 576px) {
+.favoriteCafeCardDiv .removefav-button, .card .hours-text, #details{
+  font-size: medium;
+}
+.cafe-details .card-text {
+  font-size: larger;
+}
+.area-text{
+  font-size: large;
+}
+.card-title{
+  font-size: x-large;
+}
 }
