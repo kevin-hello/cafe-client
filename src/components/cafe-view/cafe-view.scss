@@ -47,3 +47,25 @@ box-shadow: 0 0 0 0.15rem var(--favorite-button-focus);
   display: none;
 }
 }
+
+@media (max-width: 576px) {
+
+.cafe-view h2{
+  font-size: 3rem;
+}
+
+.cafe-area{
+  font-size: 2rem;
+}
+
+.cafe-view .cafe-details{
+  font-size: 1.25rem;
+}
+#favcafe, #back{
+  font-size: 1.5rem;
+}
+#back{
+  margin-left: 1rem;
+}
+
+}

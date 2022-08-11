@@ -64,14 +64,28 @@
 }
 
 @media (max-width: 576px) {
+.area-name h2 {
+  font-size: 3rem;
+}
+.row #return {
+  font-size: 1.5rem;
+}
 .card .h5{
-  font-size: 2.5rem;
+  font-size: 2.25rem;
 }
 .area-text{
   font-size: 1.75rem;
 }
 .card .hours-text, .card .cafe-details, #details{
   font-size: 1.25rem;
+}
+
+.area-cafes h4{
+  font-size: 2.5rem;
+}
+
+.area-cafe-cards{
+  margin-bottom: 1.5rem;
 }
 }
 

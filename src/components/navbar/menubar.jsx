@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {Navbar, Nav, Button, Form} from 'react-bootstrap';
 import { Link, Route} from 'react-router-dom';
 import { SiBuymeacoffee } from 'react-icons/si';
@@ -7,7 +7,6 @@ import SearchBarFilter from '../search-bar-filter/search-bar-filter';
 import './menubar.scss';
 
 export function Menubar ({ searchBarFilter }) {
-
   const onLoggedOut = () => {
     localStorage.clear();
     window.open("/", "_self");
