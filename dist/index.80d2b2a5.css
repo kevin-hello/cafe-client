@@ -565,14 +565,14 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
   .search-bar-small-screen .form-control {
     height: calc(1.75rem + 2px);
-    max-width: 500px;
-    min-width: 280px;
+    width: 60%;
     text-align: center;
-    margin: .5em auto;
+    margin: 1rem auto 0;
+    font-size: 1.3rem;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 768px) {
   .search-input {
     display: none;
   }
@@ -584,11 +584,26 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 
   .search-bar-small-screen .form-control {
-    height: calc(1.75rem + 2px);
-    max-width: 500px;
-    min-width: 280px;
-    text-align: center;
-    margin: .5em auto;
+    height: calc(2rem + 2px);
+    width: 85%;
+    font-size: 1.5rem;
+  }
+
+  .main-nav {
+    line-height: 2.25;
+  }
+
+  .navbar-brand {
+    font-size: 1.75rem;
+  }
+
+  .navbar-toggler-icon {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .main-nav .btn {
+    font-size: 1.25rem;
   }
 }
 
