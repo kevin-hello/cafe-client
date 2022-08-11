@@ -466,20 +466,22 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 @media (max-width: 576px) {
-  .favoriteCafeCardDiv .removefav-button, .card .hours-text, #details {
-    font-size: medium;
+  .favoriteCafeCardDiv .removefav-button {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .cafe-details .card-text:nth-last-child(1) {
+    margin-bottom: 1.5rem;
   }
 
-  .cafe-details .card-text {
-    font-size: larger;
+  .favoriteCafeCardDiv .removefav-button {
+    bottom: 3rem;
   }
 
-  .area-text {
-    font-size: large;
-  }
-
-  .card-title {
-    font-size: x-large;
+  #details {
+    bottom: .2rem;
   }
 }
 
@@ -613,7 +615,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 .cafe-details {
   color: var(--secondary-font-color);
-  font-size: .7em;
+  font-size: .85rem;
 }
 
 .cafe-details .card-text {
@@ -624,7 +626,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   color: var(--secondary-font-color);
   margin-bottom: .65rem;
   margin-left: 23px;
-  font-size: .7em;
+  font-size: .85rem;
 }
 
 .card-content, .card-content:hover {
@@ -636,7 +638,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   color: var(--details-button);
   border: 0 solid #0000;
   padding: 0%;
-  font-size: .7em;
+  font-size: .85rem;
   position: absolute;
   bottom: 10px;
   right: 10px;
@@ -646,23 +648,31 @@ input[type="date"]:focus::-webkit-datetime-edit {
   .cafe-card-div .card-img-top {
     height: 50vw;
   }
-}
 
-@media (max-width: 576px) {
-  .card .hours-text, #details {
-    font-size: medium;
-  }
-
-  .cafe-details .card-text {
-    font-size: larger;
+  .card .h5 {
+    font-size: 2rem;
   }
 
   .area-text {
-    font-size: large;
+    font-size: 1.5rem;
   }
 
-  .card-title {
-    font-size: x-large;
+  .card .hours-text, .card .cafe-details, #details {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .card .h5 {
+    font-size: 2.5rem;
+  }
+
+  .area-text {
+    font-size: 1.75rem;
+  }
+
+  .card .hours-text, .card .cafe-details, #details {
+    font-size: 1.25rem;
   }
 }
 
@@ -684,6 +694,13 @@ input[type="date"]:focus::-webkit-datetime-edit {
   text-align: center;
   margin: 1rem 0 -.75rem;
   font-size: 3rem;
+}
+
+@media (max-width: 576px) {
+  .area-description {
+    padding-bottom: 1.25rem;
+    font-size: 1.25rem;
+  }
 }
 
 :root {

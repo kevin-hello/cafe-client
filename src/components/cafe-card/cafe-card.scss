@@ -16,14 +16,14 @@
   padding-right: 6px;
 }
 .cafe-details{
-  font-size: 0.7em;
+  font-size: 0.85rem;
   color: var(--secondary-font-color);
 }
 .cafe-details .card-text{
   margin-bottom: 5px;
 }
 .hours-text {
-  font-size: 0.7em;
+  font-size: 0.85rem;
   color: var(--secondary-font-color);
   margin-left: 23px;
   margin-bottom: 0.65rem;
@@ -42,7 +42,7 @@
   color:var(--details-button);
   padding:0%;
   border: 0px solid transparent;
-  font-size: 0.7em;
+  font-size: 0.85rem;
   position: absolute;
   right:10px;
   bottom:10px;
@@ -52,19 +52,26 @@
 .cafe-card-div .card-img-top {
     height: 50vw;
 }
+.card .h5{
+  font-size: 2rem;
+}
+.area-text{
+  font-size: 1.5rem;
+}
+.card .hours-text, .card .cafe-details, #details{
+  font-size: 1rem;
+}
 }
 
 @media (max-width: 576px) {
-.card .hours-text, #details{
-  font-size: medium;
-}
-.cafe-details .card-text {
-  font-size: larger;
+.card .h5{
+  font-size: 2.5rem;
 }
 .area-text{
-  font-size: large;
+  font-size: 1.75rem;
 }
-.card-title{
-  font-size: x-large;
+.card .hours-text, .card .cafe-details, #details{
+  font-size: 1.25rem;
 }
 }
+

@@ -22,16 +22,21 @@
 }
 
 @media (max-width: 576px) {
-.favoriteCafeCardDiv .removefav-button, .card .hours-text, #details{
-  font-size: medium;
+.favoriteCafeCardDiv .removefav-button{
+  font-size: 1.25rem;
 }
-.cafe-details .card-text {
-  font-size: larger;
 }
-.area-text{
-  font-size: large;
+
+//preventing overlap of remove cafe button and learn more button
+
+@media (max-width: 375px) {
+.cafe-details .card-text:nth-last-child(1){
+  margin-bottom: 1.5rem;
 }
-.card-title{
-  font-size: x-large;
+.favoriteCafeCardDiv .removefav-button{
+  bottom: 3rem;
+}
+#details{
+  bottom: 0.2rem;
 }
 }
