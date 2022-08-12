@@ -15,7 +15,7 @@ export class AreaCard extends React.Component {
       <Card.Body className="d-flex flex-column">
         <Link to={`/areas/${areas.AreaName}`} className="card-content">
         <Card.Title className="area-title">{areas.AreaName}</Card.Title>
-        <Card.Text className="area-description">{areas.AreaDescription}</Card.Text>
+        <Card.Text className="area-description-card">{areas.AreaDescription}</Card.Text>
         </Link>
         <Link to={`/areas/${areas.AreaName}`}>
           <Button

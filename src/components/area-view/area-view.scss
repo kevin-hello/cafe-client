@@ -1,18 +1,21 @@
-.area-name {
+.area-name h2{
   margin: 0.5rem 1rem 0.25rem;
+  font-size: 2.5rem;
 }
 .area-description{
   margin: 0 1rem;
+  font-size: 1.5rem;
 }
 
 .area-cafes h4{
-  font-size: 1.15rem;
+  font-size: 1.85rem;
   margin: 1rem;
 }
 
 #return{
-margin: 0.35rem 1rem;
+margin: 0.5rem 1rem;
 padding: 0.2rem 0.5rem;
+font-size: 1.5rem;
 background-color: var(--back-button);
 border-color: var(--back-button);
 }

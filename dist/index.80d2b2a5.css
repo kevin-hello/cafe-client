@@ -467,24 +467,27 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 }
 
-.area-name {
+.area-name h2 {
   margin: .5rem 1rem .25rem;
+  font-size: 2.5rem;
 }
 
 .area-description {
   margin: 0 1rem;
+  font-size: 1.5rem;
 }
 
 .area-cafes h4 {
   margin: 1rem;
-  font-size: 1.15rem;
+  font-size: 1.85rem;
 }
 
 #return {
   background-color: var(--back-button);
   border-color: var(--back-button);
-  margin: .35rem 1rem;
+  margin: .5rem 1rem;
   padding: .2rem .5rem;
+  font-size: 1.5rem;
 }
 
 #return:hover {
@@ -877,7 +880,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 }
 
-.area-description {
+.area-description-card {
   padding-bottom: 10px;
   font-size: .85rem;
 }
@@ -898,7 +901,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 }
 
 @media (max-width: 576px) {
-  .area-description {
+  .area-description-card {
     padding-bottom: 1.25rem;
     font-size: 1.5rem;
   }
