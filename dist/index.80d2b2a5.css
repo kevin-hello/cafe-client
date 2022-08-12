@@ -48,6 +48,26 @@
   left: 0;
 }
 
+@media (max-width: 576px) {
+  .lds-dual-ring {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .lds-dual-ring:after {
+    width: 7rem;
+    height: 7rem;
+    border: .75rem solid var(--loading-spinner-color);
+    border-color: var(--loading-spinner-color) transparent var(--loading-spinner-color) transparent;
+    border-radius: 50%;
+    animation: lds-dual-ring 1.2s linear infinite;
+  }
+
+  .spinner-styles h2 {
+    font-size: 2.75rem;
+  }
+}
+
 #login-form {
   width: 60%;
   text-align: center;
@@ -421,6 +441,14 @@ input[type="date"]:focus::-webkit-datetime-edit {
   .secondary-text .secondary-link {
     font-size: 1.35rem;
   }
+
+  #success h3 {
+    font-size: 2.5rem;
+  }
+
+  #success-button {
+    font-size: 1.5rem;
+  }
 }
 
 .simple-cafe-title {
@@ -628,6 +656,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
   background-color: var(--navbar-color);
 }
 
+#main-container .navbar-dark .navbar-brand {
+  color: var(--navbar-brand-color);
+}
+
 .main-nav .nav-toggle-icon:focus {
   outline: 5px auto var(--darkest-primary-color);
 }
@@ -732,12 +764,12 @@ input[type="date"]:focus::-webkit-datetime-edit {
   }
 
   .main-nav .navbar-brand {
-    font-size: 1.75rem;
+    font-size: 1.85rem;
   }
 
-  .navbar-toggler-icon {
-    width: 1.75rem;
-    height: 1.75rem;
+  .main-nav .navbar-toggler-icon {
+    width: 2rem;
+    height: 2rem;
   }
 
   .main-nav .btn {
@@ -880,8 +912,8 @@ input[type="date"]:focus::-webkit-datetime-edit {
   --lightest-primary-color: #d4cbc4;
   --darker-primary-color: #9b8575;
   --darkest-primary-color: #8c7360;
-  --even-darker-primary-color: #745f50;
   --navbar-color: #a99789;
+  --navbar-brand-color: #403126;
   --loading-spinner-color: #d4cbc4;
   --loading-spinner-background-color: #0009;
   --loading-spinner-color-shadow: #000;

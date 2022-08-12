@@ -1,6 +1,11 @@
 .main-nav{
   background-color: var(--navbar-color);
 }
+
+#main-container .navbar-dark .navbar-brand {
+  color: var(--navbar-brand-color);
+}
+
 .main-nav .nav-toggle-icon:focus{
 outline: 5px auto var(--darkest-primary-color);
 }
@@ -97,15 +102,15 @@ display: none;
 }
 
 .main-nav{
-line-height: 2.25;
+  line-height: 2.25;
 }
 .main-nav .navbar-brand {
-font-size: 1.75rem;
+  font-size: 1.85rem;
 }
 
-.navbar-toggler-icon{
-  width: 1.75rem;
-  height: 1.75rem;
+.main-nav .navbar-toggler-icon{
+  width: 2rem;
+  height: 2rem;
 }
 
 .main-nav .btn {

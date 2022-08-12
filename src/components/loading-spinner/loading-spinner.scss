@@ -43,3 +43,22 @@
   background-color: var(--loading-spinner-background-color);
   z-index: 1;
 }
+
+@media (max-width: 576px){
+.lds-dual-ring {
+  width: 8rem;
+  height: 8rem;
+}
+.lds-dual-ring:after {
+  width: 7rem;
+  height: 7rem;
+  border-radius: 50%;
+  border: 0.75rem solid var(--loading-spinner-color);
+  border-color: var(--loading-spinner-color) transparent var(--loading-spinner-color) transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+
+.spinner-styles h2 {
+font-size: 2.75rem;
+}
+}
