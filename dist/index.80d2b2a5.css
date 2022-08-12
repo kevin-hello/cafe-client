@@ -882,7 +882,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 .area-description-card {
   padding-bottom: 10px;
-  font-size: .85rem;
+  font-size: 1rem;
 }
 
 .main-view .area-card-col {
@@ -896,7 +896,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 .areas-header h2 {
   text-align: center;
-  margin: 1rem 0 -.75rem;
+  margin: 1rem 0 -.5rem;
   font-size: 3rem;
 }
 
