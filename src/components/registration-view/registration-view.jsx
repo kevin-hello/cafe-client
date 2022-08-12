@@ -133,7 +133,7 @@ export function RegistrationView() {
                         <label
                         className={username && 'filled'}
                         htmlFor="username">
-                            Username: 
+                            Username 
                             <FaCheck className={validUsername ? "valid" : "hide"} />
                             <FaTimes className={validUsername || !username ? "hide" : "invalid"} />
                         </label>
@@ -162,7 +162,7 @@ export function RegistrationView() {
                         <label
                         className={password && 'filled'}
                         htmlFor="password">
-                            Password: 
+                            Password
                             <FaCheck className={validPassword ? "valid" : "hide"} />
                             <FaTimes className={validPassword || !password ? "hide" : "invalid"} />
                         </label>
@@ -189,7 +189,7 @@ export function RegistrationView() {
                         <label
                         className={matchPassword && 'filled'}
                         htmlFor="confirm_password">
-                            Confirm Password: 
+                            Confirm Password
                             <FaCheck className={validMatchPassword && matchPassword ? "valid" : "hide"} />
                             <FaTimes className={validMatchPassword || !matchPassword  ? "hide" : "invalid"} />
                         </label>
@@ -213,7 +213,7 @@ export function RegistrationView() {
                         <label
                         className={email && 'filled'}
                         htmlFor="email">
-                            Email: 
+                            Email
                             <FaCheck className={validEmail ? "valid" : "hide"} />
                             <FaTimes className={validEmail || !email ? "hide" : "invalid"} />
                         </label>
@@ -238,7 +238,7 @@ export function RegistrationView() {
                         <label
                         className={birthday && 'filled'}
                         htmlFor="birthday">
-                            Birthday:
+                            Birthday
                             <FaCheck className={validBirthday ? "valid" : "hide"} />
                             <FaTimes className={validBirthday || !birthday ? "hide" : "invalid"} />
                         </label>

@@ -73,7 +73,7 @@ export function ProfileView() {
         <UserInfo username={user.Username} email={user.Email} birthday={user.Birthday}/>
         <UpdateUserForm handleUpdate={handleUpdate}/>
         <div className="delete-div">
-          <h5>Danger Zone</h5>
+          <h5>Delete Account</h5>
           <p>Do you want to delete your account?</p>
           <Button id="delete" variant="danger" type="button" onClick={(e) => deleteUser()}><BsTrash /> Delete Account</Button>
           </div>

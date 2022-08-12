@@ -24,3 +24,16 @@ border-color: var(--back-button-hover);
 #return:focus{
 box-shadow: 0 0 0 0.15rem var(--back-button-focus);
 }
+
+@media (max-width: 768px) {
+#return{
+  font-size: 1.5rem;
+}
+}
+@media (max-width: 576px) {
+#return{
+  font-size: 1.75rem;
+  padding: 0.3rem 0.75rem;
+}
+
+}

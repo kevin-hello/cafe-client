@@ -80,8 +80,21 @@ form #register{
 }
 
 @media (max-width: 576px) {
-.register-form{
+#login-form{
   width: 95%;
   padding: 0.5rem 1rem;
 }
+
+#login-form #submit{
+  padding: 0.5rem 0.75rem;
+  font-size: 1.5rem;
+  margin: 0.5rem;
+}
+.secondary-text div{
+  font-size: 1.5rem;
+}
+.secondary-text .secondary-link{
+  font-size: 1.35rem;
+}
+
 }
