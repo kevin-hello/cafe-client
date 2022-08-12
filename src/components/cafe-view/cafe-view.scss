@@ -47,9 +47,6 @@ box-shadow: 0 0 0 0.15rem var(--favorite-button-focus);
   display: none;
 }
 }
-
-@media (max-width: 768px) {
-
 .cafe-view h2{
   font-size: 3rem;
 }
@@ -67,16 +64,8 @@ box-shadow: 0 0 0 0.15rem var(--favorite-button-focus);
 #back{
   margin-left: 1rem;
 }
-}
+
 @media (max-width: 576px) {
-
-.cafe-view h2{
-  font-size: 3rem;
-}
-
-.cafe-area{
-  font-size: 2rem;
-}
 
 .cafe-view .cafe-details{
   font-size: 1.75rem;
@@ -88,6 +77,5 @@ box-shadow: 0 0 0 0.15rem var(--favorite-button-focus);
 #back{
   margin-left: 1.5rem;
   margin-right: 1rem;
-  
 }
 }

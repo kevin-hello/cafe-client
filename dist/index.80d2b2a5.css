@@ -222,37 +222,27 @@ form #register {
   }
 }
 
-@media (max-width: 768px) {
-  .cafe-view h2 {
-    font-size: 3rem;
-  }
+.cafe-view h2 {
+  font-size: 3rem;
+}
 
-  .cafe-area {
-    font-size: 2rem;
-  }
+.cafe-area {
+  font-size: 2rem;
+}
 
-  .cafe-view .cafe-details {
-    font-size: 1.25rem;
-  }
+.cafe-view .cafe-details {
+  font-size: 1.25rem;
+}
 
-  #favcafe, #back {
-    font-size: 1.5rem;
-  }
+#favcafe, #back {
+  font-size: 1.5rem;
+}
 
-  #back {
-    margin-left: 1rem;
-  }
+#back {
+  margin-left: 1rem;
 }
 
 @media (max-width: 576px) {
-  .cafe-view h2 {
-    font-size: 3rem;
-  }
-
-  .cafe-area {
-    font-size: 2rem;
-  }
-
   .cafe-view .cafe-details {
     font-size: 1.75rem;
   }
@@ -610,7 +600,7 @@ input[type="date"]:focus::-webkit-datetime-edit {
 
 .favoriteCafeCardDiv .removefav-button {
   padding: .2rem;
-  font-size: .7rem;
+  font-size: 1rem;
   position: absolute;
   bottom: .8rem;
   left: 1.4rem;
