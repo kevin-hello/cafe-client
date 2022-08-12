@@ -1,6 +1,9 @@
 .main-nav{
   background-color: var(--navbar-color);
 }
+.main-nav .nav-toggle-icon:focus{
+outline: 5px auto var(--darkest-primary-color);
+}
 
 .search-input {
   display: flex;

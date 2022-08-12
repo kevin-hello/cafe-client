@@ -516,6 +516,10 @@ input[type="date"]:focus::-webkit-datetime-edit {
   background-color: var(--navbar-color);
 }
 
+.main-nav .nav-toggle-icon:focus {
+  outline: 5px auto var(--darkest-primary-color);
+}
+
 .search-input {
   text-align: center;
   width: 400px;
