@@ -6,7 +6,8 @@ import { FiWifi, FiWifiOff } from 'react-icons/fi';
 import { FaRestroom } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import LoadingSpinner from '../loading-spinner/loading-spinner';
-
+// map component
+import CafeMap from '../cafe-map/cafe-map';
 //UI components 
 import {Col, Row, Button} from 'react-bootstrap';
 //styling
@@ -19,6 +20,7 @@ constructor(props) {
     super(props);
     this.state={
       FavoriteCafesList: [],
+      isAdding: false,
       isLoading: false,
     };
 }
@@ -29,6 +31,9 @@ componentDidMount(){
     getFavorites() {
     const userID = localStorage.getItem('userID');
     const token = localStorage.getItem('token');
+      this.setState({
+        isLoading: true
+      });
       axios
         .get(`https://cafe-app-la.herokuapp.com/users/${userID}`, {
           headers: { Authorization: `Bearer ${token}` },
@@ -37,15 +42,21 @@ componentDidMount(){
           this.setState({
             FavoriteCafesList: response.data.FavoriteCafes
           });
+          this.setState({
+            isLoading: false
+          });
           console.log(this.state.FavoriteCafesList);
+          console.log(this.props.cafe);
         })
         .catch(function (error) {
+          this.setState({
+            isLoading: false
+          });
           console.log(error);
         });
     }
 
   addFavoriteCafe() {
-
     const favorites = this.state.FavoriteCafesList;
     const cafeID = this.props.cafe._id;
     const cafeName = this.props.cafe.Name;
@@ -55,9 +66,9 @@ componentDidMount(){
 
     let isFavorited = favorites.find(c => c._id === cafeID);
     console.log(isFavorited);
-    if (!isFavorited) {
+  if (!isFavorited) {
     this.setState({
-            isLoading: true
+            isAdding: true
           });
     const token = localStorage.getItem('token');
     const userID = localStorage.getItem('userID');
@@ -68,7 +79,7 @@ componentDidMount(){
     })
     .then(response => {
     this.setState({
-            isLoading: false
+            isAdding: false
           });
       console.log(response);
       alert(`${cafeName} has been added to your favorites`)
@@ -76,22 +87,25 @@ componentDidMount(){
     })
     .catch(function(error){
     this.setState({
-            isLoading: false
+            isAdding: false
           });
       console.log(error);
     });
   }
   else { return alert(`${cafeName} is already in your favorites`)
-}
+  }
   };
 
   render() {
     const {cafe, onBackClick} = this.props;
-    const {isLoading} = this.state;
+    const {isAdding, isLoading} = this.state;
     return (
+      <>
+      <CafeMap cafeName={cafe.Name} lat={cafe.Lat} lng={cafe.Long} />
       <Row className="cafe-view">
-        {isLoading && <LoadingSpinner text={'Adding to Favorites...'}/>}
-        <Col md={12} lg={4} className="cafe-exterior">
+        {isAdding && <LoadingSpinner text={'Adding to Favorites...'}/>}
+        {isLoading && <LoadingSpinner text={'Loading...'}/>}   
+          <Col md={12} lg={4} className="cafe-exterior">
           <img height = "auto" width="100%"  src={cafe.ImagePathExterior}/>
           </Col>
           <Col md={12} lg={4} className="cafe-interior">
@@ -171,6 +185,7 @@ componentDidMount(){
         <Button variant="danger" id="favcafe" value={cafe._id} onClick={(e) => this.addFavoriteCafe(e, cafe)}>Add to favorites</Button>
         </Col>
        </Row>
+        </>
     );
   }
 }
@@ -197,7 +212,9 @@ CafeView.propTypes = {
     Wifi: propTypes.boolean,
     Beans: propTypes.boolean,
     Restroom: propTypes.boolean,
-    Instagram: propTypes.string
+    Instagram: propTypes.string,
+    Lat: propTypes.number,
+    Long: propTypes.number,
   }).isRequired,
   user: propTypes.shape({
     FavoriteCafesList: propTypes.array.isRequired
