@@ -71,11 +71,11 @@ class MainView extends React.Component {
       // Assign the result to the state
         this.props.setCafes(response.data);
     })
-    .catch(function (error) {
+    .catch(response =>{
       this.setState({
             isLoading: false
           });
-      console.log(error);
+      console.log(response);
     });
   }
 
@@ -95,12 +95,11 @@ class MainView extends React.Component {
       this.props.setAreas(response.data);
       
     })
-    .catch(function (error) {
+    .catch(response =>{
       this.setState({
             isLoading: false
           });
-      console.log(error);
-      
+      console.log(response);
     });
   }
 
