@@ -1,5 +1,5 @@
 import React from 'react';
-import './Marker.css';
+import './marker.css';
 
 const Marker = (props: any) => {
     const { color, name, id } = props;
