@@ -101,7 +101,7 @@ componentDidMount(){
     const {isAdding, isLoading} = this.state;
     return (
       <>
-      <CafeMap cafeName={cafe.Name} lat={cafe.Lat} lng={cafe.Long} />
+      <CafeMap cafeName={cafe.Name} lat={cafe.Lat} lng={cafe.Long} cafeID={cafe._id} />
       <Row className="cafe-view">
         {isAdding && <LoadingSpinner text={'Adding to Favorites...'}/>}
         {isLoading && <LoadingSpinner text={'Loading...'}/>}   

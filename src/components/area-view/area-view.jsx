@@ -1,10 +1,12 @@
 import React from 'react';
 import propTypes from 'prop-types';
-
+import GoogleMapReact from 'google-map-react';
 //UI elements
 import { Row, Container, Col, Button} from 'react-bootstrap';
 
 import { BasicCafeCard } from '../basic-cafe-card/basic-cafe-card';
+import { CafeMap } from '../cafe-map/cafe-map';
+import { Marker } from '../cafe-map/cafe-marker/marker';
 //styling
 import "./area-view.scss";
 
@@ -12,6 +14,9 @@ export function AreaView ({cafes, cafe, onBackClick}) {
 
   return(
     <Container>
+
+
+
       <Row>
       <div className="area-name">
         <h2>{cafe.Area.Name}</h2>
