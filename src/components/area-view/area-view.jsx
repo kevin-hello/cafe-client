@@ -5,18 +5,39 @@ import GoogleMapReact from 'google-map-react';
 import { Row, Container, Col, Button} from 'react-bootstrap';
 
 import { BasicCafeCard } from '../basic-cafe-card/basic-cafe-card';
-import { CafeMap } from '../cafe-map/cafe-map';
-import { Marker } from '../cafe-map/cafe-marker/marker';
+import { AreaMarker } from '../area-marker/area-marker';
+
 //styling
 import "./area-view.scss";
 
-export function AreaView ({cafes, cafe, onBackClick}) {
+export function AreaView ({area, cafes, cafe, onBackClick}) {
+  
+  const arealat = (area.Lat);
+  const arealng = (area.Long);
+   const defaultPropsArea = {
+    center: { lat: parseFloat(arealat), lng: parseFloat(arealng)},
+    zoom: 13 
+  };
+  console.log(cafes);
 
   return(
     <Container>
-
-
-
+    <div style={{ height: '35vh', width: '100%' }}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API_KEY }}
+        defaultCenter={defaultPropsArea.center}
+        defaultZoom={defaultPropsArea.zoom}
+      >
+      {cafes && cafes.map((c) => {
+        <AreaMarker
+          lat={parseFloat(c.Lat)}
+          lng={parseFloat(c.Long)}
+          cafe={c.Name}
+          key={c._id}
+        />
+      })}
+      </GoogleMapReact>
+    </div>
       <Row>
       <div className="area-name">
         <h2>{cafe.Area.Name}</h2>

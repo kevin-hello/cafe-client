@@ -1,8 +1,10 @@
 import React from "react";
 import GoogleMapReact from 'google-map-react';
-import Marker from "./cafe-marker/marker";
+import Marker from "../cafe-marker/marker";
 
 export default function CafeMap({cafeName, cafeID, lat, lng}){
+  
+  
   const defaultProps = {
     center: { lat: parseFloat(lat), lng: parseFloat(lng)},
   zoom: 14

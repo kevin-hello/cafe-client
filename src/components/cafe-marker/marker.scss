@@ -1,0 +1,23 @@
+
+.hover .cafe-name-div{
+  width: fit-content;
+  position: absolute;
+  text-align: center;
+  transform: translateX(-30%);
+  font-size: 1.25rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 2px #FFF;
+  color: var(--darkest-primary-color);
+  background-color: rgba(255, 255, 255, 0.80);
+  border: 1px solid var(--darker-primary-color);
+  padding: 0.5rem;
+}
+
+.none .cafe-name-div{
+  display: none;
+}
+
+.cafe-icon{
+  color: var(--darkest-primary-color);
+}
+
