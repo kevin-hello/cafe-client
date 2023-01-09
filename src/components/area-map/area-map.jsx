@@ -11,6 +11,7 @@ export default function AreaMap({arealat, arealng, cafes}){
 
   return (
     // Important! Always set the container height explicitly
+    // change back to react-leaflet with react leaflet marker layer
     <div style={{ height: '35vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API_KEY }}

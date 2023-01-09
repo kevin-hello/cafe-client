@@ -1,10 +1,16 @@
+.main-view .area-view-container{
+  width: 90%;
+  margin: 0 2.5%;
+}
+
+
 .area-name h2{
   margin: 0.5rem 1rem 0.25rem;
   font-size: 2.5rem;
 }
-.area-description{
+.area-description h4{
   margin: 0 1rem;
-  font-size: 1.5rem;
+  font-size: 1.75rem;
 }
 
 .area-cafes h4{
@@ -14,8 +20,8 @@
 
 #return{
 margin: 0.5rem 1rem;
-padding: 0.2rem 0.5rem;
-font-size: 1.5rem;
+padding: 0.5rem 1rem;
+font-size: 2.25rem;
 background-color: var(--back-button);
 border-color: var(--back-button);
 }

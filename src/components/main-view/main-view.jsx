@@ -130,8 +130,7 @@ class MainView extends React.Component {
           </Col>
         }} />
         <Route exact path="/areas/:name" render={({ match, history }) => {
-          return <Col md={12}>
-            <AreaView area={areas.find(a=> a.AreaName === match.params.name )} cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} /></Col>
+          return <AreaView area={areas.find(a=> a.AreaName === match.params.name )} cafe={cafes.find(c => c.Area.Name === match.params.name )} onBackClick={() => history.goBack()} cafes={cafes.filter(c => c.Area.Name === match.params.name)} />
         }} />
         <Route exact path="/areas" render={() => {
           return <AreasList areas={areas}/>

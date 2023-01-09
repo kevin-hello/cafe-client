@@ -5,7 +5,7 @@ import GoogleMapReact from 'google-map-react';
 import { Row, Container, Col, Button} from 'react-bootstrap';
 
 import { BasicCafeCard } from '../basic-cafe-card/basic-cafe-card';
-import { AreaMarker } from '../area-marker/area-marker';
+import AreaMarker from '../area-map-marker/area-marker';
 
 //styling
 import "./area-view.scss";
@@ -16,24 +16,24 @@ export function AreaView ({area, cafes, cafe, onBackClick}) {
   const arealng = (area.Long);
    const defaultPropsArea = {
     center: { lat: parseFloat(arealat), lng: parseFloat(arealng)},
-    zoom: 13 
+    zoom: 15 
   };
   console.log(cafes);
 
   return(
-    <Container>
-    <div style={{ height: '35vh', width: '100%' }}>
+    <Container fluid className='area-view-container'>
+    <div style={{ height: '50vh', width: '100%' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: process.env.GOOGLE_MAPS_API_KEY }}
         defaultCenter={defaultPropsArea.center}
         defaultZoom={defaultPropsArea.zoom}
       >
-      {cafes && cafes.map((c) => {
+      {cafes && cafes.map((cafe) => {
         <AreaMarker
-          lat={parseFloat(c.Lat)}
-          lng={parseFloat(c.Long)}
-          cafe={c.Name}
-          key={c._id}
+          lat={parseFloat(cafe.Lat)}
+          lng={parseFloat(cafe.Long)}
+          cafeName={cafe.Name}
+          key={cafe._id}
         />
       })}
       </GoogleMapReact>
@@ -43,12 +43,14 @@ export function AreaView ({area, cafes, cafe, onBackClick}) {
         <h2>{cafe.Area.Name}</h2>
       </div>
       <div className="area-description">
-        <span>{cafe.Area.Description}</span>
+        <h4>{cafe.Area.Description}</h4>
       </div>
+      <div>
       <Button
       id="return"
       variant="primary"
       onClick={() => onBackClick()}>Back</Button>
+      </div>
     </Row>
     <Row className='area-cafes'>
       <h4>{cafe.Area.Name} Cafes</h4>
